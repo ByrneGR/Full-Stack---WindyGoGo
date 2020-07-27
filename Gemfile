@@ -44,6 +44,7 @@ group :development, :test do
   gem 'bcrypt'
   gem 'jquery-rails'
   gem 'bcrypt'
+  gem 'faker'
   
 end
 
