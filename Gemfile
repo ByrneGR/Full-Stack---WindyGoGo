@@ -43,8 +43,9 @@ group :development, :test do
   gem 'annotate'
   gem 'bcrypt'
   gem 'jquery-rails'
-  gem 'bcrypt'
   gem 'faker'
+  gem 'turbolinks'
+  gem 'rails-ujs'
   
 end
 
