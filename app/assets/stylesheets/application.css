@@ -13,3 +13,72 @@
  *= require_tree .
  *= require_self
  */
+
+ .topnav {
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+ }
+
+ .nav-left {
+   display: flex;
+   justify-content: space-between;
+    align-items: center;
+ }
+
+
+ .navbtn {
+  text-decoration: none;
+  white-space: nowrap;
+  color: #2a2a2a;
+  font-weight: 700;
+  vertical-align: middle;
+  font-family: Helvetica,"Sans-serif";
+  font-size: .875rem;
+  line-height: 1.5;
+  letter-spacing: 0;
+  margin: 10px;
+  
+ }
+
+ .logo {
+  color: #EB1478;
+  font-family: 'Paytone One', sans-serif;
+  font-size: 27px;
+  margin: 4px;
+  margin-right: 15px;
+
+ }
+
+ .navbtn:hover {
+  color: #EB1478;
+ }
+
+ .modal-background {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.6);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+ }
+
+ .modal-form {
+  display: block;
+  position: absolute;
+  top: 100px;
+  left: 35%;
+  background-color: white;
+  z-index: 3;
+ }
+
+ .modal {
+   display: none;
+ }
+
+ .modal-open {
+   display: block;
+ }
+

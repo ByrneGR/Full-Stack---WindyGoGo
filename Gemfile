@@ -43,6 +43,10 @@ group :development, :test do
   gem 'pry-rails'
   gem 'annotate'
   gem 'faker'
+  gem 'guard', require: false
+  gem 'guard-livereload', require: false
+  gem 'guard-rspec', '4.2.9'
+  gem 'rack-livereload'
 
   
 end
