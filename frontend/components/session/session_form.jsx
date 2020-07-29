@@ -37,6 +37,7 @@ class SessionForm extends React.Component {
       form = (
         <div>
         <form className="modal-form">
+          <div className = "x-out" onClick={this.props.closeModal}>X</div>
           <h1>Welcome back!</h1>
           <h2>Log in to continue.</h2>
           
@@ -48,6 +49,7 @@ class SessionForm extends React.Component {
               <input type="password" value={this.state.password} onChange={this.handleInput('password')} />
             </label>
 
+            <div>{errors}</div>
             <button onClick={this.handleSubmit}>Log In</button>
 
           </form>
@@ -59,6 +61,7 @@ class SessionForm extends React.Component {
       form = (
         <div>
           <form className="modal-form">
+          <div className="x-out" onClick={this.props.closeModal}>X</div>   
           <h1>Welcome!</h1>
           <h2>Sign up to join Indiegogo.</h2>
             <label>Email:
@@ -68,7 +71,7 @@ class SessionForm extends React.Component {
             <label>Password:
               <input type="password" value={this.state.password} onChange={this.handleInput('password')} />
             </label>
-
+            <div>{errors}</div>
             <button onClick={this.handleSubmit}>Sign Up</button>
 
           </form>
@@ -80,7 +83,6 @@ class SessionForm extends React.Component {
     return (
       <div>
         {form}
-        {errors}
         
       </div>
       

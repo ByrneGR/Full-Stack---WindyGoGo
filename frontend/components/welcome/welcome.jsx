@@ -10,9 +10,9 @@ export default ({ currentUser, logout, openModal }) => {
       <div>
         <Link className="navbtn" to="/login">Start a Campaign</Link>
         &nbsp;&nbsp; 
-        <button className="navbtn" onClick={() => openModal('login')}>Log In</button>
+        <a className="navbtn" onClick={() => openModal('login')}>Log In</a>
         &nbsp;&nbsp; 
-        <button className="navbtn" onClick={() => openModal('signup')}>Sign Up</button>
+        <a className="navbtn" onClick={() => openModal('signup')}>Sign Up</a>
       </div>
     );
 
