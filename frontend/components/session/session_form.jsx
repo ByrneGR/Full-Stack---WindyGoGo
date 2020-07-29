@@ -34,7 +34,12 @@ class SessionForm extends React.Component {
   handleDemo(e) {
     e.preventDefault();
     const demoUser = {email: "demo_user@demo.com", password: "password"};
+    
+    if (this.props.formType === "login") {
     this.props.processForm(demoUser).then(this.props.closeModal)
+    } else {
+      this.props.logIn(demoUser).then(this.props.closeModal)
+    }
   }
 
 
@@ -63,9 +68,9 @@ class SessionForm extends React.Component {
             </label>
 
             <div>{errors}</div>
-            <button onClick={this.handleSubmit}>Log In</button>
+            <button className="modal-button"onClick={this.handleSubmit}>Log In</button>
 
-            <button onClick={this.handleDemo}>Demo Login</button>
+              <button className="modal-button" id="demo-button" onClick={this.handleDemo}>Demo Login</button>
             </div>
           </form>
           <div className="modal-background" onClick={this.props.closeModal}> </div>
@@ -77,18 +82,22 @@ class SessionForm extends React.Component {
         <div>
           <form className="modal-form">
           <div className="x-out" onClick={this.props.closeModal}>X</div>   
-          <h1>Welcome!</h1>
-          <h2>Sign up to join Indiegogo.</h2>
-            <label className="input-label">Email:
-            <input type="text" value={this.state.email} onChange={this.handleInput('email')} />
+            <div className="form-headers">
+              <h1 className="form-header1">Welcome!</h1>
+              <h2 className="form-header2">Sign up to join Indiegogo.</h2>
+          </div>
+            <div className="form-inputs">
+              <label className="input-label">Email <br></br>
+            <input className="form-field" type="text" value={this.state.email} onChange={this.handleInput('email')} />
             </label>
 
-            <label className="input-label">Password:
-              <input type="password" value={this.state.password} onChange={this.handleInput('password')} />
+              <label className="input-label">Password <br></br>
+              <input className="form-field" id="logpw" type="password" value={this.state.password} onChange={this.handleInput('password')} />
             </label>
             <div>{errors}</div>
-            <button onClick={this.handleSubmit}>Sign Up</button>
-
+            <button className="modal-button"  onClick={this.handleSubmit}>Sign Up</button>
+            <button className="modal-button" id="demo-button" onClick={this.handleDemo}>Demo Login</button>
+            </div>
           </form>
           <div className="modal-background" onClick={this.props.closeModal}> </div>
         </div>

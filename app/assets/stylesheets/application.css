@@ -168,4 +168,34 @@ a {
     margin-bottom: 40px;  
   }
 
+  .modal-button {
+    width: 385px;
+    height: 40px;
+    background-color: #e51075;
+    border: 1px solid #e51075;
+    color: white;
+    margin-bottom: 20px;
+    font-weight: 700;
+    line-height: 1.5;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+  }
+
+  .modal-button:hover {
+    background-color: #E5005F;
+    border: 1px solid #E5005F;
+    
+  }
+
+    #demo-button {
+    background-color: #41569F;
+    border: 1px solid #41569F;
+    }
+
+    #demo-button:hover {
+      background-color: #3D4E96;
+      border: 1px solid #3D4E96;
+    }
+
 

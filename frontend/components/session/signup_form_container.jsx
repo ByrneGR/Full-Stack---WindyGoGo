@@ -16,6 +16,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
       Login
     </button>  
   ),
+  logIn: formUser => dispatch(login(formUser)),
   closeModal: () => dispatch(closeModal()),
   removeErrors: () => dispatch(removeErrors())
 })

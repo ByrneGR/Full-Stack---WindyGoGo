@@ -488,7 +488,12 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
         email: "demo_user@demo.com",
         password: "password"
       };
-      this.props.processForm(demoUser).then(this.props.closeModal);
+
+      if (this.props.formType === "login") {
+        this.props.processForm(demoUser).then(this.props.closeModal);
+      } else {
+        this.props.logIn(demoUser).then(this.props.closeModal);
+      }
     }
   }, {
     key: "render",
@@ -527,8 +532,11 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
           value: this.state.password,
           onChange: this.handleInput('password')
         })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, errors), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "modal-button",
           onClick: this.handleSubmit
         }, "Log In"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "modal-button",
+          id: "demo-button",
           onClick: this.handleDemo
         }, "Demo Login"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "modal-background",
@@ -540,21 +548,37 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "x-out",
           onClick: this.props.closeModal
-        }, "X"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Welcome!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Sign up to join Indiegogo."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        }, "X"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "form-headers"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+          className: "form-header1"
+        }, "Welcome!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+          className: "form-header2"
+        }, "Sign up to join Indiegogo.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "form-inputs"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
           className: "input-label"
-        }, "Email:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        }, "Email ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          className: "form-field",
           type: "text",
           value: this.state.email,
           onChange: this.handleInput('email')
         })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
           className: "input-label"
-        }, "Password:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        }, "Password ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          className: "form-field",
+          id: "logpw",
           type: "password",
           value: this.state.password,
           onChange: this.handleInput('password')
         })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, errors), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "modal-button",
           onClick: this.handleSubmit
-        }, "Sign Up")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, "Sign Up"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "modal-button",
+          id: "demo-button",
+          onClick: this.handleDemo
+        }, "Demo Login"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "modal-background",
           onClick: this.props.closeModal
         }, " "));
@@ -609,6 +633,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
         return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["openModal"])('login'));
       }
     }, "Login"),
+    logIn: function logIn(formUser) {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["login"])(formUser));
+    },
     closeModal: function closeModal() {
       return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["closeModal"])());
     },
