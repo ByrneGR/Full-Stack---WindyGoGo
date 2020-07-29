@@ -154,6 +154,7 @@ a {
     max-width: 100%;
     color: #2a2a2a;
     margin-top: 5px;
+    margin-bottom: 5px;
   }
 
   .input-label {
@@ -196,6 +197,10 @@ a {
     #demo-button:hover {
       background-color: #3D4E96;
       border: 1px solid #3D4E96;
+    }
+
+    #signup-form {
+      height: 650px;
     }
 
 

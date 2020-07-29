@@ -18,7 +18,8 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   ),
   logIn: formUser => dispatch(login(formUser)),
   closeModal: () => dispatch(closeModal()),
-  removeErrors: () => dispatch(removeErrors())
+  removeErrors: () => dispatch(removeErrors()),
+  openModal: modal => dispatch(openModal(modal))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SessionForm)

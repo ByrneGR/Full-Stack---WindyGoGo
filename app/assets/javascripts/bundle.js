@@ -390,6 +390,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     removeErrors: function removeErrors() {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["removeErrors"])());
+    },
+    openModal: function openModal(modal) {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["openModal"])(modal));
     }
   };
 };
@@ -451,6 +454,8 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
+      first_name: "",
+      last_name: "",
       email: "",
       password: ""
     };
@@ -498,13 +503,16 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       var formType = this.props.formType;
       var errors = this.props.errors;
       var form;
 
       if (formType === "login") {
         form = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-          className: "modal-form"
+          className: "modal-form",
+          id: "login-form"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "x-out",
           onClick: this.props.closeModal
@@ -538,13 +546,19 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
           className: "modal-button",
           id: "demo-button",
           onClick: this.handleDemo
-        }, "Demo Login"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, "Demo Login"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "New to Windygogo?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+          className: "navbtn",
+          onClick: function onClick() {
+            return _this3.props.openModal('signup');
+          }
+        }, "Sign Up")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "modal-background",
           onClick: this.props.closeModal
         }, " "));
       } else if (formType === "signup") {
         form = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-          className: "modal-form"
+          className: "modal-form",
+          id: "signup-form"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "x-out",
           onClick: this.props.closeModal
@@ -557,6 +571,20 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
         }, "Sign up to join Indiegogo.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "form-inputs"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+          className: "input-label"
+        }, "First Name ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          className: "form-field",
+          type: "text",
+          value: this.state.first_name,
+          onChange: this.handleInput('first_name')
+        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+          className: "input-label"
+        }, "Last Name ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          className: "form-field",
+          type: "text",
+          value: this.state.last_name,
+          onChange: this.handleInput('last_name')
+        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
           className: "input-label"
         }, "Email ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
           className: "form-field",
@@ -578,7 +606,12 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
           className: "modal-button",
           id: "demo-button",
           onClick: this.handleDemo
-        }, "Demo Login"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, "Demo Login"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Already have an account?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+          className: "navbtn",
+          onClick: function onClick() {
+            return _this3.props.openModal('login');
+          }
+        }, "Log In")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "modal-background",
           onClick: this.props.closeModal
         }, " "));
@@ -641,6 +674,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
     },
     removeErrors: function removeErrors() {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["removeErrors"])());
+    },
+    openModal: function openModal(modal) {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["openModal"])(modal));
     }
   };
 };

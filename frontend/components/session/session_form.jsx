@@ -7,6 +7,8 @@ class SessionForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      first_name: "",
+      last_name: "",
       email: "",
       password: ""
     };
@@ -52,7 +54,7 @@ class SessionForm extends React.Component {
       
       form = (
         <div>
-        <form className="modal-form">
+          <form className="modal-form" id="login-form">
           <div className = "x-out" onClick={this.props.closeModal}>X</div>
           <div className="form-headers">
             <h1 className="form-header1">Welcome back!</h1>
@@ -71,6 +73,9 @@ class SessionForm extends React.Component {
             <button className="modal-button"onClick={this.handleSubmit}>Log In</button>
 
               <button className="modal-button" id="demo-button" onClick={this.handleDemo}>Demo Login</button>
+              <div>New to Windygogo?
+                  <a className="navbtn" onClick={() => this.props.openModal('signup')}>Sign Up</a> 
+              </div>
             </div>
           </form>
           <div className="modal-background" onClick={this.props.closeModal}> </div>
@@ -80,13 +85,22 @@ class SessionForm extends React.Component {
 
       form = (
         <div>
-          <form className="modal-form">
+          <form className="modal-form" id="signup-form">
           <div className="x-out" onClick={this.props.closeModal}>X</div>   
             <div className="form-headers">
               <h1 className="form-header1">Welcome!</h1>
               <h2 className="form-header2">Sign up to join Indiegogo.</h2>
           </div>
             <div className="form-inputs">
+
+              <label className="input-label">First Name <br></br>
+                <input className="form-field" type="text" value={this.state.first_name} onChange={this.handleInput('first_name')} />
+              </label>
+
+              <label className="input-label">Last Name <br></br>
+                <input className="form-field" type="text" value={this.state.last_name} onChange={this.handleInput('last_name')} />
+              </label>
+
               <label className="input-label">Email <br></br>
             <input className="form-field" type="text" value={this.state.email} onChange={this.handleInput('email')} />
             </label>
@@ -97,9 +111,13 @@ class SessionForm extends React.Component {
             <div>{errors}</div>
             <button className="modal-button"  onClick={this.handleSubmit}>Sign Up</button>
             <button className="modal-button" id="demo-button" onClick={this.handleDemo}>Demo Login</button>
+              <div>Already have an account?
+                <a className="navbtn" onClick={() => this.props.openModal('login')}>Log In</a>
+                </div> 
             </div>
           </form>
           <div className="modal-background" onClick={this.props.closeModal}> </div>
+   
         </div>
       )
     }
