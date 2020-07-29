@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import {Helmet} from 'react-helmet';
 
 
 class SessionForm extends React.Component {
@@ -22,7 +23,7 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.processForm(user);
+    this.props.processForm(user).then(this.props.closeModal);
   }
 
 
@@ -50,7 +51,7 @@ class SessionForm extends React.Component {
             <button onClick={this.handleSubmit}>Log In</button>
 
           </form>
-          <div className="modal-background"> </div>
+          <div className="modal-background" onClick={this.props.closeModal}> </div>
         </div>
       )
     } else if (formType === "signup") {
@@ -71,7 +72,7 @@ class SessionForm extends React.Component {
             <button onClick={this.handleSubmit}>Sign Up</button>
 
           </form>
-          <div className="modal-background"> </div>
+          <div className="modal-background" onClick={this.props.closeModal}> </div>
         </div>
       )
     }
@@ -80,6 +81,7 @@ class SessionForm extends React.Component {
       <div>
         {form}
         {errors}
+        
       </div>
       
     );

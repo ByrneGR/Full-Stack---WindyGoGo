@@ -4,11 +4,13 @@ import LoginFormContainer from "./session/login_form_container"
 import SignupFormContainer from "./session/signup_form_container"
 import { Link, Route } from 'react-router-dom';
 import { AuthRoute } from '../util/route_utils';
+import Modal from './modal/modal';
 
 
 
 const App = () => (
   <div>
+    <Modal />
     <header>
       <nav className="topnav">
     <div className="nav-left">
