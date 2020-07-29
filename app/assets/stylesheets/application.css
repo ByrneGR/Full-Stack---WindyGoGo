@@ -45,6 +45,15 @@ a {
   margin: 10px;
  }
 
+ div {
+     text-decoration: none;
+     white-space: nowrap;
+     color: #6D6D6D
+     vertical-align: middle;
+     font-family: Helvetica,
+     "Sans-serif";
+ }
+
  .logo {
   color: #EB1478;
   font-family: 'Paytone One', sans-serif;
@@ -75,6 +84,8 @@ a {
   left: 35%;
   background-color: white;
   z-index: 3;
+  height: 600px;
+  width: 480px;
  }
 
  .modal {
@@ -89,6 +100,38 @@ a {
    cursor: pointer;
    margin: 6px;
    float: right;
-
+   color: #6A6A6A;
  }
+
+ .x-out:hover {
+   cursor: pointer;
+   margin: 6px;
+   float: right;
+   color: #2a2a2a;
+ }
+
+ .form-header1 {
+  text-align: center;
+  font-size: 2rem;
+  font-family: ff-more-web-pro, Georgia, "Serif";;
+  font-weight: 500;
+  margin-bottom: -5px;
+ }
+  .form-header2 {
+  text-align: center;
+  font-family: benton-sans,Helvetica,"Sans-serif";
+  font-weight: 300;
+  color: #6a6a6a;
+  font-size: 16px;
+  }
+
+  .formheaders {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .form-field {
+    text-align: center;
+  }
 

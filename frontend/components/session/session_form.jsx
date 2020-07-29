@@ -14,6 +14,10 @@ class SessionForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
+  componentWillUnmount() {
+    this.props.removeErrors()
+  }
+
   handleInput(type) {
     return (e) => {
       this.setState({ [type]: e.target.value })
@@ -38,15 +42,17 @@ class SessionForm extends React.Component {
         <div>
         <form className="modal-form">
           <div className = "x-out" onClick={this.props.closeModal}>X</div>
-          <h1>Welcome back!</h1>
-          <h2>Log in to continue.</h2>
+          <div className="formheaders">
+            <h1 className="form-header1">Welcome back!</h1>
+            <h2 className="form-header2">Log in to continue.</h2>
+          </div>
           
-            <label>Email
-            <input type="text" value={this.state.email} onChange={this.handleInput('email')} />
+            <label>Email <br></br>
+            <input className="form-field" type="text" value={this.state.email} onChange={this.handleInput('email')} />
             </label>
-
-            <label>Password:
-              <input type="password" value={this.state.password} onChange={this.handleInput('password')} />
+            <br></br>
+            <label>Password <br></br>
+              <input className="form-field" type="password" value={this.state.password} onChange={this.handleInput('password')} />
             </label>
 
             <div>{errors}</div>
