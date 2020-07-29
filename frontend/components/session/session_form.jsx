@@ -12,6 +12,7 @@ class SessionForm extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleDemo = this.handleDemo.bind(this)
   }
 
   componentWillUnmount() {
@@ -28,6 +29,12 @@ class SessionForm extends React.Component {
     e.preventDefault();
     const user = Object.assign({}, this.state);
     this.props.processForm(user).then(this.props.closeModal);
+  }
+
+  handleDemo(e) {
+    e.preventDefault();
+    const demoUser = {email: "demo_user@demo.com", password: "password"};
+    this.props.processForm(demoUser).then(this.props.closeModal)
   }
 
 
@@ -52,11 +59,13 @@ class SessionForm extends React.Component {
             </label>
             <br></br>
               <label className="input-label">Password <br></br>
-              <input className="form-field" type="password" value={this.state.password} onChange={this.handleInput('password')} />
+              <input className="form-field" id="logpw" type="password" value={this.state.password} onChange={this.handleInput('password')} />
             </label>
 
             <div>{errors}</div>
             <button onClick={this.handleSubmit}>Log In</button>
+
+            <button onClick={this.handleDemo}>Demo Login</button>
             </div>
           </form>
           <div className="modal-background" onClick={this.props.closeModal}> </div>
