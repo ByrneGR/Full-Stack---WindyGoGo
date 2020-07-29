@@ -50,6 +50,7 @@ a {
      white-space: nowrap;
      color: #6D6D6D;
      vertical-align: middle;
+     font-size: 16px;
      font-family: Helvetica,
      "Sans-serif";
  }
@@ -116,6 +117,8 @@ a {
   font-family: Georgia, "Serif";;
   font-weight: 500;
   margin-bottom: -5px;
+  margin-top: 30px;
+  color: #2a2a2a;
  }
   .form-header2 {
   text-align: center;
@@ -123,15 +126,42 @@ a {
   font-weight: 300;
   color: #6a6a6a;
   font-size: 16px;
+  margin-bottom: 30px;
   }
 
-  .formheaders {
+  .form-headers {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .form-inputs {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
   .form-field {
-    text-align: center;
+    width: 350px;
+    height: 40px;
+    padding: .25rem 1rem;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    transition: all .25s cubic-bezier(.455, .03, .515, .955);
+    border-radius: 2px;
+    font-size: 1rem;
+    line-height: 1.5;
+    max-width: 100%;
+    color: #2a2a2a;
+    margin-top: 5px;
   }
+
+  .input-label {
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: 500px;
+    color: #2a2a2a;
+    font-family: Helvetica,"Sans-serif";
+  }
+
 

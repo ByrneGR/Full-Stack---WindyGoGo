@@ -42,22 +42,22 @@ class SessionForm extends React.Component {
         <div>
         <form className="modal-form">
           <div className = "x-out" onClick={this.props.closeModal}>X</div>
-          <div className="formheaders">
+          <div className="form-headers">
             <h1 className="form-header1">Welcome back!</h1>
             <h2 className="form-header2">Log in to continue.</h2>
           </div>
-          
-            <label>Email <br></br>
+          <div className="form-inputs">
+            <label className="input-label">Email <br></br>
             <input className="form-field" type="text" value={this.state.email} onChange={this.handleInput('email')} />
             </label>
             <br></br>
-            <label>Password <br></br>
+              <label className="input-label">Password <br></br>
               <input className="form-field" type="password" value={this.state.password} onChange={this.handleInput('password')} />
             </label>
 
             <div>{errors}</div>
             <button onClick={this.handleSubmit}>Log In</button>
-
+            </div>
           </form>
           <div className="modal-background" onClick={this.props.closeModal}> </div>
         </div>
@@ -70,11 +70,11 @@ class SessionForm extends React.Component {
           <div className="x-out" onClick={this.props.closeModal}>X</div>   
           <h1>Welcome!</h1>
           <h2>Sign up to join Indiegogo.</h2>
-            <label>Email:
+            <label className="input-label">Email:
             <input type="text" value={this.state.email} onChange={this.handleInput('email')} />
             </label>
 
-            <label>Password:
+            <label className="input-label">Password:
               <input type="password" value={this.state.password} onChange={this.handleInput('password')} />
             </label>
             <div>{errors}</div>
