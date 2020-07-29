@@ -35,7 +35,7 @@ class SessionForm extends React.Component {
 
   handleDemo(e) {
     e.preventDefault();
-    const demoUser = {email: "demo_user@demo.com", password: "password"};
+    const demoUser = {email: "demo_user@demo.com", password: "password", first_name: "Demo User", last_name: "User"};
     
     if (this.props.formType === "login") {
     this.props.processForm(demoUser).then(this.props.closeModal)
@@ -89,7 +89,7 @@ class SessionForm extends React.Component {
           <div className="x-out" onClick={this.props.closeModal}>X</div>   
             <div className="form-headers">
               <h1 className="form-header1">Welcome!</h1>
-              <h2 className="form-header2">Sign up to join Indiegogo.</h2>
+              <h2 className="form-header2">Sign up to join Windygogo.</h2>
           </div>
             <div className="form-inputs">
 

@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 export default ({ currentUser, logout, openModal }) => {
   const display = currentUser ? (
     <div>
-      <p>Hello, {currentUser.email}</p>
-      <button onClick={logout}>Log Out</button>
+      <p>{currentUser.first_name}</p>
+      <button className="navbtn" onClick={logout}>Log Out</button>
     </div>) : (
       <div>
         <Link className="navbtn" to="/login">Start a Campaign</Link>

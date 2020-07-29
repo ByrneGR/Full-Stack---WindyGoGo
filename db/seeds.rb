@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.delete_all
-User.create(email: "demo_user@demo.com", password: "password")
+User.create({email: "demo_user@demo.com", password: "password", first_name: "Demo User", last_name: "User"})
 # 10.times do
 #   User.create(email: Faker::Internet.unique.free_email, password: "password")
 # end  
