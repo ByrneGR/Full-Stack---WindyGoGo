@@ -223,8 +223,9 @@ var App = function App() {
     className: "topnav"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "nav-left"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-    className: "logo"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
+    className: "logo",
+    to: "/"
   }, "WINDYGOGO"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
     className: "navbtn",
     to: "/login"
@@ -509,6 +510,34 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
 
       var formType = this.props.formType;
       var errors = this.props.errors;
+      var emailErrors = null;
+      var fnErrors = null;
+      var lnErrors = null;
+      var pwErrors = null;
+      this.props.errors.forEach(function (error) {
+        console.log(error);
+
+        if (error === "Email can't be blank") {
+          emailErrors = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "field-errors"
+          }, "Email address is required");
+        } else if (error === "First name can't be blank") {
+          fnErrors = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "field-errors"
+          }, "First Name is required");
+        } else if (error === "Last name can't be blank") {
+          lnErrors = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "field-errors"
+          }, "Last name is required");
+        } else if (error === "Password is too short (minimum is 6 characters)") {
+          pwErrors = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "field-errors",
+            id: "pw-errors"
+          }, "Password must be between 6 and 40 characters long");
+        }
+
+        console.log(emailErrors);
+      });
       var form;
 
       if (formType === "login") {
@@ -532,15 +561,15 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
           className: "form-field",
           type: "text",
           value: this.state.email,
-          onChange: this.handleInput('email')
-        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+          onChange: this.handleInput("email")
+        }), emailErrors), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
           className: "input-label"
         }, "Password ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
           className: "form-field",
           id: "logpw",
           type: "password",
           value: this.state.password,
-          onChange: this.handleInput('password')
+          onChange: this.handleInput("password")
         })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, errors), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "modal-button",
           onClick: this.handleSubmit
@@ -551,7 +580,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
         }, "Demo Login"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "New to Windygogo?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
           className: "navbtn",
           onClick: function onClick() {
-            return _this3.props.openModal('signup');
+            return _this3.props.openModal("signup");
           }
         }, "Sign Up")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "modal-background",
@@ -578,30 +607,30 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
           className: "form-field",
           type: "text",
           value: this.state.first_name,
-          onChange: this.handleInput('first_name')
-        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+          onChange: this.handleInput("first_name")
+        }), fnErrors), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
           className: "input-label"
         }, "Last Name ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
           className: "form-field",
           type: "text",
           value: this.state.last_name,
-          onChange: this.handleInput('last_name')
-        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+          onChange: this.handleInput("last_name")
+        }), lnErrors), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
           className: "input-label"
         }, "Email ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
           className: "form-field",
           type: "text",
           value: this.state.email,
-          onChange: this.handleInput('email')
-        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+          onChange: this.handleInput("email")
+        }), emailErrors), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
           className: "input-label"
         }, "Password ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
           className: "form-field",
           id: "logpw",
           type: "password",
           value: this.state.password,
-          onChange: this.handleInput('password')
-        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, errors), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          onChange: this.handleInput("password")
+        }), pwErrors), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "modal-button",
           onClick: this.handleSubmit
         }, "Sign Up"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -611,7 +640,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
         }, "Demo Login"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Already have an account?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
           className: "navbtn",
           onClick: function onClick() {
-            return _this3.props.openModal('login');
+            return _this3.props.openModal("login");
           }
         }, "Log In")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "modal-background",
@@ -708,11 +737,16 @@ __webpack_require__.r(__webpack_exports__);
   var display = currentUser ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, currentUser.first_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "navbtn",
     onClick: logout
-  }, "Log Out")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+  }, "Log Out")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "nav-right"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "navbtn",
     to: "/login"
-  }, "Start a Campaign"), "\xA0\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+  }, "Start a Campaign"), "\xA0\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    id: "divider"
+  }), "\xA0\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "navbtn",
+    id: "login-btn",
     onClick: function onClick() {
       return openModal('login');
     }

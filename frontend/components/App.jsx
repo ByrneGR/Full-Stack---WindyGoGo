@@ -14,7 +14,7 @@ const App = () => (
     <header>
       <nav className="topnav">
     <div className="nav-left">
-    <h1 className="logo">WINDYGOGO</h1>
+    <Link className="logo" to="/">WINDYGOGO</Link>
       <Link className="navbtn" to="/login">Explore</Link>
       <Link className="navbtn" to="/login">What We Do</Link>
     </div>
