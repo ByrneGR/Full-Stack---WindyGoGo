@@ -8,7 +8,9 @@
 
 User.delete_all
 User.create({email: "demo_user@demo.com", password: "password", first_name: "Demo User", last_name: "User"})
-Campaign.create({location: "United States", title: "Cheese Chapstick", description: "cheesy flavors that heal your lips", duration: "30", creator_id: User.all[0].id})
+Campaign.create({location: "United States", creator_type: "Individual", banking_location: "United States", creator_id: User.all[0].id})
+  
+  # , duration: "30", creator_id: User.all[0].id})
 # 10.times do
 #   User.create(email: Faker::Internet.unique.free_email, password: "password")
 # end  

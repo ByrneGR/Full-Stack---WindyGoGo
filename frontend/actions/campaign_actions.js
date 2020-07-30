@@ -11,7 +11,7 @@ const receiveCampaigns = campaigns => ({
 })
 
 const receiveCampaign = campaign => ({
-  type: RECEIVE_CAMPAIGNS,
+  type: RECEIVE_CAMPAIGN,
   campaign
 })
 
