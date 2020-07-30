@@ -86,6 +86,80 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./frontend/actions/campaign_actions.js":
+/*!**********************************************!*\
+  !*** ./frontend/actions/campaign_actions.js ***!
+  \**********************************************/
+/*! exports provided: RECEIVE_CAMPAIGNS, RECEIVE_CAMPAIGN, REMOVE_CAMPAIGN, fetchCampaigns, fetchCampaign, createCampaign, deleteCampaign */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_CAMPAIGNS", function() { return RECEIVE_CAMPAIGNS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_CAMPAIGN", function() { return RECEIVE_CAMPAIGN; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_CAMPAIGN", function() { return REMOVE_CAMPAIGN; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCampaigns", function() { return fetchCampaigns; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCampaign", function() { return fetchCampaign; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createCampaign", function() { return createCampaign; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteCampaign", function() { return deleteCampaign; });
+/* harmony import */ var _util_campaign_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/campaign_api_util */ "./frontend/util/campaign_api_util.js");
+
+var RECEIVE_CAMPAIGNS = 'RECEIVE_CAMPAIGNS';
+var RECEIVE_CAMPAIGN = 'RECEIVE_CAMPAIGN';
+var REMOVE_CAMPAIGN = 'REMOVE_CAMPAIGN';
+
+var receiveCampaigns = function receiveCampaigns(campaigns) {
+  return {
+    type: RECEIVE_CAMPAIGNS,
+    campaigns: campaigns
+  };
+};
+
+var receiveCampaign = function receiveCampaign(campaign) {
+  return {
+    type: RECEIVE_CAMPAIGNS,
+    campaign: campaign
+  };
+};
+
+var removeCampaign = function removeCampaign(campaignId) {
+  return {
+    type: REMOVE_CAMPAIGN,
+    campaignId: campaignId
+  };
+};
+
+var fetchCampaigns = function fetchCampaigns() {
+  return function (dispatch) {
+    return Object(_util_campaign_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchcampaigns"])().then(function (campaigns) {
+      return dispatch(receiveCampaigns(campaigns));
+    });
+  };
+};
+var fetchCampaign = function fetchCampaign(campaignId) {
+  return function (dispatch) {
+    return Object(_util_campaign_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchcampaign"])(campaignId).then(function (campaign) {
+      return dispatch(receiveCampaign(campaign));
+    });
+  };
+};
+var createCampaign = function createCampaign(campaign) {
+  return function (dispatch) {
+    return Object(_util_campaign_api_util__WEBPACK_IMPORTED_MODULE_0__["createcampaign"])(campaign).then(function (campaign) {
+      return dispatch(receiveCampaign(campaign));
+    });
+  };
+};
+var deleteCampaign = function deleteCampaign(campaignId) {
+  return function (dispatch) {
+    return Object(_util_campaign_api_util__WEBPACK_IMPORTED_MODULE_0__["deletecampaign"])(campaignId).then(function () {
+      return dispatch(removeCampaign(campaignId));
+    });
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/modal_actions.js":
 /*!*******************************************!*\
   !*** ./frontend/actions/modal_actions.js ***!
@@ -515,8 +589,6 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       var lnErrors = null;
       var pwErrors = null;
       this.props.errors.forEach(function (error) {
-        console.log(error);
-
         if (error === "Email can't be blank") {
           emailErrors = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "field-errors"
@@ -535,8 +607,6 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
             id: "pw-errors"
           }, "Password must be between 6 and 40 characters long");
         }
-
-        console.log(emailErrors);
       });
       var form;
 
@@ -817,7 +887,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./store/store */ "./frontend/store/store.js");
 /* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/root */ "./frontend/components/root.jsx");
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var _actions_campaign_actions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./actions/campaign_actions */ "./frontend/actions/campaign_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -846,10 +918,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   window.getState = store.getState;
   window.dispatch = store.dispatch;
-  window.logIn = _util_session_api_util__WEBPACK_IMPORTED_MODULE_2__["logIn"];
-  window.signUp = _util_session_api_util__WEBPACK_IMPORTED_MODULE_2__["signUp"];
-  window.logOut = _util_session_api_util__WEBPACK_IMPORTED_MODULE_2__["logOut"];
-  window.login = _actions_session_actions__WEBPACK_IMPORTED_MODULE_5__["login"];
+  window.fetchCampaigns = _actions_campaign_actions__WEBPACK_IMPORTED_MODULE_6__["fetchCampaigns"];
+  window.fetchCampaign = _actions_campaign_actions__WEBPACK_IMPORTED_MODULE_6__["fetchCampaign"];
+  window.createCampaign = _actions_campaign_actions__WEBPACK_IMPORTED_MODULE_6__["createCampaign"];
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_root__WEBPACK_IMPORTED_MODULE_4__["default"], {
     store: store
   }), root);
@@ -1098,6 +1169,49 @@ var configureStore = function configureStore() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (configureStore);
+
+/***/ }),
+
+/***/ "./frontend/util/campaign_api_util.js":
+/*!********************************************!*\
+  !*** ./frontend/util/campaign_api_util.js ***!
+  \********************************************/
+/*! exports provided: fetchcampaigns, fetchcampaign, createcampaign, deletecampaign */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchcampaigns", function() { return fetchcampaigns; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchcampaign", function() { return fetchcampaign; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createcampaign", function() { return createcampaign; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deletecampaign", function() { return deletecampaign; });
+var fetchcampaigns = function fetchcampaigns() {
+  return $.ajax({
+    url: 'api/campaigns',
+    method: 'GET'
+  });
+};
+var fetchcampaign = function fetchcampaign(campaignId) {
+  return $.ajax({
+    url: "api/campaigns/".concat(campaignId),
+    method: 'GET'
+  });
+};
+var createcampaign = function createcampaign(campaign) {
+  return $.ajax({
+    url: 'api/campaigns',
+    method: 'POST',
+    data: {
+      campaign: campaign
+    }
+  });
+};
+var deletecampaign = function deletecampaign(campaignId) {
+  return $.ajax({
+    url: "api/campaigns/".concat(campaignId),
+    method: 'DELETE'
+  });
+};
 
 /***/ }),
 

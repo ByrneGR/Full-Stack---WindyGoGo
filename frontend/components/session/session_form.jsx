@@ -56,7 +56,6 @@ class SessionForm extends React.Component {
     let lnErrors = null;
     let pwErrors = null;
     this.props.errors.forEach((error) => {
-      console.log(error);
       if (error === "Email can't be blank") {
         emailErrors = <div className="field-errors">Email address is required</div>;
       } else if (error === "First name can't be blank") {
@@ -66,7 +65,7 @@ class SessionForm extends React.Component {
       } else if (error === "Password is too short (minimum is 6 characters)") {
         pwErrors = <div className="field-errors" id="pw-errors">Password must be between 6 and 40 characters long</div>;
       }
-      console.log(emailErrors);
+
     });
     let form;
 
