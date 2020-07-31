@@ -393,15 +393,17 @@ var CampaignForm = /*#__PURE__*/function (_React$Component) {
 
     _this.state = {
       step: 1,
-      creator_type: "",
-      location: "",
-      banking_location: "",
+      creator_type: "Individual",
+      location: "United States",
+      banking_location: "United States",
       title: "My Campaign Title",
       description: "",
       duration: 30
     };
     _this.nextStep = _this.nextStep.bind(_assertThisInitialized(_this));
     _this.prevStep = _this.prevStep.bind(_assertThisInitialized(_this));
+    _this.handleInput = _this.handleInput.bind(_assertThisInitialized(_this));
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
   } // proceed to next step
 
@@ -412,8 +414,16 @@ var CampaignForm = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       return function (e) {
-        return _this2.setState(_defineProperty({}, type, e.currentTarget.value));
+        _this2.setState(_defineProperty({}, type, e.currentTarget.value));
       };
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      var campaign = Object.assign({}, this.state);
+      delete campaign.step;
+      this.props.createCampaign(campaign);
     }
   }, {
     key: "render",
@@ -447,7 +457,8 @@ var CampaignForm = /*#__PURE__*/function (_React$Component) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_campaign_form_pt2__WEBPACK_IMPORTED_MODULE_2__["default"], {
             prevStep: this.prevStep,
             handleInput: this.handleInput,
-            values: values
+            values: values,
+            handleSubmit: this.handleSubmit
           });
       }
     }
@@ -548,6 +559,7 @@ var CampaignFormPt1 = /*#__PURE__*/function (_Component) {
     _this = _super.call.apply(_super, [this].concat(args));
 
     _defineProperty(_assertThisInitialized(_this), "continue", function (e) {
+      debugger;
       e.preventDefault();
 
       _this.props.nextStep();
@@ -557,6 +569,165 @@ var CampaignFormPt1 = /*#__PURE__*/function (_Component) {
   }
 
   _createClass(CampaignFormPt1, [{
+    key: "header",
+    value: function header() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-headers"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "form-header1"
+      }, "Let\u2019s get ready to start your campaign!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "form-header2"
+      }, "We want to create the best onboarding for you \u2013 please fill out the information below. Your answers will be locked for this campaign and can\u2019t be changed later."));
+    }
+  }, {
+    key: "creatorTypeSelect",
+    value: function creatorTypeSelect() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "form-header1"
+      }, "Who are you raising money for?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "form-header2"
+      }, "Please choose the type of account that will be receiving your funds."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "radio",
+        name: "creator_type",
+        id: "individual",
+        value: "Individual",
+        onChange: this.props.handleInput("creator_type"),
+        checked: true
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "individual"
+      }, "Individual"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "radio",
+        name: "creator_type",
+        id: "business/nonprofit",
+        value: "Business/Nonprofit",
+        onChange: this.props.handleInput("creator_type")
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "business/nonprofit"
+      }, "Business or Nonprofit")));
+    }
+  }, {
+    key: "location",
+    value: function location() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "form-header1"
+      }, "Where are you located?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "form-header2"
+      }, "If you are raising funds as an individual, what is your country of legal residence? If you are raising funds for a business, where is the business headquartered? Learn more about country limitations."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        id: "dropdown_list",
+        className: "form-field_campaign",
+        onChange: this.props.handleInput("location")
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item0",
+        value: "United States",
+        className: "location_dropdowns"
+      }, "United States"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item1",
+        value: "Australia",
+        className: "location_dropdowns"
+      }, "Australia"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item2",
+        value: "Austria",
+        className: "location_dropdowns"
+      }, "Austria"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item3",
+        value: "Belgium",
+        className: "location_dropdowns"
+      }, "Belgium"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item4",
+        value: "Canada",
+        className: "location_dropdowns"
+      }, "Canada"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item5",
+        value: "Denmark",
+        className: "location_dropdowns"
+      }, "Denmark"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item6",
+        value: "Finland",
+        className: "location_dropdowns"
+      }, "Finland"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item7",
+        value: "France",
+        className: "location_dropdowns"
+      }, "France"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item8",
+        value: "Germany",
+        className: "location_dropdowns"
+      }, "Germany"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item9",
+        value: "Hong Kong",
+        className: "location_dropdowns"
+      }, "Hong Kong"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item10",
+        value: "Ireland",
+        className: "location_dropdowns"
+      }, "Ireland"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item11",
+        value: "Italy",
+        className: "location_dropdowns"
+      }, "Italy"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item12",
+        value: "Luxembourg",
+        className: "location_dropdowns"
+      }, "Luxembourg"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item13",
+        value: "Netherlands",
+        className: "location_dropdowns"
+      }, "Netherlands"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item14",
+        value: "Norway",
+        className: "location_dropdowns"
+      }, "Norway"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item15",
+        value: "Portugal",
+        className: "location_dropdowns"
+      }, "Portugal"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item16",
+        value: "Singapore",
+        className: "location_dropdowns"
+      }, "Singapore"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item17",
+        value: "Spain",
+        className: "location_dropdowns"
+      }, "Spain"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item18",
+        value: "Sweden",
+        className: "location_dropdowns"
+      }, "Sweden"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item19",
+        value: "Switzerland",
+        className: "location_dropdowns"
+      }, "Switzerland"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item20",
+        value: "United Kingdom",
+        className: "location_dropdowns"
+      }, "United Kingdom"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item21",
+        value: "Other",
+        className: "location_dropdowns"
+      }, "Other countries")));
+    }
+  }, {
+    key: "banking_location",
+    value: function banking_location() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "form-header1"
+      }, "Where is your bank?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "form-header2"
+      }, "Your bank account location determines the currency in which you can raise funds."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        id: "dropdown_list",
+        className: "form-field_campaign",
+        onChange: this.props.handleInput("banking_location")
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item0",
+        value: "United States",
+        className: "location_dropdowns"
+      }, "United States"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item21",
+        value: "Other",
+        className: "location_dropdowns"
+      }, "Other countries")));
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this$props = this.props,
@@ -565,31 +736,11 @@ var CampaignFormPt1 = /*#__PURE__*/function (_Component) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "modal-form",
         id: "login-form"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "form-headers"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-        className: "form-header1"
-      }, "Let\u2019s get ready to start your campaign!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-        className: "form-header2"
-      }, "We want to create the best onboarding for you \u2013 please fill out the information below. Your answers will be locked for this campaign and can\u2019t be changed later.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.header(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-inputs"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "input-label"
-      }, "Individual? ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "form-field",
-        type: "text",
-        value: values.creator_type,
-        onChange: this.props.handleInput("creator_type")
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "input-label"
-      }, "Password ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "form-field",
-        type: "text",
-        value: values.location,
-        onChange: this.props.handleInput("location")
-      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, this.creatorTypeSelect(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.location(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.banking_location()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this["continue"]
-      }));
+      }, "START MY CAMPAIGN")));
     }
   }]);
 
@@ -648,7 +799,56 @@ var CampaignFormPt2 = /*#__PURE__*/function (_Component) {
   _createClass(CampaignFormPt2, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "form 2");
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.createCampaign,
+        className: "modal-form",
+        id: "login-form"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-headers"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "form-header1"
+      }, "Basics"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "form-header2"
+      }, "Make a good first impression: introduce your campaign objectives and entice people to learn more. This basic information will represent your campaign on your campaign page, on your campaign card, and in searches.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-inputs"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "input-label_campaign"
+      }, "Campaign Title ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-field_campaign",
+        type: "text",
+        value: this.props.values.title,
+        onChange: this.props.handleInput("title")
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "input-label_campaign"
+      }, "Campaign Description ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-field_campaign",
+        type: "text",
+        value: this.props.values.description,
+        onChange: this.props.handleInput("description")
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "input-label_campaign"
+      }, "Campaign Image ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-field_campaign",
+        type: "text" // value={this.props.values.}
+        // onChange={this.props.handleInput("title")}
+
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "input-label_campaign"
+      }, "Location ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-field_campaign",
+        type: "text",
+        value: this.props.values.location,
+        onChange: this.props.handleInput("location")
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "input-label_campaign"
+      }, "Campaign Duration ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-field_campaign",
+        type: "text",
+        value: this.props.values.duration,
+        onChange: this.props.handleInput("duration")
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.props.handleSubmit
+      }, "Launch Campaign"))));
     }
   }]);
 
