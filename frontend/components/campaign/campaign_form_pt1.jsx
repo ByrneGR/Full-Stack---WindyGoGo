@@ -10,10 +10,10 @@ export class CampaignFormPt1 extends Component {
   header() {
     return (
       <div className="form-headers">
-        <h1 className="form-header1">
+        <h1 className="campaign_form-header1">
           Let’s get ready to start your campaign!
         </h1>
-        <h2 className="form-header2">
+        <h2 className="campaign_form-header2">
           We want to create the best onboarding for you – please fill out the
           information below. Your answers will be locked for this campaign and
           can’t be changed later.
@@ -56,7 +56,7 @@ export class CampaignFormPt1 extends Component {
   location() {
 
     return (
-      <div>
+      <div className="campaign-form-parent">
         <h1 className="form-header1">Where are you located?</h1>
         <p className="form-header2">
           If you are raising funds as an individual, what is your country of
@@ -262,10 +262,10 @@ export class CampaignFormPt1 extends Component {
   render() {
     const { values, handleInput } = this.props;
     return (
-      <div>
-        <form className="modal-form" id="login-form">
+      <div className="campaign-form-parent">
+        <form className="campaign-form" id="campaign-form1">
           {this.header()}
-          <div className="form-inputs">
+          <div className="campaign-form-parent">
             {this.creatorTypeSelect()}
             <br></br>
             {this.location()}

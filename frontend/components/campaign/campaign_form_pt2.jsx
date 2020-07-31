@@ -4,8 +4,12 @@ export class CampaignFormPt2 extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.createCampaign} className="modal-form" id="login-form">
-          <div className="form-headers">
+        <form
+          onSubmit={this.createCampaign}
+          className="campaign-form-parent"
+          id="campaign-form2"
+        >
+          <div className="campaign-form-parent">
             <h1 className="form-header1">Basics</h1>
             <p className="form-header2">
               Make a good first impression: introduce your campaign objectives

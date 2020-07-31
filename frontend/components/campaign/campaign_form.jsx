@@ -1,6 +1,7 @@
 import React from "react";
 import CampaignFormPt1 from './campaign_form_pt1'
 import CampaignFormPt2 from './campaign_form_pt2'
+import { withRouter } from 'react-router-dom'
 
 class CampaignForm extends React.Component {
   constructor(props) {
@@ -45,10 +46,14 @@ class CampaignForm extends React.Component {
     e.preventDefault()
     const campaign = Object.assign({}, this.state);
     delete campaign.step
-    this.props.createCampaign(campaign)
+    this.props
+      .createCampaign(campaign)
+      // .then(() => this.props.history.push(`api/campaigns/${Object.keys(this.props.campaign)[0]}`));
+      .then(() => this.props.history.push(`api/campaigns/${this.props.campaign}`));
   }
 
   render() {
+    debugger
     const { step } = this.state;
     const {creatorType, location, bankingLocation, title, description, duration} = this.state
     const values = { creatorType, location, bankingLocation, title, description, duration }

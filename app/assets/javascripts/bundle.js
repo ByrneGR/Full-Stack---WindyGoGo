@@ -337,6 +337,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _campaign_form_pt1__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./campaign_form_pt1 */ "./frontend/components/campaign/campaign_form_pt1.jsx");
 /* harmony import */ var _campaign_form_pt2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./campaign_form_pt2 */ "./frontend/components/campaign/campaign_form_pt2.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -360,6 +361,7 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -420,14 +422,20 @@ var CampaignForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
+      var _this3 = this;
+
       e.preventDefault();
       var campaign = Object.assign({}, this.state);
       delete campaign.step;
-      this.props.createCampaign(campaign);
+      this.props.createCampaign(campaign) // .then(() => this.props.history.push(`api/campaigns/${Object.keys(this.props.campaign)[0]}`));
+      .then(function () {
+        return _this3.props.history.push("api/campaigns/".concat(_this3.props.campaign));
+      });
     }
   }, {
     key: "render",
     value: function render() {
+      debugger;
       var step = this.state.step;
       var _this$state = this.state,
           creatorType = _this$state.creatorType,
@@ -489,7 +497,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var msp = function msp(state) {
   return {
-    errors: state.errors.session
+    errors: state.errors.session,
+    campaign: state.entities.campaigns
   };
 };
 
@@ -574,9 +583,9 @@ var CampaignFormPt1 = /*#__PURE__*/function (_Component) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-headers"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-        className: "form-header1"
+        className: "campaign_form-header1"
       }, "Let\u2019s get ready to start your campaign!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-        className: "form-header2"
+        className: "campaign_form-header2"
       }, "We want to create the best onboarding for you \u2013 please fill out the information below. Your answers will be locked for this campaign and can\u2019t be changed later."));
     }
   }, {
@@ -608,7 +617,9 @@ var CampaignFormPt1 = /*#__PURE__*/function (_Component) {
   }, {
     key: "location",
     value: function location() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "campaign-form-parent"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "form-header1"
       }, "Where are you located?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "form-header2"
@@ -733,11 +744,13 @@ var CampaignFormPt1 = /*#__PURE__*/function (_Component) {
       var _this$props = this.props,
           values = _this$props.values,
           handleInput = _this$props.handleInput;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        className: "modal-form",
-        id: "login-form"
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "campaign-form-parent"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "campaign-form",
+        id: "campaign-form1"
       }, this.header(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "form-inputs"
+        className: "campaign-form-parent"
       }, this.creatorTypeSelect(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.location(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.banking_location()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this["continue"]
       }, "START MY CAMPAIGN")));
@@ -801,10 +814,10 @@ var CampaignFormPt2 = /*#__PURE__*/function (_Component) {
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.createCampaign,
-        className: "modal-form",
-        id: "login-form"
+        className: "campaign-form-parent",
+        id: "campaign-form2"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "form-headers"
+        className: "campaign-form-parent"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "form-header1"
       }, "Basics"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
