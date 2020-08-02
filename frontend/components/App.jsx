@@ -5,7 +5,8 @@ import SignupFormContainer from "./session/signup_form_container"
 import { Link, Route } from 'react-router-dom';
 import { AuthRoute } from '../util/route_utils';
 import Modal from './modal/modal';
-import CampaignFormContainer from './campaign/campaign_form_container'
+import CampaignFormContainer from './campaign/campaign_form/campaign_form_container'
+import CampaignShowContainer from './campaign/campaign_show/campaign_show_container'
 
 
 
@@ -14,20 +15,25 @@ const App = () => (
     <Modal />
     <header>
       <nav className="topnav">
-    <div className="nav-left">
-    <Link className="logo" to="/">WINDYGOGO</Link>
-      <Link className="navbtn" to="/login">Explore</Link>
-      <Link className="navbtn" to="/login">What We Do</Link>
-    </div>
-    <WelcomeContainer />
+        <div className="nav-left">
+          <Link className="logo" to="/">
+            WINDYGOGO
+          </Link>
+          <Link className="navbtn" to="/login">
+            Explore
+          </Link>
+          <Link className="navbtn" to="/login">
+            What We Do
+          </Link>
+        </div>
+        <WelcomeContainer />
       </nav>
     </header>
 
-
     <AuthRoute path="/login" component={LoginFormContainer} />
-    <AuthRoute path="/signup" component={SignupFormContainer} />  
+    <AuthRoute path="/signup" component={SignupFormContainer} />
     <Route path="/start-a-campaign" component={CampaignFormContainer} />
- 
+    <Route path="/campaigns/:campaignId" component={CampaignShowContainer} />
   </div>
 );
 

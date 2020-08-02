@@ -43,9 +43,9 @@ export class CampaignFormPt2 extends Component {
               Campaign Image <br></br>
               <input
                 className="form-field_campaign"
-                type="text"
+                type="file"
                 // value={this.props.values.}
-                // onChange={this.props.handleInput("title")}
+                onChange={this.props.handleFile}
               />
             </label>
 

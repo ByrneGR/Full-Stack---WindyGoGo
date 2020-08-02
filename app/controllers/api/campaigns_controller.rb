@@ -22,11 +22,8 @@ class Api::CampaignsController < ApplicationController
   
   private
 
-  def edit_campaign_params
-    params.require(:campaign).permit(:location, :title, :description, :duration)
-  end  
 
   def create_campaign_params
-    params.require(:campaign).permit(:creator_type, :location, :banking_location, :title, :description, :duration)
+    params.require(:campaign).permit(:creator_type, :location, :banking_location, :title, :description, :duration, :image)
   end  
 end

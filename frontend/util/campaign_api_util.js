@@ -14,7 +14,9 @@ export const createcampaign = (campaign) => {
   return $.ajax({
     url: 'api/campaigns',
     method: 'POST',
-    data: {campaign}
+    data: campaign,
+    contentType: false,
+    processData: false
   })
 }
 

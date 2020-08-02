@@ -1,1 +1,3 @@
-json.partial! 'api/campaigns/campaign', campaign: @campaign
+json.campaign do
+json.partial! 'campaign', campaign: @campaign
+end

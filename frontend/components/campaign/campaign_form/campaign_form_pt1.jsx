@@ -2,7 +2,6 @@ import React, { Component } from "react";
 
 export class CampaignFormPt1 extends Component {
   continue = (e) => {
-    debugger;
     e.preventDefault();
     this.props.nextStep();
   };

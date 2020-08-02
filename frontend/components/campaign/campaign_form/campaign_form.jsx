@@ -14,11 +14,13 @@ class CampaignForm extends React.Component {
       title: "My Campaign Title",
       description: "",
       duration: 30,
+      imageFile: null,
     };
    this.nextStep = this.nextStep.bind(this); 
    this.prevStep = this.prevStep.bind(this); 
    this.handleInput = this.handleInput.bind(this);
    this.handleSubmit = this.handleSubmit.bind(this);
+   this.handleFile = this.handleFile.bind(this);
   }
 
   // proceed to next step
@@ -42,18 +44,28 @@ class CampaignForm extends React.Component {
     }
   }  
 
-  handleSubmit(e) {
-    e.preventDefault()
-    const campaign = Object.assign({}, this.state);
-    delete campaign.step
-    this.props
-      .createCampaign(campaign)
-      // .then(() => this.props.history.push(`api/campaigns/${Object.keys(this.props.campaign)[0]}`));
-      .then(() => this.props.history.push(`api/campaigns/${this.props.campaign}`));
+  handleFile(e) {
+      this.setState({imageFile: e.currentTarget.files[0]})
+  
   }
 
-  render() {
+  handleSubmit(e) {
+    e.preventDefault()
+    const formData = new FormData();
+    formData.append('campaign[title]', this.state.title)
+    formData.append('campaign[creator_type]', this.state.creator_type)
+    formData.append('campaign[location]', this.state.location)
+    formData.append('campaign[banking_location]', this.state.banking_location)
+    formData.append('campaign[description]', this.state.description)
+    formData.append('campaign[duration]', this.state.duration)
+    formData.append('campaign[image]', this.state.imageFile)
     debugger
+    this.props
+      .createCampaign(formData)
+      .then(() => this.props.history.push(`api/campaigns/${this.props.campaign.id}`));
+    }
+
+  render() {
     const { step } = this.state;
     const {creatorType, location, bankingLocation, title, description, duration} = this.state
     const values = { creatorType, location, bankingLocation, title, description, duration }
@@ -65,7 +77,7 @@ class CampaignForm extends React.Component {
         )
       case 2:
         return (
-          <CampaignFormPt2 prevStep={this.prevStep} handleInput={this.handleInput} values={values} handleSubmit={this.handleSubmit} />
+          <CampaignFormPt2 prevStep={this.prevStep} handleFile={this.handleFile} handleInput={this.handleInput} values={values} handleSubmit={this.handleSubmit} />
         )
     }
   }

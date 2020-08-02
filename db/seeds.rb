@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.delete_all
+Campaign.delete_all
 User.create({email: "demo_user@demo.com", password: "password", first_name: "Demo User", last_name: "User"})
 Campaign.create({location: "United States", creator_type: "Individual", banking_location: "United States", creator_id: User.all[0].id})
   

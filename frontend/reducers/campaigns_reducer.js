@@ -6,7 +6,7 @@ const campaignsReducer = (state = {}, action) => {
     case RECEIVE_CAMPAIGNS:
       action.campaigns;
     case RECEIVE_CAMPAIGN:
-      return Object.assign({}, state, {[action.campaign.id]: action.campaign})
+      return action.campaign;
     default:
       return state;  
   }
