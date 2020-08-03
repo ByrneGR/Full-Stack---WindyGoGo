@@ -61,6 +61,13 @@
      font-size: 1.3rem;
 }
 
+input[type="radio"] {
+  color: #2a2a2a;
+  font-weight: 500px;
+  margin: 10px;
+  transform: scale(1.5);
+}
+
 .question-header1 {
   text-align: left;  
   font-family: Helvetica,
@@ -86,6 +93,7 @@ select {
   font-family: Helvetica,
        "Sans-serif";
   color: #2a2a2a;
+  font-size: 14px;
 
 }
 
@@ -95,25 +103,66 @@ select {
 
 }
 
-#btn-formp1 {
+#btn-formp1[disabled] {
       font-family: benton-sans,
       Helvetica,
       "Sans-serif";
-      font-weight: 500;
-      line-height: 1.5;
-      letter-spacing: 0;
+      font-weight: 600;
       color: white;
-      background-color: #2a2a2a;
+      background-color: #C8C8C8;
       height: 50px;
       width: 215;
       padding: 20px;
-      text-align: center;
-      position: relative;
-      margin:auto;
-      top: 50%;
+      border: none;
+      letter-spacing: 2px;
+      border-radius: 5px;
+}
+
+#btn-formp1 {
+  font-family: benton-sans,
+    Helvetica,
+    "Sans-serif";
+  font-weight: 600;
+  color: white;
+  background-color: #835FB5;
+  height: 50px;
+  width: 215;
+  padding: 20px;
+  border: none;
+  letter-spacing: 2px;
+  margin-bottom: 60px;
+  border-radius: 5px;
 }
 
 
 
+#btn-formp1:hover {
+  font-family: benton-sans,
+    Helvetica,
+    "Sans-serif";
+  font-weight: 600;
+  color: white;
+  background-color: #683AAA;
+  height: 50px;
+  width: 215;
+  padding: 20px;
+  border: none;
+  letter-spacing: 2px;
+  margin-bottom: 60px;
+  border-radius: 5px;
+}
 
+
+
+#btn-formp1:hover {
+  cursor: pointer;
+}
+
+#btn-formp1[disabled]:hover {
+  cursor: auto;
+}
+
+#pinkrobot {
+  margin-top: 50px;
+}
 

@@ -38,7 +38,6 @@ export class CampaignFormPt1 extends Component {
             id="individual"
             value="Individual"
             onChange={this.props.handleInput("creator_type")}
-            checked
           />
           <label htmlFor="individual">Individual</label>
           <input
@@ -69,6 +68,13 @@ export class CampaignFormPt1 extends Component {
           className="form-field_campaign"
           onChange={this.props.handleInput("location")}
         >
+          <option
+            id="dropdown_item_default"
+            value=""
+            className="location_dropdowns"
+          >
+            Select a residence country
+          </option>
           <option
             id="dropdown_item0"
             value="United States"
@@ -242,6 +248,13 @@ export class CampaignFormPt1 extends Component {
           onChange={this.props.handleInput("banking_location")}
         >
           <option
+            id="dropdown_item_default"
+            value=""
+            className="location_dropdowns"
+          >
+            Select a bank country
+          </option>          
+          <option
             id="dropdown_item0"
             value="United States"
             className="location_dropdowns"
@@ -262,8 +275,13 @@ export class CampaignFormPt1 extends Component {
 
   render() {
     const { values, handleInput } = this.props;
+    const banking_location = values.banking_location
+    const creator_type = values.creator_type
+    const location = values.location
+    const isEnabled = banking_location.length > 0 && creator_type.length > 0 && location.length > 0
     return (
       <div className="campaign-form-parent">
+        <img id="pinkrobot" src={window.pinkrobot}/>
         <form className="campaign-form" id="campaign-form1">
           {this.header()}
           <div className="campaign-form-parent">
@@ -273,7 +291,7 @@ export class CampaignFormPt1 extends Component {
             <br></br>
             {this.banking_location()}
           </div>
-          <button id="btn-formp1" onClick={this.continue}>START MY CAMPAIGN</button>
+          <button disabled={!isEnabled} id="btn-formp1" onClick={this.continue}>START MY CAMPAIGN</button>
         </form>
       </div>
     );

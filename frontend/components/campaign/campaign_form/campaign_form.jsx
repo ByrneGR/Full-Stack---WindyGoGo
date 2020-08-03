@@ -8,9 +8,9 @@ class CampaignForm extends React.Component {
     super(props);
     this.state = {
       step: 1,
-      creator_type: "Individual",
-      location: "United States",
-      banking_location: "United States",
+      creator_type: "",
+      location: "",
+      banking_location: "",
       title: "My Campaign Title",
       description: "",
       duration: 30,
@@ -62,13 +62,14 @@ class CampaignForm extends React.Component {
     debugger
     this.props
       .createCampaign(formData)
-      .then(() => this.props.history.push(`api/campaigns/${this.props.campaign.id}`));
+      // .then(() => this.props.history.push(`api/campaigns/${this.props.campaign.id}`));
+    this.props.history.push(`api/campaigns/${this.props.campaign.id}`)
     }
 
   render() {
     const { step } = this.state;
-    const {creatorType, location, bankingLocation, title, description, duration} = this.state
-    const values = { creatorType, location, bankingLocation, title, description, duration }
+    const {creator_type, location, banking_location, title, description, duration} = this.state
+    const values = { creator_type, location, banking_location, title, description, duration }
     switch(step) {
       case 1:
         return (
