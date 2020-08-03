@@ -791,7 +791,7 @@ var CampaignFormPt1 = /*#__PURE__*/function (_Component) {
         className: "campaign-form-parent"
       }, this.creatorTypeSelect(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.location(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.banking_location()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         disabled: !isEnabled,
-        id: "btn-formp1",
+        className: "btn-formp1",
         onClick: this["continue"]
       }, "START MY CAMPAIGN")));
     }
@@ -854,7 +854,15 @@ var CampaignFormPt2 = /*#__PURE__*/function (_Component) {
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "campaignformp2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn-formp1",
+        id: "goback-top",
+        onClick: this.props.prevStep
+      }, "GO BACK"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn-formp1",
+        id: "launch-top",
+        onClick: this.props.handleSubmit
+      }, "LAUNCH CAMPAIGN"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.createCampaign,
         className: "campaign-form2-parent",
         id: "campaign-form2"
@@ -870,44 +878,65 @@ var CampaignFormPt2 = /*#__PURE__*/function (_Component) {
         className: "formpt2-inputs"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "input-label_campaign"
-      }, "Campaign Title", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "input-label_header"
+      }, "Campaign Title"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sublabel"
-      }, "What is the title of your campaign?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "form-field",
+      }, "What is the title of your campaign?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-field_campaign",
         type: "text",
         value: this.props.values.title,
         onChange: this.props.handleInput("title")
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "input-label_campaign"
-      }, "Campaign Description ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "form-field",
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "input-label_header"
+      }, "Campaign Description"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "sublabel"
+      }, "Provide a short description that best describes your campaign to your audience."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-field_campaign",
         type: "text",
         value: this.props.values.description,
         onChange: this.props.handleInput("description")
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "input-label_campaign"
-      }, "Campaign Image ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "input-label_header"
+      }, "Campaign Card Image"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "sublabel"
+      }, "Upload a square image that represents your campaign. 640 x 640 recommended resolution, 220 x 220 minimum resolution."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "form-field_campaign",
         type: "file" // value={this.props.values.}
         ,
         onChange: this.props.handleFile
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "input-label_campaign"
-      }, "Location ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "input-label_header"
+      }, "Location"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "sublabel"
+      }, "Choose the location where you are running the campaign. This location will be visible on your campaign page for your audience to see."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "form-field_campaign",
         type: "text",
         value: this.props.values.location,
         onChange: this.props.handleInput("location")
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "input-label_campaign"
-      }, "Campaign Duration ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "input-label_header"
+      }, "Campaign Duration"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "sublabel"
+      }, "How many days will you be running your campaign for? You can run a campaign for any number of days, with a 60 day duration maximum."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "form-field_campaign",
         type: "text",
+        id: "campaign_duration",
         value: this.props.values.duration,
         onChange: this.props.handleInput("duration")
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn-formp1",
+        id: "campaignform2btn",
         onClick: this.props.handleSubmit
-      }, "Launch Campaign"))));
+      }, "LAUNCH CAMPAIGN"))));
     }
   }]);
 

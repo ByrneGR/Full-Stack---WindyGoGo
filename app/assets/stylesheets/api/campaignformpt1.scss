@@ -103,7 +103,7 @@ select {
 
 }
 
-#btn-formp1[disabled] {
+.btn-formp1[disabled] {
       font-family: benton-sans,
       Helvetica,
       "Sans-serif";
@@ -118,7 +118,7 @@ select {
       border-radius: 5px;
 }
 
-#btn-formp1 {
+.btn-formp1 {
   font-family: benton-sans,
     Helvetica,
     "Sans-serif";
@@ -136,7 +136,7 @@ select {
 
 
 
-#btn-formp1:hover {
+.btn-formp1:hover {
   font-family: benton-sans,
     Helvetica,
     "Sans-serif";
@@ -154,12 +154,14 @@ select {
 
 
 
-#btn-formp1:hover {
+.btn-formp1:hover {
   cursor: pointer;
 }
 
-#btn-formp1[disabled]:hover {
+.btn-formp1[disabled]:hover {
   cursor: auto;
+   color: white;
+   background-color: #C8C8C8;
 }
 
 #pinkrobot {

@@ -4,6 +4,10 @@ export class CampaignFormPt2 extends Component {
   render() {
     return (
       <div id="campaignformp2">
+        <button
+          className="btn-formp1" id="goback-top" onClick={this.props.prevStep}>GO BACK</button>
+        <button
+          className="btn-formp1" id="launch-top" onClick={this.props.handleSubmit}>LAUNCH CAMPAIGN</button>                      
         <form
           onSubmit={this.createCampaign}
           className="campaign-form2-parent"
@@ -20,12 +24,10 @@ export class CampaignFormPt2 extends Component {
           </div>
           <div className="formpt2-inputs">
             <label className="input-label_campaign">
-              Campaign Title
-              <br></br>
+              <h2 className="input-label_header">Campaign Title</h2>
               <div className="sublabel">What is the title of your campaign?</div>
-              <br></br>
               <input
-                className="form-field"
+                className="form-field_campaign"
                 type="text"
                 value={this.props.values.title}
                 onChange={this.props.handleInput("title")}
@@ -33,9 +35,10 @@ export class CampaignFormPt2 extends Component {
             </label>
             <br></br>
             <label className="input-label_campaign">
-              Campaign Description <br></br>
+              <h2 className="input-label_header">Campaign Description</h2>
+              <div className="sublabel">Provide a short description that best describes your campaign to your audience.</div>
               <input
-                className="form-field"
+                className="form-field_campaign"
                 type="text"
                 value={this.props.values.description}
                 onChange={this.props.handleInput("description")}
@@ -43,7 +46,10 @@ export class CampaignFormPt2 extends Component {
             </label>
             <br></br>
             <label className="input-label_campaign">
-              Campaign Image <br></br>
+              <h2 className="input-label_header">Campaign Card Image</h2>
+              <div className="sublabel">Upload a square image that represents your campaign.
+              640 x 640 recommended resolution, 220 x 220 minimum resolution.
+              </div>
               <input
                 className="form-field_campaign"
                 type="file"
@@ -53,7 +59,10 @@ export class CampaignFormPt2 extends Component {
             </label>
             <br></br>
             <label className="input-label_campaign">
-              Location <br></br>
+              <h2 className="input-label_header">Location</h2>
+              <div className="sublabel">Choose the location where you are running the campaign. 
+              This location will be visible on your campaign page for your audience to see.
+              </div>              
               <input
                 className="form-field_campaign"
                 type="text"
@@ -63,16 +72,21 @@ export class CampaignFormPt2 extends Component {
             </label>
             <br></br>
             <label className="input-label_campaign">
-              Campaign Duration <br></br>
+              <h2 className="input-label_header">Campaign Duration</h2>
+              <div className="sublabel">How many days will you be running your campaign for? 
+              You can run a campaign for any number of days, with a 60 day duration maximum.    
+              </div>                               
               <input
                 className="form-field_campaign"
                 type="text"
+                id="campaign_duration"
                 value={this.props.values.duration}
                 onChange={this.props.handleInput("duration")}
               />
             </label>
             <br></br>
-            <button onClick={this.props.handleSubmit}>Launch Campaign</button>
+            <button
+              className="btn-formp1" id="campaignform2btn" onClick={this.props.handleSubmit}>LAUNCH CAMPAIGN</button>
           </div>
         </form>
       </div>

@@ -291,7 +291,7 @@ export class CampaignFormPt1 extends Component {
             <br></br>
             {this.banking_location()}
           </div>
-          <button disabled={!isEnabled} id="btn-formp1" onClick={this.continue}>START MY CAMPAIGN</button>
+          <button disabled={!isEnabled} className="btn-formp1" onClick={this.continue}>START MY CAMPAIGN</button>
         </form>
       </div>
     );
