@@ -6,7 +6,7 @@ import { Link, Route } from 'react-router-dom';
 import { AuthRoute } from '../util/route_utils';
 import Modal from './modal/modal';
 import CampaignFormContainer from './campaign/campaign_form/campaign_form_container'
-import CampaignShowContainer from './campaign/campaign_show/campaign_show_container'
+import CampaignShowContainer from './campaign/campaign_show/campaign_show_container.jsx'
 
 
 
@@ -33,7 +33,7 @@ const App = () => (
     <AuthRoute path="/login" component={LoginFormContainer} />
     <AuthRoute path="/signup" component={SignupFormContainer} />
     <Route path="/start-a-campaign" component={CampaignFormContainer} />
-    <Route path="/campaigns/:campaignId" component={CampaignShowContainer} />
+    <Route path="/api/campaigns/:campaignId" component={CampaignShowContainer} />
   </div>
 );
 

@@ -285,7 +285,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _util_route_utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../util/route_utils */ "./frontend/util/route_utils.jsx");
 /* harmony import */ var _modal_modal__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modal/modal */ "./frontend/components/modal/modal.jsx");
 /* harmony import */ var _campaign_campaign_form_campaign_form_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./campaign/campaign_form/campaign_form_container */ "./frontend/components/campaign/campaign_form/campaign_form_container.jsx");
-!(function webpackMissingModule() { var e = new Error("Cannot find module './campaign/campaign_show/campaign_show_container'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+/* harmony import */ var _campaign_campaign_show_campaign_show_container_jsx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./campaign/campaign_show/campaign_show_container.jsx */ "./frontend/components/campaign/campaign_show/campaign_show_container.jsx");
 
 
 
@@ -320,8 +320,8 @@ var App = function App() {
     path: "/start-a-campaign",
     component: _campaign_campaign_form_campaign_form_container__WEBPACK_IMPORTED_MODULE_7__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Route"], {
-    path: "/campaigns/:campaignId",
-    component: !(function webpackMissingModule() { var e = new Error("Cannot find module './campaign/campaign_show/campaign_show_container'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())
+    path: "/api/campaigns/:campaignId",
+    component: _campaign_campaign_show_campaign_show_container_jsx__WEBPACK_IMPORTED_MODULE_8__["default"]
   }));
 };
 
@@ -603,18 +603,25 @@ var CampaignFormPt1 = /*#__PURE__*/function (_Component) {
         className: "form-headers"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "campaign_form-header1"
-      }, "Let\u2019s get ready to start your campaign!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+      }, "Let\u2019s get ready to start your campaign!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "campaignsubheader"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "campaign_form-header2"
-      }, "We want to create the best onboarding for you \u2013 please fill out the information below. Your answers will be locked for this campaign and can\u2019t be changed later."));
+      }, "We want to create the best onboarding for you \u2013 please fill out the information below."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "campaign_form-header2",
+        id: "boldcampaignheader"
+      }, "Your answers will be locked for this campaign and can\u2019t be changed later.")));
     }
   }, {
     key: "creatorTypeSelect",
     value: function creatorTypeSelect() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-        className: "form-header1"
+        className: "question-header1"
       }, "Who are you raising money for?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-        className: "form-header2"
-      }, "Please choose the type of account that will be receiving your funds."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "question-header2"
+      }, "Please choose the type of account that will be receiving your funds."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "campaign-radio"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "radio",
         name: "creator_type",
         id: "individual",
@@ -639,9 +646,9 @@ var CampaignFormPt1 = /*#__PURE__*/function (_Component) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "campaign-form-parent"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-        className: "form-header1"
+        className: "question-header1"
       }, "Where are you located?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "form-header2"
+        className: "question-header2"
       }, "If you are raising funds as an individual, what is your country of legal residence? If you are raising funds for a business, where is the business headquartered? Learn more about country limitations."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
         id: "dropdown_list",
         className: "form-field_campaign",
@@ -740,11 +747,11 @@ var CampaignFormPt1 = /*#__PURE__*/function (_Component) {
     key: "banking_location",
     value: function banking_location() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-        className: "form-header1"
+        className: "question-header1"
       }, "Where is your bank?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "form-header2"
+        className: "question-header2"
       }, "Your bank account location determines the currency in which you can raise funds."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-        id: "dropdown_list",
+        id: "dropdown_list-bl",
         className: "form-field_campaign",
         onChange: this.props.handleInput("banking_location")
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
@@ -771,6 +778,7 @@ var CampaignFormPt1 = /*#__PURE__*/function (_Component) {
       }, this.header(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "campaign-form-parent"
       }, this.creatorTypeSelect(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.location(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.banking_location()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        id: "btn-formp1",
         onClick: this["continue"]
       }, "START MY CAMPAIGN")));
     }
@@ -890,14 +898,105 @@ var CampaignFormPt2 = /*#__PURE__*/function (_Component) {
 
 /***/ }),
 
-/***/ "./frontend/components/campaign/campaign_form_container.jsx":
-/*!******************************************************************!*\
-  !*** ./frontend/components/campaign/campaign_form_container.jsx ***!
-  \******************************************************************/
+/***/ "./frontend/components/campaign/campaign_show/campaign_show.jsx":
+/*!**********************************************************************!*\
+  !*** ./frontend/components/campaign/campaign_show/campaign_show.jsx ***!
+  \**********************************************************************/
 /*! exports provided: default */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open '/Users/gabebyrne/Documents/App_Academy/Full-Stack---IndieGoGo-master/IndieGoGo/frontend/components/campaign/campaign_form_container.jsx'");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+var CampaignShow = /*#__PURE__*/function (_React$Component) {
+  _inherits(CampaignShow, _React$Component);
+
+  var _super = _createSuper(CampaignShow);
+
+  function CampaignShow() {
+    _classCallCheck(this, CampaignShow);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(CampaignShow, [{
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        key: this.props.id
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: this.props.campaign.photoUrl
+      })));
+    }
+  }]);
+
+  return CampaignShow;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (CampaignShow);
+
+/***/ }),
+
+/***/ "./frontend/components/campaign/campaign_show/campaign_show_container.jsx":
+/*!********************************************************************************!*\
+  !*** ./frontend/components/campaign/campaign_show/campaign_show_container.jsx ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_campaign_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../actions/campaign_actions */ "./frontend/actions/campaign_actions.js");
+/* harmony import */ var _campaign_show__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./campaign_show */ "./frontend/components/campaign/campaign_show/campaign_show.jsx");
+
+
+
+
+var msp = function msp(state, _ref) {
+  var match = _ref.match;
+  var id = parseInt(match.params.campaignId);
+  var campaign = state.entities.campaigns.campaign;
+  return {
+    campaign: campaign,
+    id: id
+  };
+};
+
+var mdp = function mdp(dispatch) {
+  return {
+    createCampaign: function createCampaign(campaign) {
+      return dispatch(Object(_actions_campaign_actions__WEBPACK_IMPORTED_MODULE_1__["createCampaign"])(campaign));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(_campaign_show__WEBPACK_IMPORTED_MODULE_2__["default"]));
 
 /***/ }),
 
@@ -1380,7 +1479,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _campaign_campaign_form_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../campaign/campaign_form_container */ "./frontend/components/campaign/campaign_form_container.jsx");
+/* harmony import */ var _campaign_campaign_form_campaign_form_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../campaign/campaign_form/campaign_form_container */ "./frontend/components/campaign/campaign_form/campaign_form_container.jsx");
 
 
 

@@ -12,11 +12,13 @@ export class CampaignFormPt1 extends Component {
         <h1 className="campaign_form-header1">
           Let’s get ready to start your campaign!
         </h1>
-        <h2 className="campaign_form-header2">
+        <div id="campaignsubheader">
+        <span className="campaign_form-header2">
           We want to create the best onboarding for you – please fill out the
-          information below. Your answers will be locked for this campaign and
-          can’t be changed later.
-        </h2>
+          information below.</span><span className="campaign_form-header2" id="boldcampaignheader">
+          Your answers will be locked for this campaign and can’t be changed
+          later.</span>
+        </div>
       </div>
     );
   }
@@ -24,12 +26,12 @@ export class CampaignFormPt1 extends Component {
   creatorTypeSelect() {
     return (
       <div>
-        <h1 className="form-header1">Who are you raising money for?</h1>
-        <h2 className="form-header2">
+        <h1 className="question-header1">Who are you raising money for?</h1>
+        <h2 className="question-header2">
           Please choose the type of account that will be receiving your funds.
         </h2>
 
-        <div>
+        <div className="campaign-radio">
           <input
             type="radio"
             name="creator_type"
@@ -56,8 +58,8 @@ export class CampaignFormPt1 extends Component {
 
     return (
       <div className="campaign-form-parent">
-        <h1 className="form-header1">Where are you located?</h1>
-        <p className="form-header2">
+        <h1 className="question-header1">Where are you located?</h1>
+        <p className="question-header2">
           If you are raising funds as an individual, what is your country of
           legal residence? If you are raising funds for a business, where is the
           business headquartered? Learn more about country limitations.
@@ -229,13 +231,13 @@ export class CampaignFormPt1 extends Component {
   banking_location() {
     return (
       <div>
-        <h1 className="form-header1">Where is your bank?</h1>
-        <p className="form-header2">
+        <h1 className="question-header1">Where is your bank?</h1>
+        <p className="question-header2">
           Your bank account location determines the currency in which you can
           raise funds.
         </p>
         <select
-          id="dropdown_list"
+          id="dropdown_list-bl"
           className="form-field_campaign"
           onChange={this.props.handleInput("banking_location")}
         >
@@ -271,7 +273,7 @@ export class CampaignFormPt1 extends Component {
             <br></br>
             {this.banking_location()}
           </div>
-          <button onClick={this.continue}>START MY CAMPAIGN</button>
+          <button id="btn-formp1" onClick={this.continue}>START MY CAMPAIGN</button>
         </form>
       </div>
     );

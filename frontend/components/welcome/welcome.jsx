@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, Route } from 'react-router-dom';
-import CampaignFormContainer from '../campaign/campaign_form_container'
+import CampaignFormContainer from '../campaign/campaign_form/campaign_form_container'
 
 export default ({ currentUser, logout, openModal }) => {
   const display = currentUser ? (
