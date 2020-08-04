@@ -62,8 +62,8 @@ class CampaignForm extends React.Component {
     debugger
     this.props
       .createCampaign(formData)
-      // .then(() => this.props.history.push(`api/campaigns/${this.props.campaign.id}`));
-    this.props.history.push(`api/campaigns/${this.props.campaign.id}`)
+      .then(() => this.props.history.push(`api/campaigns/${this.props.campaign.id}`));
+
     }
 
   render() {

@@ -4,6 +4,9 @@ export class CampaignFormPt1 extends Component {
   continue = (e) => {
     e.preventDefault();
     this.props.nextStep();
+    $("html, body").animate({
+      scrollTop: 0
+    }, 400);
   };
 
   header() {

@@ -5,9 +5,9 @@ export class CampaignFormPt2 extends Component {
     return (
       <div id="campaignformp2">
         <button
-          className="btn-formp1" id="goback-top" onClick={this.props.prevStep}>GO BACK</button>
+          className="btn-formp1" id="launch-top" onClick={this.props.handleSubmit}>LAUNCH CAMPAIGN</button>   
         <button
-          className="btn-formp1" id="launch-top" onClick={this.props.handleSubmit}>LAUNCH CAMPAIGN</button>                      
+          className="btn-formp1" id="goback-top" onClick={this.props.prevStep}>BACK</button>                     
         <form
           onSubmit={this.createCampaign}
           className="campaign-form2-parent"
@@ -39,6 +39,7 @@ export class CampaignFormPt2 extends Component {
               <div className="sublabel">Provide a short description that best describes your campaign to your audience.</div>
               <input
                 className="form-field_campaign"
+                id="campaigndescription"
                 type="text"
                 value={this.props.values.description}
                 onChange={this.props.handleInput("description")}

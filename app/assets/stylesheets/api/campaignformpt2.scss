@@ -24,6 +24,7 @@
 #launch-top {
   float: right;
   margin: 20px;
+  font-size: 12px;
 }
 
 .campaign-form2-parent {
@@ -83,6 +84,10 @@
    "Sans-serif";
 }
 
+#campaigndescription {
+  height: 100px;
+}
+
 .form-field_campaign {
     width: 900px;
     height: 40px;
@@ -113,3 +118,4 @@ input[type="file"] {
   height: 30px;
   text-align: center;
 }
+

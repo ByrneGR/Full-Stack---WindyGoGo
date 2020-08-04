@@ -26,7 +26,13 @@ const App = () => (
             What We Do
           </Link>
         </div>
+        <div className="nav-right">
+          <Link className="navbtn" to="/start-a-campaign">Start a Campaign</Link>
+        &nbsp;&nbsp;
+        <div id="divider"></div>
+        &nbsp;&nbsp;
         <WelcomeContainer />
+        </div>       
       </nav>
     </header>
 

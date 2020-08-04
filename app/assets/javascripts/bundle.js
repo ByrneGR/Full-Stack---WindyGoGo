@@ -310,7 +310,14 @@ var App = function App() {
   }, "Explore"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
     className: "navbtn",
     to: "/login"
-  }, "What We Do")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_welcome_welcome_container__WEBPACK_IMPORTED_MODULE_1__["default"], null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_utils__WEBPACK_IMPORTED_MODULE_5__["AuthRoute"], {
+  }, "What We Do")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "nav-right"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
+    className: "navbtn",
+    to: "/start-a-campaign"
+  }, "Start a Campaign"), "\xA0\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    id: "divider"
+  }), "\xA0\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_welcome_welcome_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_utils__WEBPACK_IMPORTED_MODULE_5__["AuthRoute"], {
     path: "/login",
     component: _session_login_form_container__WEBPACK_IMPORTED_MODULE_2__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_utils__WEBPACK_IMPORTED_MODULE_5__["AuthRoute"], {
@@ -436,6 +443,8 @@ var CampaignForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
+      var _this3 = this;
+
       e.preventDefault();
       var formData = new FormData();
       formData.append('campaign[title]', this.state.title);
@@ -446,9 +455,9 @@ var CampaignForm = /*#__PURE__*/function (_React$Component) {
       formData.append('campaign[duration]', this.state.duration);
       formData.append('campaign[image]', this.state.imageFile);
       debugger;
-      this.props.createCampaign(formData); // .then(() => this.props.history.push(`api/campaigns/${this.props.campaign.id}`));
-
-      this.props.history.push("api/campaigns/".concat(this.props.campaign.id));
+      this.props.createCampaign(formData).then(function () {
+        return _this3.props.history.push("api/campaigns/".concat(_this3.props.campaign.id));
+      });
     }
   }, {
     key: "render",
@@ -589,6 +598,10 @@ var CampaignFormPt1 = /*#__PURE__*/function (_Component) {
       e.preventDefault();
 
       _this.props.nextStep();
+
+      $("html, body").animate({
+        scrollTop: 0
+      }, 400);
     });
 
     return _this;
@@ -856,13 +869,13 @@ var CampaignFormPt2 = /*#__PURE__*/function (_Component) {
         id: "campaignformp2"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn-formp1",
-        id: "goback-top",
-        onClick: this.props.prevStep
-      }, "GO BACK"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn-formp1",
         id: "launch-top",
         onClick: this.props.handleSubmit
-      }, "LAUNCH CAMPAIGN"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      }, "LAUNCH CAMPAIGN"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn-formp1",
+        id: "goback-top",
+        onClick: this.props.prevStep
+      }, "BACK"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.createCampaign,
         className: "campaign-form2-parent",
         id: "campaign-form2"
@@ -895,6 +908,7 @@ var CampaignFormPt2 = /*#__PURE__*/function (_Component) {
         className: "sublabel"
       }, "Provide a short description that best describes your campaign to your audience."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "form-field_campaign",
+        id: "campaigndescription",
         type: "text",
         value: this.props.values.description,
         onChange: this.props.handleInput("description")
@@ -993,13 +1007,31 @@ var CampaignShow = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(CampaignShow, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchCampaign(this.props.id);
+    }
+  }, {
+    key: "campaignRender",
+    value: function campaignRender() {
+      if (this.props.campaign) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: this.props.id
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: this.props.campaign.photoUrl
+        }), " */}", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "campaignshowheader"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.props.campaign.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "BACK IT")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "campaignshowlower"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.props.campaign.description))));
+      } else {
+        return null;
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        key: this.props.id
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: this.props.campaign.photoUrl
-      })));
+      return this.campaignRender();
     }
   }]);
 
@@ -1029,7 +1061,8 @@ __webpack_require__.r(__webpack_exports__);
 var msp = function msp(state, _ref) {
   var match = _ref.match;
   var id = parseInt(match.params.campaignId);
-  var campaign = state.entities.campaigns.campaign;
+  var campaign = state.entities.campaigns[id];
+  debugger;
   return {
     campaign: campaign,
     id: id
@@ -1038,8 +1071,8 @@ var msp = function msp(state, _ref) {
 
 var mdp = function mdp(dispatch) {
   return {
-    createCampaign: function createCampaign(campaign) {
-      return dispatch(Object(_actions_campaign_actions__WEBPACK_IMPORTED_MODULE_1__["createCampaign"])(campaign));
+    fetchCampaign: function fetchCampaign(campaignId) {
+      return dispatch(Object(_actions_campaign_actions__WEBPACK_IMPORTED_MODULE_1__["fetchCampaign"])(campaignId));
     }
   };
 };
@@ -1538,14 +1571,7 @@ __webpack_require__.r(__webpack_exports__);
   var display = currentUser ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, currentUser.first_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "navbtn",
     onClick: logout
-  }, "Log Out")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "nav-right"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    className: "navbtn",
-    to: "/start-a-campaign"
-  }, "Start a Campaign"), "\xA0\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    id: "divider"
-  }), "\xA0\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+  }, "Log Out")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "navbtn",
     id: "login-btn",
     onClick: function onClick() {
@@ -1669,6 +1695,8 @@ document.addEventListener("DOMContentLoaded", function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_campaign_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/campaign_actions */ "./frontend/actions/campaign_actions.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 var campaignsReducer = function campaignsReducer() {
@@ -1681,7 +1709,7 @@ var campaignsReducer = function campaignsReducer() {
       action.campaigns;
 
     case _actions_campaign_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CAMPAIGN"]:
-      return action.campaign;
+      return Object.assign({}, state, _defineProperty({}, action.campaign.id, action.campaign));
 
     default:
       return state;
