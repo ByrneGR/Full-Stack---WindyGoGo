@@ -4,7 +4,7 @@ import CampaignForm from './campaign_form';
 
 const msp = state => ({
   errors: state.errors.session,
-  campaign: state.entities.campaigns.campaign
+  campaign: Object.values(state.entities.campaigns)[0]
 })
 
 const mdp = dispatch => ({

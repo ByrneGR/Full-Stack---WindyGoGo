@@ -5,7 +5,6 @@ import CampaignShow from "./campaign_show";
 const msp = (state, {match}) => {
   const id = parseInt(match.params.campaignId);
   const campaign = state.entities.campaigns[id]
-  debugger
   return {
     campaign,
     id

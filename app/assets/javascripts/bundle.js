@@ -525,7 +525,7 @@ __webpack_require__.r(__webpack_exports__);
 var msp = function msp(state) {
   return {
     errors: state.errors.session,
-    campaign: state.entities.campaigns.campaign
+    campaign: Object.values(state.entities.campaigns)[0]
   };
 };
 
@@ -1015,15 +1015,17 @@ var CampaignShow = /*#__PURE__*/function (_React$Component) {
     key: "campaignRender",
     value: function campaignRender() {
       if (this.props.campaign) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          key: this.props.id
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          id: "campaignshowparent"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          id: "campaignshowheader"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           src: this.props.campaign.photoUrl
-        }), " */}", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "campaignshowheader"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.props.campaign.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "BACK IT")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "campaignshowlower"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.props.campaign.description))));
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          id: "campaignshowheader-right"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.props.campaign.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "BACK IT"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          id: "campaignshowlower"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.props.campaign.description)));
       } else {
         return null;
       }
@@ -1062,7 +1064,6 @@ var msp = function msp(state, _ref) {
   var match = _ref.match;
   var id = parseInt(match.params.campaignId);
   var campaign = state.entities.campaigns[id];
-  debugger;
   return {
     campaign: campaign,
     id: id

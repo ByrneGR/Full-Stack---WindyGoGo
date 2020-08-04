@@ -9,18 +9,18 @@ class CampaignShow extends React.Component {
   campaignRender() {
     if (this.props.campaign) {
     return (
-      <ul>
-        <li key={this.props.id}>
-          <img src={this.props.campaign.photoUrl}/> */}
-          <div className="campaignshowheader">
-            <span>{this.props.campaign.title}</span>
-            <button>BACK IT</button>
-          </div>
-          <div className="campaignshowlower">
+      <div id="campaignshowparent">
+          <div id="campaignshowheader">
+            <img src={this.props.campaign.photoUrl} />
+            <div id="campaignshowheader-right">
+              <span>{this.props.campaign.title}</span>
+              <button>BACK IT</button>
+              </div>
+            </div>  
+          <div id="campaignshowlower">
             <span>{this.props.campaign.description}</span>
           </div>
-        </li>
-      </ul>
+      </div>
     )
     } else {
       return null;
