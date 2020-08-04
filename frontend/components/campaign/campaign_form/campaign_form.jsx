@@ -67,6 +67,7 @@ class CampaignForm extends React.Component {
     }
 
   render() {
+    const errors = this.props.errors;
     const { step } = this.state;
     const {creator_type, location, banking_location, title, description, duration} = this.state
     const values = { creator_type, location, banking_location, title, description, duration }

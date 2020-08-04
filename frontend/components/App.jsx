@@ -2,8 +2,8 @@ import React from 'react';
 import WelcomeContainer from "./welcome/welcome_container"
 import LoginFormContainer from "./session/login_form_container"
 import SignupFormContainer from "./session/signup_form_container"
-import { Link, Route } from 'react-router-dom';
-import { AuthRoute } from '../util/route_utils';
+import { Link, Route, StaticRouter } from 'react-router-dom';
+import { AuthRoute, ProtectedRoute } from '../util/route_utils';
 import Modal from './modal/modal';
 import CampaignFormContainer from './campaign/campaign_form/campaign_form_container'
 import CampaignShowContainer from './campaign/campaign_show/campaign_show_container.jsx'

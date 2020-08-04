@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 export class CampaignFormPt2 extends Component {
   render() {
+    const errors = this.props.errors
     return (
       <div id="campaignformp2">
         <button
@@ -88,6 +89,7 @@ export class CampaignFormPt2 extends Component {
             <br></br>
             <button
               className="btn-formp1" id="campaignform2btn" onClick={this.props.handleSubmit}>LAUNCH CAMPAIGN</button>
+              {errors}
           </div>
         </form>
       </div>

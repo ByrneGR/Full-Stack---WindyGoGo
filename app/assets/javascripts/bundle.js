@@ -462,6 +462,7 @@ var CampaignForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var errors = this.props.errors;
       var step = this.state.step;
       var _this$state = this.state,
           creator_type = _this$state.creator_type,
@@ -785,6 +786,7 @@ var CampaignFormPt1 = /*#__PURE__*/function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      var errors = this.props.errors;
       var _this$props = this.props,
           values = _this$props.values,
           handleInput = _this$props.handleInput;
@@ -806,7 +808,7 @@ var CampaignFormPt1 = /*#__PURE__*/function (_Component) {
         disabled: !isEnabled,
         className: "btn-formp1",
         onClick: this["continue"]
-      }, "START MY CAMPAIGN")));
+      }, "START MY CAMPAIGN"), errors));
     }
   }]);
 
@@ -865,6 +867,7 @@ var CampaignFormPt2 = /*#__PURE__*/function (_Component) {
   _createClass(CampaignFormPt2, [{
     key: "render",
     value: function render() {
+      var errors = this.props.errors;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "campaignformp2"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -950,7 +953,7 @@ var CampaignFormPt2 = /*#__PURE__*/function (_Component) {
         className: "btn-formp1",
         id: "campaignform2btn",
         onClick: this.props.handleSubmit
-      }, "LAUNCH CAMPAIGN"))));
+      }, "LAUNCH CAMPAIGN"), errors)));
     }
   }]);
 
@@ -2015,12 +2018,13 @@ var deletecampaign = function deletecampaign(campaignId) {
 /*!***************************************!*\
   !*** ./frontend/util/route_utils.jsx ***!
   \***************************************/
-/*! exports provided: AuthRoute */
+/*! exports provided: AuthRoute, ProtectedRoute */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthRoute", function() { return AuthRoute; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProtectedRoute", function() { return ProtectedRoute; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
@@ -2031,7 +2035,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    loggedIn: Boolean(state.session.id)
+    loggedIn: Boolean(state.session.id),
+    modal: state.ui.modal
   };
 };
 
@@ -2051,7 +2056,27 @@ var Auth = function Auth(_ref) {
   });
 };
 
+var Protected = function Protected(_ref2) {
+  var loggedIn = _ref2.loggedIn,
+      modal = _ref2.modal,
+      path = _ref2.path,
+      Component = _ref2.component,
+      exact = _ref2.exact;
+
+  /*#__PURE__*/
+  react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+    path: path,
+    exact: exact,
+    render: function render(props) {
+      return loggedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Component, props) : modal = "login"( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Redirect"], {
+        to: "/"
+      }));
+    }
+  });
+};
+
 var AuthRoute = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps)(Auth));
+var ProtectedRoute = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps)(Protected));
 
 /***/ }),
 
