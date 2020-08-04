@@ -5,6 +5,7 @@ import LoginFormContainer from '../session/login_form_container';
 import {closeModal} from '../../actions/modal_actions'
 
 export const Modal = ({modal, closeModal}) => {
+  debugger
   if (!modal) {
     return null;
  }
@@ -29,6 +30,7 @@ export const Modal = ({modal, closeModal}) => {
  )
 }
 const msp = state => {
+  debugger
   return {
     modal: state.ui.modal
   }
