@@ -13,10 +13,12 @@ class Api::CampaignsController < ApplicationController
   
   def show
     @campaign = Campaign.find(params[:id])
+    render :show
   end
   
   def index
     @campaigns = Campaign.all
+    render :index
   end
   
   private
