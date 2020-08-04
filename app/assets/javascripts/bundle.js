@@ -454,7 +454,6 @@ var CampaignForm = /*#__PURE__*/function (_React$Component) {
       formData.append('campaign[description]', this.state.description);
       formData.append('campaign[duration]', this.state.duration);
       formData.append('campaign[image]', this.state.imageFile);
-      debugger;
       this.props.createCampaign(formData).then(function () {
         return _this3.props.history.push("api/campaigns/".concat(_this3.props.campaign.id));
       });
@@ -1109,7 +1108,6 @@ __webpack_require__.r(__webpack_exports__);
 var Modal = function Modal(_ref) {
   var modal = _ref.modal,
       closeModal = _ref.closeModal;
-  debugger;
 
   if (!modal) {
     return null;
@@ -1142,7 +1140,6 @@ var Modal = function Modal(_ref) {
 };
 
 var msp = function msp(state) {
-  debugger;
   return {
     modal: state.ui.modal
   };

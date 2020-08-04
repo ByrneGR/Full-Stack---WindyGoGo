@@ -59,7 +59,6 @@ class CampaignForm extends React.Component {
     formData.append('campaign[description]', this.state.description)
     formData.append('campaign[duration]', this.state.duration)
     formData.append('campaign[image]', this.state.imageFile)
-    debugger
     this.props
       .createCampaign(formData)
       .then(() => this.props.history.push(`api/campaigns/${this.props.campaign.id}`));
