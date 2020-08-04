@@ -6,10 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.delete_all
 Campaign.delete_all
-User.create({email: "demo_user@demo.com", password: "password", first_name: "Demo User", last_name: "User"})
-Campaign.create({location: "United States", creator_type: "Individual", banking_location: "United States", creator_id: User.all[0].id})
+User.delete_all
+demo_user = User.create({email: "demo_user@demo.com", password: "password", first_name: "Demo User", last_name: "User"})
+Campaign.create({location: "United States", creator_type: "Individual", banking_location: "United States", creator_id: demo_user.id})
   
   # , duration: "30", creator_id: User.all[0].id})
 # 10.times do
