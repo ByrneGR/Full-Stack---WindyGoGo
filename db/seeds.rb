@@ -8,8 +8,8 @@
 
 Campaign.delete_all
 User.delete_all
-demo_user = User.create({email: "demo_user@demo.com", password: "password", first_name: "Demo User", last_name: "User"})
-Campaign.create({location: "United States", creator_type: "Individual", banking_location: "United States", creator_id: demo_user.id})
+demo_user = User.create(email: "demo_user@demo.com", password: "password", first_name: "Demo User", last_name: "User")
+Campaign.create(location: "United States", title: "Cheezy Chapstick", description: "cheese that heals", creator_type: "Individual", banking_location: "United States", creator_id: demo_user.id, duration: 30)
   
   # , duration: "30", creator_id: User.all[0].id})
 # 10.times do
