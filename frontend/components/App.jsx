@@ -10,6 +10,7 @@ import CampaignShowContainer from './campaign/campaign_show/campaign_show_contai
 
 
 
+
 const App = () => (
   <div>
     <Modal />
@@ -38,7 +39,7 @@ const App = () => (
 
     <AuthRoute path="/login" component={LoginFormContainer} />
     <AuthRoute path="/signup" component={SignupFormContainer} />
-    <Route path="/start-a-campaign" component={CampaignFormContainer} />
+    <ProtectedRoute path="/start-a-campaign" component={CampaignFormContainer} />
     <Route path="/api/campaigns/:campaignId" component={CampaignShowContainer} />
   </div>
 );
