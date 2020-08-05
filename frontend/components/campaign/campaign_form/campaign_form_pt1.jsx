@@ -49,6 +49,7 @@ export class CampaignFormPt1 extends Component {
             id="business/nonprofit"
             value="Business/Nonprofit"
             onChange={this.props.handleInput("creator_type")}
+            
           />
           <label htmlFor="business/nonprofit">Business or Nonprofit</label>
         </div>
@@ -277,7 +278,6 @@ export class CampaignFormPt1 extends Component {
   }
 
   render() {
-    const errors = this.props.errors
 
     const { values, handleInput } = this.props;
     const banking_location = values.banking_location
@@ -297,7 +297,6 @@ export class CampaignFormPt1 extends Component {
             {this.banking_location()}
           </div>
           <button disabled={!isEnabled} className="btn-formp1" onClick={this.continue}>START MY CAMPAIGN</button>
-          <div>{errors}</div>
         </form>
       </div>
     );

@@ -10,6 +10,7 @@ class ContributionForm extends React.Component {
       contribution_appearance: "Anonymous",
       campaign_id: this.props.id
     };
+   this.handleSubmit = this.handleSubmit.bind(this); 
   }
 
   componentDidMount() {
@@ -23,12 +24,19 @@ class ContributionForm extends React.Component {
     }
   }  
 
+  handleSubmit(e) {
+    e.preventDefault();
+    const contribution = Object.assign({}, this.state)
+    this.props.createContribution({contribution})
+      .then(document.location.href = `#/api/campaigns/${this.props.campaign.id}`);
+  }
+
   header() {
     if (this.props.campaign) {
     return (
       <div className="form-headers">
         <h1 className="campaign_form-header1">
-          Contributing to {this.props.campaign.title}
+         {this.props.campaign.title}
         </h1>
       </div>
     )} else {
@@ -86,38 +94,25 @@ class ContributionForm extends React.Component {
   contribution_appearance() {
     return (
       <div>
-        <h1 className="question-header1">Where is your bank?</h1>
-        <p className="question-header2">
-          Your bank account location determines the currency in which you can
-          raise funds.
-        </p>
-        <select
-          id="dropdown_list-bl"
-          className="form-field_campaign"
-          onChange={this.props.handleInput("contribution_appearance")}
-        >
-          <option
-            id="dropdown_item_default"
-            value=""
-            className="location_dropdowns"
-          >
-            Select a bank country
-          </option>
-          <option
-            id="dropdown_item0"
-            value="United States"
-            className="location_dropdowns"
-          >
-            United States
-          </option>
-          <option
-            id="dropdown_item21"
-            value="Other"
-            className="location_dropdowns"
-          >
-            Other countries
-          </option>
-        </select>
+        <h1 className="question-header1">Contribution Appearance</h1>
+        <div className="campaign-radio">
+          <input
+            type="radio"
+            name="contribution_appearance"
+            id="full_name"
+            value="Full Name"
+            onChange={this.handleInput("contribution_appearance")}
+          />
+          <label htmlFor="full_name">Full Name</label>
+          <input
+            type="radio"
+            name="contribution_appearance"
+            id="anonymous"
+            value="Anonymous"
+            onChange={this.handleInput("contribution_appearance")}
+          />
+          <label htmlFor="anonymous">Anonymous</label>          
+          </div>
       </div>
     );
   }
@@ -134,6 +129,9 @@ class ContributionForm extends React.Component {
       <div>{this.header()}</div>
         {this.contributionAmount()}
           {this.nameAndCardInfo()}
+          {this.contribution_appearance()}
+          <button
+            className="btn-formp1" id="campaignform2btn" onClick={this.handleSubmit}>Submit Payment</button>
       </form>
       </div >
     )

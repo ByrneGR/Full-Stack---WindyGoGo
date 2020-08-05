@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_05_175058) do
+ActiveRecord::Schema.define(version: 2020_08_05_195601) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,8 +50,8 @@ ActiveRecord::Schema.define(version: 2020_08_05_175058) do
   end
 
   create_table "contributions", force: :cascade do |t|
-    t.string "full_name", null: false
-    t.string "email_address", null: false
+    t.string "full_name"
+    t.string "email_address"
     t.string "name_on_card", null: false
     t.string "card_number", null: false
     t.string "contribution_appearance", null: false

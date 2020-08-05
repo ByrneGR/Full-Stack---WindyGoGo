@@ -880,7 +880,6 @@ var CampaignFormPt1 = /*#__PURE__*/function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var errors = this.props.errors;
       var _this$props = this.props,
           values = _this$props.values,
           handleInput = _this$props.handleInput;
@@ -902,7 +901,7 @@ var CampaignFormPt1 = /*#__PURE__*/function (_Component) {
         disabled: !isEnabled,
         className: "btn-formp1",
         onClick: this["continue"]
-      }, "START MY CAMPAIGN"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, errors)));
+      }, "START MY CAMPAIGN")));
     }
   }]);
 
@@ -1245,6 +1244,7 @@ var ContributionForm = /*#__PURE__*/function (_React$Component) {
       contribution_appearance: "Anonymous",
       campaign_id: _this.props.id
     };
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -1263,6 +1263,15 @@ var ContributionForm = /*#__PURE__*/function (_React$Component) {
       };
     }
   }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      var contribution = Object.assign({}, this.state);
+      this.props.createContribution({
+        contribution: contribution
+      }).then(document.location.href = "#/api/campaigns/".concat(this.props.campaign.id));
+    }
+  }, {
     key: "header",
     value: function header() {
       if (this.props.campaign) {
@@ -1270,7 +1279,7 @@ var ContributionForm = /*#__PURE__*/function (_React$Component) {
           className: "form-headers"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
           className: "campaign_form-header1"
-        }, "Contributing to ", this.props.campaign.title));
+        }, this.props.campaign.title));
       } else {
         return null;
       }
@@ -1320,30 +1329,34 @@ var ContributionForm = /*#__PURE__*/function (_React$Component) {
     value: function contribution_appearance() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "question-header1"
-      }, "Where is your bank?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "question-header2"
-      }, "Your bank account location determines the currency in which you can raise funds."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-        id: "dropdown_list-bl",
-        className: "form-field_campaign",
-        onChange: this.props.handleInput("contribution_appearance")
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        id: "dropdown_item_default",
-        value: "",
-        className: "location_dropdowns"
-      }, "Select a bank country"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        id: "dropdown_item0",
-        value: "United States",
-        className: "location_dropdowns"
-      }, "United States"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        id: "dropdown_item21",
-        value: "Other",
-        className: "location_dropdowns"
-      }, "Other countries")));
+      }, "Contribution Appearance"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "campaign-radio"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "radio",
+        name: "contribution_appearance",
+        id: "full_name",
+        value: "Full Name",
+        onChange: this.handleInput("contribution_appearance")
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "full_name"
+      }, "Full Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "radio",
+        name: "contribution_appearance",
+        id: "anonymous",
+        value: "Anonymous",
+        onChange: this.handleInput("contribution_appearance")
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "anonymous"
+      }, "Anonymous")));
     }
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.header()), this.contributionAmount(), this.nameAndCardInfo()));
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.header()), this.contributionAmount(), this.nameAndCardInfo(), this.contribution_appearance(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn-formp1",
+        id: "campaignform2btn",
+        onClick: this.handleSubmit
+      }, "Submit Payment")));
     }
   }]);
 
