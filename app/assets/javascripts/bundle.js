@@ -1116,6 +1116,17 @@ var CampaignShow = /*#__PURE__*/function (_React$Component) {
       this.props.fetchCampaign(this.props.id);
     }
   }, {
+    key: "contributions",
+    value: function contributions() {
+      if (this.props.campaign.contributions) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.campaign.contributions.map(function (contribution, idx) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+            key: contribution.id
+          }, contribution.name_on_card, " - ", contribution.contribution_amount);
+        }), ";");
+      } else return null;
+    }
+  }, {
     key: "campaignRender",
     value: function campaignRender() {
       if (this.props.campaign) {
@@ -1132,7 +1143,7 @@ var CampaignShow = /*#__PURE__*/function (_React$Component) {
           campaign: this.props.campaign
         }, "BACK IT"), "              ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           id: "campaignshowlower"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.props.campaign.description)));
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.props.campaign.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.contributions())));
       } else {
         return null;
       }

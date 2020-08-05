@@ -11,8 +11,22 @@ class CampaignShow extends React.Component {
   componentDidMount() {
     this.props.fetchCampaign(this.props.id)
   }
+
   
+  contributions() {
+
+   if (this.props.campaign.contributions) {
+     return(
+    <div>
+     {this.props.campaign.contributions.map((contribution, idx) => (
+        <li key={contribution.id}>{contribution.name_on_card} - {contribution.contribution_amount}</li>
+      ))};
+      </div >)
+    } else return null;
+  }
+
   campaignRender() {
+
     if (this.props.campaign) {
     return (
       <div id="campaignshowparent">
@@ -24,6 +38,9 @@ class CampaignShow extends React.Component {
             </div>  
           <div id="campaignshowlower">
             <span>{this.props.campaign.description}</span>
+            <ul>
+              {this.contributions()}
+            </ul>
           </div>
       </div>
     )
