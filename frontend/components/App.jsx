@@ -7,6 +7,7 @@ import { AuthRoute, ProtectedRoute } from '../util/route_utils';
 import Modal from './modal/modal';
 import CampaignFormContainer from './campaign/campaign_form/campaign_form_container'
 import CampaignShowContainer from './campaign/campaign_show/campaign_show_container.jsx'
+import ContributionFormContainer from './contribution/contribution_form_container'
 
 
 
@@ -41,6 +42,7 @@ const App = () => (
     <AuthRoute path="/signup" component={SignupFormContainer} />
     <ProtectedRoute path="/start-a-campaign" component={CampaignFormContainer} />
     <Route path="/api/campaigns/:campaignId" component={CampaignShowContainer} />
+    <Route path='/contributions/:campaignId/new' component={ContributionFormContainer}/>
   </div>
 );
 

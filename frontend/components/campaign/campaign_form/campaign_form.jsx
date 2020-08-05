@@ -56,7 +56,6 @@ class CampaignForm extends React.Component {
       
       fileReader.readAsDataURL(file);
     };
-    debugger
     
   }
 

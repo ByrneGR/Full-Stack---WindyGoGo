@@ -1,5 +1,5 @@
 class Contribution < ApplicationRecord
-  validates :full_name, :email_address, :name_on_card, :card_number, :contribution_appearance, presence: true
+  validates :name_on_card, :card_number, :contribution_appearance, presence: true, :contribution_amount
 
   belongs_to :backer,
     foreign_key: :backer_id,

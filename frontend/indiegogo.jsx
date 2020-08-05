@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.fetchCampaign = fetchCampaign;
   window.createCampaign = createCampaign;
   window.fetchContributions = fetchContributions;
+  window.createContribution = createContribution;
 
 
   ReactDOM.render(<Root store={store} />, root);

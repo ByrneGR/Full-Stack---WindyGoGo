@@ -354,6 +354,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modal_modal__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modal/modal */ "./frontend/components/modal/modal.jsx");
 /* harmony import */ var _campaign_campaign_form_campaign_form_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./campaign/campaign_form/campaign_form_container */ "./frontend/components/campaign/campaign_form/campaign_form_container.jsx");
 /* harmony import */ var _campaign_campaign_show_campaign_show_container_jsx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./campaign/campaign_show/campaign_show_container.jsx */ "./frontend/components/campaign/campaign_show/campaign_show_container.jsx");
+/* harmony import */ var _contribution_contribution_form_container__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./contribution/contribution_form_container */ "./frontend/components/contribution/contribution_form_container.jsx");
+
 
 
 
@@ -397,6 +399,9 @@ var App = function App() {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Route"], {
     path: "/api/campaigns/:campaignId",
     component: _campaign_campaign_show_campaign_show_container_jsx__WEBPACK_IMPORTED_MODULE_8__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Route"], {
+    path: "/contributions/:campaignId/new",
+    component: _contribution_contribution_form_container__WEBPACK_IMPORTED_MODULE_9__["default"]
   }));
 };
 
@@ -522,7 +527,6 @@ var CampaignForm = /*#__PURE__*/function (_React$Component) {
       }
 
       ;
-      debugger;
     }
   }, {
     key: "handleSubmit",
@@ -877,7 +881,6 @@ var CampaignFormPt1 = /*#__PURE__*/function (_Component) {
     key: "render",
     value: function render() {
       var errors = this.props.errors;
-      debugger;
       var _this$props = this.props,
           values = _this$props.values,
           handleInput = _this$props.handleInput;
@@ -1065,6 +1068,8 @@ var CampaignFormPt2 = /*#__PURE__*/function (_Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _contribution_contribution_form_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../contribution/contribution_form_container */ "./frontend/components/contribution/contribution_form_container.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1089,15 +1094,21 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
+
 var CampaignShow = /*#__PURE__*/function (_React$Component) {
   _inherits(CampaignShow, _React$Component);
 
   var _super = _createSuper(CampaignShow);
 
-  function CampaignShow() {
+  function CampaignShow(props) {
+    var _this;
+
     _classCallCheck(this, CampaignShow);
 
-    return _super.apply(this, arguments);
+    _this = _super.call(this, props);
+    _this.state = _this.props.campaign;
+    return _this;
   }
 
   _createClass(CampaignShow, [{
@@ -1108,8 +1119,6 @@ var CampaignShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "campaignRender",
     value: function campaignRender() {
-      debugger;
-
       if (this.props.campaign) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           id: "campaignshowparent"
@@ -1119,7 +1128,10 @@ var CampaignShow = /*#__PURE__*/function (_React$Component) {
           src: this.props.campaign.photoUrl
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           id: "campaignshowheader-right"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.props.campaign.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "BACK IT"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.props.campaign.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/contributions/".concat(this.props.campaign.id, "/new"),
+          campaign: this.props.campaign
+        }, "BACK IT"), "              ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           id: "campaignshowlower"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.props.campaign.description)));
       } else {
@@ -1175,6 +1187,214 @@ var mdp = function mdp(dispatch) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(_campaign_show__WEBPACK_IMPORTED_MODULE_2__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/contribution/contribution_form.jsx":
+/*!****************************************************************!*\
+  !*** ./frontend/components/contribution/contribution_form.jsx ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+var ContributionForm = /*#__PURE__*/function (_React$Component) {
+  _inherits(ContributionForm, _React$Component);
+
+  var _super = _createSuper(ContributionForm);
+
+  function ContributionForm(props) {
+    var _this;
+
+    _classCallCheck(this, ContributionForm);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      contribution_amount: 25,
+      name_on_card: "Name on Card",
+      card_number: "Demo Credit Card # (no input needed)",
+      contribution_appearance: "Anonymous",
+      campaign_id: _this.props.id
+    };
+    return _this;
+  }
+
+  _createClass(ContributionForm, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchCampaign(this.props.id);
+    }
+  }, {
+    key: "handleInput",
+    value: function handleInput(type) {
+      var _this2 = this;
+
+      return function (e) {
+        _this2.setState(_defineProperty({}, type, e.currentTarget.value));
+      };
+    }
+  }, {
+    key: "header",
+    value: function header() {
+      if (this.props.campaign) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "form-headers"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+          className: "campaign_form-header1"
+        }, "Contributing to ", this.props.campaign.title));
+      } else {
+        return null;
+      }
+    }
+  }, {
+    key: "contributionAmount",
+    value: function contributionAmount() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "input-label_campaign"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "input-label_header"
+      }, "Contribution Amount"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "nameandcardnumber-parent"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-field_campaign",
+        id: "contribution_amount",
+        type: "number",
+        value: this.state.contribution_amount,
+        onChange: this.handleInput("contribution_amount")
+      }))));
+    }
+  }, {
+    key: "nameAndCardInfo",
+    value: function nameAndCardInfo() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "input-label_campaign"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "input-label_header"
+      }, "Debit or Credit Card"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "nameandcardnumber-parent"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-field_campaign",
+        id: "contribution_nameoncard",
+        type: "text",
+        value: this.state.name_on_card,
+        onChange: this.handleInput("name_on_card")
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-field_campaign",
+        id: "contribution_cardnumber",
+        type: "text",
+        value: this.state.card_number,
+        onChange: this.handleInput("card_number")
+      }))));
+    }
+  }, {
+    key: "contribution_appearance",
+    value: function contribution_appearance() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "question-header1"
+      }, "Where is your bank?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "question-header2"
+      }, "Your bank account location determines the currency in which you can raise funds."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        id: "dropdown_list-bl",
+        className: "form-field_campaign",
+        onChange: this.props.handleInput("contribution_appearance")
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item_default",
+        value: "",
+        className: "location_dropdowns"
+      }, "Select a bank country"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item0",
+        value: "United States",
+        className: "location_dropdowns"
+      }, "United States"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item21",
+        value: "Other",
+        className: "location_dropdowns"
+      }, "Other countries")));
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.header()), this.contributionAmount(), this.nameAndCardInfo()));
+    }
+  }]);
+
+  return ContributionForm;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (ContributionForm);
+
+/***/ }),
+
+/***/ "./frontend/components/contribution/contribution_form_container.jsx":
+/*!**************************************************************************!*\
+  !*** ./frontend/components/contribution/contribution_form_container.jsx ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_contribution_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/contribution_actions */ "./frontend/actions/contribution_actions.js");
+/* harmony import */ var _actions_campaign_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/campaign_actions */ "./frontend/actions/campaign_actions.js");
+/* harmony import */ var _contribution_form__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./contribution_form */ "./frontend/components/contribution/contribution_form.jsx");
+
+
+
+
+
+var msp = function msp(state, _ref) {
+  var match = _ref.match;
+  var id = parseInt(match.params.campaignId);
+  var campaign = state.entities.campaigns[id];
+  return {
+    errors: state.errors.session,
+    id: id,
+    campaign: campaign
+  };
+};
+
+var mdp = function mdp(dispatch) {
+  return {
+    createContribution: function createContribution(contribution) {
+      return dispatch(Object(_actions_contribution_actions__WEBPACK_IMPORTED_MODULE_1__["createContribution"])(contribution));
+    },
+    fetchCampaign: function fetchCampaign(campaignId) {
+      return dispatch(Object(_actions_campaign_actions__WEBPACK_IMPORTED_MODULE_2__["fetchCampaign"])(campaignId));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(_contribution_form__WEBPACK_IMPORTED_MODULE_3__["default"]));
 
 /***/ }),
 
@@ -1778,6 +1998,7 @@ document.addEventListener("DOMContentLoaded", function () {
   window.fetchCampaign = _actions_campaign_actions__WEBPACK_IMPORTED_MODULE_6__["fetchCampaign"];
   window.createCampaign = _actions_campaign_actions__WEBPACK_IMPORTED_MODULE_6__["createCampaign"];
   window.fetchContributions = _actions_contribution_actions__WEBPACK_IMPORTED_MODULE_7__["fetchContributions"];
+  window.createContribution = _actions_contribution_actions__WEBPACK_IMPORTED_MODULE_7__["createContribution"];
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_root__WEBPACK_IMPORTED_MODULE_4__["default"], {
     store: store
   }), root);
