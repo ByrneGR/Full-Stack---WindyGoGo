@@ -5,6 +5,7 @@ import configureStore from './store/store';
 import Root from './components/root'
 import { login } from './actions/session_actions'
 import { fetchCampaigns, fetchCampaign, createCampaign } from './actions/campaign_actions'
+import { fetchContributions, fetchContribution, createContribution } from './actions/contribution_actions'
 
 
 
@@ -32,6 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.fetchCampaigns = fetchCampaigns;
   window.fetchCampaign = fetchCampaign;
   window.createCampaign = createCampaign;
+  window.fetchContributions = fetchContributions;
 
 
   ReactDOM.render(<Root store={store} />, root);

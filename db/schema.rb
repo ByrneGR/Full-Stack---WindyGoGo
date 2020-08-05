@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_02_145952) do
+ActiveRecord::Schema.define(version: 2020_08_04_211033) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,16 @@ ActiveRecord::Schema.define(version: 2020_08_02_145952) do
     t.string "creator_type"
     t.string "banking_location"
     t.index ["creator_id"], name: "index_campaigns_on_creator_id"
+  end
+
+  create_table "contributions", force: :cascade do |t|
+    t.string "full_name", null: false
+    t.string "email_address", null: false
+    t.string "name_on_card", null: false
+    t.integer "card_number", null: false
+    t.string "contribution_appearance", null: false
+    t.integer "backer_id"
+    t.integer "campaign_id"
   end
 
   create_table "users", force: :cascade do |t|

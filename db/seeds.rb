@@ -9,8 +9,10 @@
 Campaign.delete_all
 User.delete_all
 demo_user = User.create(email: "demo_user@demo.com", password: "password", first_name: "Demo User", last_name: "User")
-Campaign.create(location: "United States", title: "Cheezy Chapstick", description: "cheese that heals", creator_type: "Individual", banking_location: "United States", creator_id: demo_user.id, duration: 30)
-  
+demo_campaign = Campaign.create(location: "United States", title: "Cheezy Chapstick", description: "cheese that heals", creator_type: "Individual", banking_location: "United States", creator_id: User.last.id, duration: 30)
+Contribution.create(full_name: "James", email_address: "jimmytwoshoes@gmail.com", name_on_card: "James P. Irwin", card_number: 12435, contribution_appearance: "Anonymous", backer_id: User.last.id, campaign_id: Campaign.last.id)
+
+params.require(:contribution).permit(:full_name, :email_address, :name_on_card, :card_number, :contribution_appearance)
   # , duration: "30", creator_id: User.all[0].id})
 # 10.times do
 #   User.create(email: Faker::Internet.unique.free_email, password: "password")

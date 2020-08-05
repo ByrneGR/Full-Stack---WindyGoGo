@@ -160,6 +160,63 @@ var deleteCampaign = function deleteCampaign(campaignId) {
 
 /***/ }),
 
+/***/ "./frontend/actions/contribution_actions.js":
+/*!**************************************************!*\
+  !*** ./frontend/actions/contribution_actions.js ***!
+  \**************************************************/
+/*! exports provided: RECEIVE_CONTRIBUTIONS, RECEIVE_CONTRIBUTION, fetchContributions, fetchContribution, createContribution */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_CONTRIBUTIONS", function() { return RECEIVE_CONTRIBUTIONS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_CONTRIBUTION", function() { return RECEIVE_CONTRIBUTION; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchContributions", function() { return fetchContributions; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchContribution", function() { return fetchContribution; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createContribution", function() { return createContribution; });
+/* harmony import */ var _util_contribution_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/contribution_api_util */ "./frontend/util/contribution_api_util.js");
+
+var RECEIVE_CONTRIBUTIONS = 'RECEIVE_CONTRIBUTIONS';
+var RECEIVE_CONTRIBUTION = 'RECEIVE_CONTRIBUTION';
+
+var receiveContributions = function receiveContributions(contributions) {
+  return {
+    type: RECEIVE_CONTRIBUTIONS,
+    contributions: contributions
+  };
+};
+
+var receiveContribution = function receiveContribution(contribution) {
+  return {
+    type: RECEIVE_CONTRIBUTION,
+    contribution: contribution
+  };
+};
+
+var fetchContributions = function fetchContributions() {
+  return function (dispatch) {
+    return Object(_util_contribution_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchcontributions"])().then(function (contributions) {
+      return dispatch(receiveContributions(contributions));
+    });
+  };
+};
+var fetchContribution = function fetchContribution(contributionId) {
+  return function (dispatch) {
+    return Object(_util_contribution_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchcontribution"])(contributionId).then(function (contribution) {
+      return dispatch(receiveContribution(contribution));
+    });
+  };
+};
+var createContribution = function createContribution(contribution) {
+  return function (dispatch) {
+    return Object(_util_contribution_api_util__WEBPACK_IMPORTED_MODULE_0__["createcontribution"])(contribution).then(function (contribution) {
+      return dispatch(receiveContribution(contribution));
+    });
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/modal_actions.js":
 /*!*******************************************!*\
   !*** ./frontend/actions/modal_actions.js ***!
@@ -1648,7 +1705,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/root */ "./frontend/components/root.jsx");
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./actions/session_actions */ "./frontend/actions/session_actions.js");
 /* harmony import */ var _actions_campaign_actions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./actions/campaign_actions */ "./frontend/actions/campaign_actions.js");
+/* harmony import */ var _actions_contribution_actions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./actions/contribution_actions */ "./frontend/actions/contribution_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -1681,6 +1740,7 @@ document.addEventListener("DOMContentLoaded", function () {
   window.fetchCampaigns = _actions_campaign_actions__WEBPACK_IMPORTED_MODULE_6__["fetchCampaigns"];
   window.fetchCampaign = _actions_campaign_actions__WEBPACK_IMPORTED_MODULE_6__["fetchCampaign"];
   window.createCampaign = _actions_campaign_actions__WEBPACK_IMPORTED_MODULE_6__["createCampaign"];
+  window.fetchContributions = _actions_contribution_actions__WEBPACK_IMPORTED_MODULE_7__["fetchContributions"];
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_root__WEBPACK_IMPORTED_MODULE_4__["default"], {
     store: store
   }), root);
@@ -1723,6 +1783,41 @@ var campaignsReducer = function campaignsReducer() {
 
 /***/ }),
 
+/***/ "./frontend/reducers/contributions_reducer.js":
+/*!****************************************************!*\
+  !*** ./frontend/reducers/contributions_reducer.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_contribution_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/contribution_actions */ "./frontend/actions/contribution_actions.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+var contributionsReducer = function contributionsReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_contribution_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CONTRIBUTIONS"]:
+      action.contributions;
+
+    case _actions_contribution_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CONTRIBUTION"]:
+      return Object.assign({}, state, _defineProperty({}, action.contribution.id, action.contribution));
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (contributionsReducer);
+
+/***/ }),
+
 /***/ "./frontend/reducers/entities_reducer.js":
 /*!***********************************************!*\
   !*** ./frontend/reducers/entities_reducer.js ***!
@@ -1735,12 +1830,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/users_reducer.js");
 /* harmony import */ var _campaigns_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./campaigns_reducer */ "./frontend/reducers/campaigns_reducer.js");
+/* harmony import */ var _contributions_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./contributions_reducer */ "./frontend/reducers/contributions_reducer.js");
+
 
 
 
 var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
-  campaigns: _campaigns_reducer__WEBPACK_IMPORTED_MODULE_2__["default"]
+  campaigns: _campaigns_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
+  contributions: _contributions_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (entitiesReducer);
 
@@ -2008,6 +2106,40 @@ var deletecampaign = function deletecampaign(campaignId) {
   return $.ajax({
     url: "api/campaigns/".concat(campaignId),
     method: 'DELETE'
+  });
+};
+
+/***/ }),
+
+/***/ "./frontend/util/contribution_api_util.js":
+/*!************************************************!*\
+  !*** ./frontend/util/contribution_api_util.js ***!
+  \************************************************/
+/*! exports provided: createcontribution, fetchcontributions, fetchcontribution */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createcontribution", function() { return createcontribution; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchcontributions", function() { return fetchcontributions; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchcontribution", function() { return fetchcontribution; });
+var createcontribution = function createcontribution(contribution) {
+  return $.ajax({
+    url: 'api/contributions',
+    method: 'POST',
+    data: contribution
+  });
+};
+var fetchcontributions = function fetchcontributions() {
+  return $.ajax({
+    url: "api/contributions/",
+    method: 'GET'
+  });
+};
+var fetchcontribution = function fetchcontribution(contributionId) {
+  return $.ajax({
+    url: "api/contributions/".concat(contributionId),
+    method: 'GET'
   });
 };
 
