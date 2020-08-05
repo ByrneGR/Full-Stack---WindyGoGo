@@ -3,6 +3,7 @@ import {fetchcampaigns, fetchcampaign, createcampaign, deletecampaign} from '../
 export const RECEIVE_CAMPAIGNS = 'RECEIVE_CAMPAIGNS';
 export const RECEIVE_CAMPAIGN = 'RECEIVE_CAMPAIGN';
 export const REMOVE_CAMPAIGN = 'REMOVE_CAMPAIGN';
+export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 
 
 const receiveCampaigns = campaigns => ({
@@ -20,6 +21,13 @@ const removeCampaign = campaignId => ({
   campaignId
 })
 
+const receiveErrors = (errors) => {
+  return {
+    type: RECEIVE_ERRORS,
+    errors,
+  }
+};
+
 export const fetchCampaigns = () => dispatch => (
   fetchcampaigns().then(campaigns => dispatch(receiveCampaigns(campaigns)))
 )
@@ -29,7 +37,7 @@ export const fetchCampaign = campaignId => dispatch => (
 )
 
 export const createCampaign = campaign => dispatch => (
-  createcampaign(campaign).then(campaign => dispatch(receiveCampaign(campaign)))
+  createcampaign(campaign).then(campaign => dispatch(receiveCampaign(campaign)), errors => dispatch(receiveErrors(errors.responseJSON)))
 )
 
 export const deleteCampaign = campaignId => dispatch => (

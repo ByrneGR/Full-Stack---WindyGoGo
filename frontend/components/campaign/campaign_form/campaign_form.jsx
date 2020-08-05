@@ -15,6 +15,7 @@ class CampaignForm extends React.Component {
       description: "",
       duration: 30,
       imageFile: null,
+      imageUrl: null,
     };
    this.nextStep = this.nextStep.bind(this); 
    this.prevStep = this.prevStep.bind(this); 
@@ -44,9 +45,19 @@ class CampaignForm extends React.Component {
     }
   }  
 
-  handleFile(e) {
-      this.setState({imageFile: e.currentTarget.files[0]})
-  
+  handleFile(e) { 
+    const file = e.currentTarget.files[0];
+    const fileReader = new FileReader();
+    fileReader.onloadend = () => {
+      
+      this.setState({imageFile: file, imageURL: fileReader.result})
+    };
+    if (file) {
+      
+      fileReader.readAsDataURL(file);
+    };
+    debugger
+    
   }
 
   handleSubmit(e) {
@@ -58,7 +69,10 @@ class CampaignForm extends React.Component {
     formData.append('campaign[banking_location]', this.state.banking_location)
     formData.append('campaign[description]', this.state.description)
     formData.append('campaign[duration]', this.state.duration)
-    formData.append('campaign[image]', this.state.imageFile)
+    if (this.state.imageFile) {
+
+      formData.append('campaign[image]', this.state.imageFile)
+    }
     this.props
       .createCampaign(formData)
       .then(() => this.props.history.push(`api/campaigns/${this.props.campaign.id}`));
@@ -67,18 +81,19 @@ class CampaignForm extends React.Component {
 
   render() {
     const errors = this.props.errors;
+    // const preview = this.state.photoUrl ? <img src= {this.state.photoUrl} />
     const { step } = this.state;
     const {creator_type, location, banking_location, title, description, duration} = this.state
     const values = { creator_type, location, banking_location, title, description, duration }
     switch(step) {
       case 1:
         return (
-          <CampaignFormPt1 nextStep={this.nextStep} handleInput={this.handleInput} values={values}
+          <CampaignFormPt1 errors={errors} nextStep={this.nextStep} handleInput={this.handleInput} values={values}
           />
         )
       case 2:
         return (
-          <CampaignFormPt2 prevStep={this.prevStep} handleFile={this.handleFile} handleInput={this.handleInput} values={values} handleSubmit={this.handleSubmit} />
+          <CampaignFormPt2 errors={errors} prevStep={this.prevStep} handleFile={this.handleFile} handleInput={this.handleInput} values={values} handleSubmit={this.handleSubmit} />
         )
     }
   }

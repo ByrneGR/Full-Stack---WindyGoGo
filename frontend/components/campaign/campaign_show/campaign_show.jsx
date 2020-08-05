@@ -7,6 +7,7 @@ class CampaignShow extends React.Component {
   }
   
   campaignRender() {
+    debugger
     if (this.props.campaign) {
     return (
       <div id="campaignshowparent">

@@ -9,6 +9,7 @@ class Api::CampaignsController < ApplicationController
       render json: @campaign.errors.full_messages, status: 401
     end  
 
+
   end
   
   def show

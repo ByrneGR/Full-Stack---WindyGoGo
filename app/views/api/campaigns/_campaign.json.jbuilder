@@ -1,2 +1,2 @@
 json.extract! campaign, :id, :title, :description, :duration, :creator_id, :image
-json.photoUrl url_for(campaign.image) if campaign.image.attached?
+  json.photoUrl url_for(campaign.image)

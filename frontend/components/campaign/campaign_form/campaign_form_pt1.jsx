@@ -278,6 +278,7 @@ export class CampaignFormPt1 extends Component {
 
   render() {
     const errors = this.props.errors
+    debugger
     const { values, handleInput } = this.props;
     const banking_location = values.banking_location
     const creator_type = values.creator_type
@@ -296,7 +297,7 @@ export class CampaignFormPt1 extends Component {
             {this.banking_location()}
           </div>
           <button disabled={!isEnabled} className="btn-formp1" onClick={this.continue}>START MY CAMPAIGN</button>
-          {errors}
+          <div>{errors}</div>
         </form>
       </div>
     );

@@ -89,7 +89,7 @@ export class CampaignFormPt2 extends Component {
             <br></br>
             <button
               className="btn-formp1" id="campaignform2btn" onClick={this.props.handleSubmit}>LAUNCH CAMPAIGN</button>
-              {errors}
+            <div>{errors}</div>
           </div>
         </form>
       </div>

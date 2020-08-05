@@ -90,7 +90,7 @@
 /*!**********************************************!*\
   !*** ./frontend/actions/campaign_actions.js ***!
   \**********************************************/
-/*! exports provided: RECEIVE_CAMPAIGNS, RECEIVE_CAMPAIGN, REMOVE_CAMPAIGN, fetchCampaigns, fetchCampaign, createCampaign, deleteCampaign */
+/*! exports provided: RECEIVE_CAMPAIGNS, RECEIVE_CAMPAIGN, REMOVE_CAMPAIGN, RECEIVE_ERRORS, fetchCampaigns, fetchCampaign, createCampaign, deleteCampaign */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -98,6 +98,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_CAMPAIGNS", function() { return RECEIVE_CAMPAIGNS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_CAMPAIGN", function() { return RECEIVE_CAMPAIGN; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_CAMPAIGN", function() { return REMOVE_CAMPAIGN; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ERRORS", function() { return RECEIVE_ERRORS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCampaigns", function() { return fetchCampaigns; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCampaign", function() { return fetchCampaign; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createCampaign", function() { return createCampaign; });
@@ -107,6 +108,7 @@ __webpack_require__.r(__webpack_exports__);
 var RECEIVE_CAMPAIGNS = 'RECEIVE_CAMPAIGNS';
 var RECEIVE_CAMPAIGN = 'RECEIVE_CAMPAIGN';
 var REMOVE_CAMPAIGN = 'REMOVE_CAMPAIGN';
+var RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 
 var receiveCampaigns = function receiveCampaigns(campaigns) {
   return {
@@ -129,6 +131,13 @@ var removeCampaign = function removeCampaign(campaignId) {
   };
 };
 
+var receiveErrors = function receiveErrors(errors) {
+  return {
+    type: RECEIVE_ERRORS,
+    errors: errors
+  };
+};
+
 var fetchCampaigns = function fetchCampaigns() {
   return function (dispatch) {
     return Object(_util_campaign_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchcampaigns"])().then(function (campaigns) {
@@ -147,6 +156,8 @@ var createCampaign = function createCampaign(campaign) {
   return function (dispatch) {
     return Object(_util_campaign_api_util__WEBPACK_IMPORTED_MODULE_0__["createcampaign"])(campaign).then(function (campaign) {
       return dispatch(receiveCampaign(campaign));
+    }, function (errors) {
+      return dispatch(receiveErrors(errors.responseJSON));
     });
   };
 };
@@ -470,7 +481,8 @@ var CampaignForm = /*#__PURE__*/function (_React$Component) {
       title: "My Campaign Title",
       description: "",
       duration: 30,
-      imageFile: null
+      imageFile: null,
+      imageUrl: null
     };
     _this.nextStep = _this.nextStep.bind(_assertThisInitialized(_this));
     _this.prevStep = _this.prevStep.bind(_assertThisInitialized(_this));
@@ -493,14 +505,29 @@ var CampaignForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleFile",
     value: function handleFile(e) {
-      this.setState({
-        imageFile: e.currentTarget.files[0]
-      });
+      var _this3 = this;
+
+      var file = e.currentTarget.files[0];
+      var fileReader = new FileReader();
+
+      fileReader.onloadend = function () {
+        _this3.setState({
+          imageFile: file,
+          imageURL: fileReader.result
+        });
+      };
+
+      if (file) {
+        fileReader.readAsDataURL(file);
+      }
+
+      ;
+      debugger;
     }
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
-      var _this3 = this;
+      var _this4 = this;
 
       e.preventDefault();
       var formData = new FormData();
@@ -510,15 +537,20 @@ var CampaignForm = /*#__PURE__*/function (_React$Component) {
       formData.append('campaign[banking_location]', this.state.banking_location);
       formData.append('campaign[description]', this.state.description);
       formData.append('campaign[duration]', this.state.duration);
-      formData.append('campaign[image]', this.state.imageFile);
+
+      if (this.state.imageFile) {
+        formData.append('campaign[image]', this.state.imageFile);
+      }
+
       this.props.createCampaign(formData).then(function () {
-        return _this3.props.history.push("api/campaigns/".concat(_this3.props.campaign.id));
+        return _this4.props.history.push("api/campaigns/".concat(_this4.props.campaign.id));
       });
     }
   }, {
     key: "render",
     value: function render() {
-      var errors = this.props.errors;
+      var errors = this.props.errors; // const preview = this.state.photoUrl ? <img src= {this.state.photoUrl} />
+
       var step = this.state.step;
       var _this$state = this.state,
           creator_type = _this$state.creator_type,
@@ -539,6 +571,7 @@ var CampaignForm = /*#__PURE__*/function (_React$Component) {
       switch (step) {
         case 1:
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_campaign_form_pt1__WEBPACK_IMPORTED_MODULE_1__["default"], {
+            errors: errors,
             nextStep: this.nextStep,
             handleInput: this.handleInput,
             values: values
@@ -546,6 +579,7 @@ var CampaignForm = /*#__PURE__*/function (_React$Component) {
 
         case 2:
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_campaign_form_pt2__WEBPACK_IMPORTED_MODULE_2__["default"], {
+            errors: errors,
             prevStep: this.prevStep,
             handleFile: this.handleFile,
             handleInput: this.handleInput,
@@ -843,6 +877,7 @@ var CampaignFormPt1 = /*#__PURE__*/function (_Component) {
     key: "render",
     value: function render() {
       var errors = this.props.errors;
+      debugger;
       var _this$props = this.props,
           values = _this$props.values,
           handleInput = _this$props.handleInput;
@@ -864,7 +899,7 @@ var CampaignFormPt1 = /*#__PURE__*/function (_Component) {
         disabled: !isEnabled,
         className: "btn-formp1",
         onClick: this["continue"]
-      }, "START MY CAMPAIGN"), errors));
+      }, "START MY CAMPAIGN"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, errors)));
     }
   }]);
 
@@ -1009,7 +1044,7 @@ var CampaignFormPt2 = /*#__PURE__*/function (_Component) {
         className: "btn-formp1",
         id: "campaignform2btn",
         onClick: this.props.handleSubmit
-      }, "LAUNCH CAMPAIGN"), errors)));
+      }, "LAUNCH CAMPAIGN"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, errors))));
     }
   }]);
 
@@ -1073,6 +1108,8 @@ var CampaignShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "campaignRender",
     value: function campaignRender() {
+      debugger;
+
       if (this.props.campaign) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           id: "campaignshowparent"
