@@ -355,6 +355,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _campaign_campaign_form_campaign_form_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./campaign/campaign_form/campaign_form_container */ "./frontend/components/campaign/campaign_form/campaign_form_container.jsx");
 /* harmony import */ var _campaign_campaign_show_campaign_show_container_jsx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./campaign/campaign_show/campaign_show_container.jsx */ "./frontend/components/campaign/campaign_show/campaign_show_container.jsx");
 /* harmony import */ var _contribution_contribution_form_container__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./contribution/contribution_form_container */ "./frontend/components/contribution/contribution_form_container.jsx");
+/* harmony import */ var _campaign_campaign_index_campaign_index_container_jsx__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./campaign/campaign_index/campaign_index_container.jsx */ "./frontend/components/campaign/campaign_index/campaign_index_container.jsx");
+
 
 
 
@@ -387,7 +389,12 @@ var App = function App() {
     to: "/start-a-campaign"
   }, "Start a Campaign"), "\xA0\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "divider"
-  }), "\xA0\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_welcome_welcome_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_utils__WEBPACK_IMPORTED_MODULE_5__["AuthRoute"], {
+  }), "\xA0\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_welcome_welcome_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Route"], {
+    exact: true,
+    path: "/"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Redirect"], {
+    to: "/home"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_utils__WEBPACK_IMPORTED_MODULE_5__["AuthRoute"], {
     path: "/login",
     component: _session_login_form_container__WEBPACK_IMPORTED_MODULE_2__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_utils__WEBPACK_IMPORTED_MODULE_5__["AuthRoute"], {
@@ -402,6 +409,9 @@ var App = function App() {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Route"], {
     path: "/contributions/:campaignId/new",
     component: _contribution_contribution_form_container__WEBPACK_IMPORTED_MODULE_9__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Route"], {
+    path: "/home",
+    component: _campaign_campaign_index_campaign_index_container_jsx__WEBPACK_IMPORTED_MODULE_10__["default"]
   }));
 };
 
@@ -534,19 +544,19 @@ var CampaignForm = /*#__PURE__*/function (_React$Component) {
       var _this4 = this;
 
       e.preventDefault();
-      var formData = new FormData();
-      formData.append('campaign[title]', this.state.title);
-      formData.append('campaign[creator_type]', this.state.creator_type);
-      formData.append('campaign[location]', this.state.location);
-      formData.append('campaign[banking_location]', this.state.banking_location);
-      formData.append('campaign[description]', this.state.description);
-      formData.append('campaign[duration]', this.state.duration);
+      var formData1 = new FormData();
+      formData1.append('campaign[title]', this.state.title);
+      formData1.append('campaign[creator_type]', this.state.creator_type);
+      formData1.append('campaign[location]', this.state.location);
+      formData1.append('campaign[banking_location]', this.state.banking_location);
+      formData1.append('campaign[description]', this.state.description);
+      formData1.append('campaign[duration]', this.state.duration);
 
       if (this.state.imageFile) {
-        formData.append('campaign[image]', this.state.imageFile);
+        formData1.append('campaign[image]', this.state.imageFile);
       }
 
-      this.props.createCampaign(formData).then(function () {
+      this.props.createCampaign(formData1).then(function () {
         return _this4.props.history.push("api/campaigns/".concat(_this4.props.campaign.id));
       });
     }
@@ -1056,10 +1066,10 @@ var CampaignFormPt2 = /*#__PURE__*/function (_Component) {
 
 /***/ }),
 
-/***/ "./frontend/components/campaign/campaign_show/campaign_show.jsx":
-/*!**********************************************************************!*\
-  !*** ./frontend/components/campaign/campaign_show/campaign_show.jsx ***!
-  \**********************************************************************/
+/***/ "./frontend/components/campaign/campaign_index/campaign_index.jsx":
+/*!************************************************************************!*\
+  !*** ./frontend/components/campaign/campaign_index/campaign_index.jsx ***!
+  \************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1068,7 +1078,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _contribution_contribution_form_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../contribution/contribution_form_container */ "./frontend/components/contribution/contribution_form_container.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1091,6 +1100,150 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+
+
+
+var CampaignIndex = /*#__PURE__*/function (_React$Component) {
+  _inherits(CampaignIndex, _React$Component);
+
+  var _super = _createSuper(CampaignIndex);
+
+  function CampaignIndex(props) {
+    var _this;
+
+    _classCallCheck(this, CampaignIndex);
+
+    _this = _super.call(this, props);
+    _this.state = _this.props.campaigns;
+    return _this;
+  }
+
+  _createClass(CampaignIndex, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchCampaigns();
+    }
+  }, {
+    key: "campaignRender",
+    value: function campaignRender() {
+      if (this.props.campaigns) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "homepage_parent"
+        }, Object.values(this.props.campaigns).map(function (campaign, idx) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+            to: "/api/campaigns/".concat(campaign.id),
+            className: "homepage_container"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            className: "homepage_images",
+            src: campaign.photoUrl
+          }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            id: "homepage_lowertext"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+            id: "homepage_funding"
+          }, "FUNDING"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+            className: "homepage_title"
+          }, campaign.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+            className: "homepage_description"
+          }, campaign.description)));
+        }));
+      } else {
+        return null;
+      }
+    } // if(this.props.campaign.contributions) {
+    //   return (
+    //     <div>
+    //       {this.props.campaign.contributions.map((contribution, idx) => (
+    //         <li key={contribution.id}>{contribution.name_on_card} - {contribution.contribution_amount}</li>
+    //       ))};
+    //     </div >)
+    // } else return null;
+    // }
+
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        id: "popular_projects"
+      }, "Popular Projects"), this.campaignRender());
+    }
+  }]);
+
+  return CampaignIndex;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (CampaignIndex);
+
+/***/ }),
+
+/***/ "./frontend/components/campaign/campaign_index/campaign_index_container.jsx":
+/*!**********************************************************************************!*\
+  !*** ./frontend/components/campaign/campaign_index/campaign_index_container.jsx ***!
+  \**********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_campaign_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../actions/campaign_actions */ "./frontend/actions/campaign_actions.js");
+/* harmony import */ var _campaign_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./campaign_index */ "./frontend/components/campaign/campaign_index/campaign_index.jsx");
+
+
+
+
+var msp = function msp(state, _ref) {
+  var match = _ref.match;
+  var campaigns = state.entities.campaigns;
+  return {
+    campaigns: campaigns
+  };
+};
+
+var mdp = function mdp(dispatch) {
+  return {
+    fetchCampaigns: function fetchCampaigns() {
+      return dispatch(Object(_actions_campaign_actions__WEBPACK_IMPORTED_MODULE_1__["fetchCampaigns"])());
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(_campaign_index__WEBPACK_IMPORTED_MODULE_2__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/campaign/campaign_show/campaign_show.jsx":
+/*!**********************************************************************!*\
+  !*** ./frontend/components/campaign/campaign_show/campaign_show.jsx ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
 
@@ -2051,7 +2204,7 @@ var campaignsReducer = function campaignsReducer() {
 
   switch (action.type) {
     case _actions_campaign_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CAMPAIGNS"]:
-      action.campaigns;
+      return action.campaigns;
 
     case _actions_campaign_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CAMPAIGN"]:
       return Object.assign({}, state, _defineProperty({}, action.campaign.id, action.campaign));

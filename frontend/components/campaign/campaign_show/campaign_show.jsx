@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link, Route } from 'react-router-dom';
-import ContributionFormContainer from '../../contribution/contribution_form_container'
 
 class CampaignShow extends React.Component {
   constructor(props) {

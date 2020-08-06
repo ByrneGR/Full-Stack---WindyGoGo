@@ -61,19 +61,19 @@ class CampaignForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    const formData = new FormData();
-    formData.append('campaign[title]', this.state.title)
-    formData.append('campaign[creator_type]', this.state.creator_type)
-    formData.append('campaign[location]', this.state.location)
-    formData.append('campaign[banking_location]', this.state.banking_location)
-    formData.append('campaign[description]', this.state.description)
-    formData.append('campaign[duration]', this.state.duration)
+    const formData1 = new FormData();
+    formData1.append('campaign[title]', this.state.title)
+    formData1.append('campaign[creator_type]', this.state.creator_type)
+    formData1.append('campaign[location]', this.state.location)
+    formData1.append('campaign[banking_location]', this.state.banking_location)
+    formData1.append('campaign[description]', this.state.description)
+    formData1.append('campaign[duration]', this.state.duration)
     if (this.state.imageFile) {
 
-      formData.append('campaign[image]', this.state.imageFile)
+      formData1.append('campaign[image]', this.state.imageFile)
     }
     this.props
-      .createCampaign(formData)
+      .createCampaign(formData1)
       .then(() => this.props.history.push(`api/campaigns/${this.props.campaign.id}`));
 
     }

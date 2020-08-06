@@ -6,7 +6,7 @@ class Api::ContributionsController < ApplicationController
     if @contribution.save
       render :show
     else
-      debugger
+    
       render json: @contribution.errors.full_messages, status: 401
     end  
 

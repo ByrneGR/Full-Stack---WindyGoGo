@@ -4,9 +4,8 @@ const campaignsReducer = (state = {}, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_CAMPAIGNS:
-      action.campaigns;
+      return action.campaigns;
     case RECEIVE_CAMPAIGN:
-
       return Object.assign({}, state, {[action.campaign.id]: action.campaign})      
     default:
       return state;  

@@ -1,18 +1,16 @@
 import { connect } from "react-redux";
 import { fetchCampaigns } from "../../../actions/campaign_actions";
-import CampaignShow from "./campaign_show";
+import CampaignIndex from "./campaign_index";
 
 const msp = (state, { match }) => {
-  const id = parseInt(match.params.campaignId);
-  const campaign = state.entities.campaigns[id]
+  const campaigns = state.entities.campaigns
   return {
-    campaign,
-    id
+    campaigns,
   }
 };
 
 const mdp = (dispatch) => ({
-  fetchCampaign: (campaignId) => dispatch(fetchCampaign(campaignId)),
+  fetchCampaigns: () => dispatch(fetchCampaigns()),
 });
 
-export default connect(msp, mdp)(CampaignShow);
+export default connect(msp, mdp)(CampaignIndex);
