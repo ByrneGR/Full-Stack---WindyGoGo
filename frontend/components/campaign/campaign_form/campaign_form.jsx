@@ -8,6 +8,7 @@ class CampaignForm extends React.Component {
     super(props);
     this.state = {
       step: 1,
+      funding_goal: 1000,
       creator_type: "",
       location: "",
       banking_location: "",
@@ -65,6 +66,7 @@ class CampaignForm extends React.Component {
     formData1.append('campaign[title]', this.state.title)
     formData1.append('campaign[creator_type]', this.state.creator_type)
     formData1.append('campaign[location]', this.state.location)
+    formData1.append('campaign[funding_goal]', this.state.funding_goal)
     formData1.append('campaign[banking_location]', this.state.banking_location)
     formData1.append('campaign[description]', this.state.description)
     formData1.append('campaign[duration]', this.state.duration)
@@ -82,8 +84,8 @@ class CampaignForm extends React.Component {
     const errors = this.props.errors;
     // const preview = this.state.photoUrl ? <img src= {this.state.photoUrl} />
     const { step } = this.state;
-    const {creator_type, location, banking_location, title, description, duration} = this.state
-    const values = { creator_type, location, banking_location, title, description, duration }
+    const {creator_type, location, banking_location, title, description, duration, imageFile, funding_goal} = this.state
+    const values = { creator_type, location, banking_location, title, description, duration, imageFile, funding_goal }
     switch(step) {
       case 1:
         return (

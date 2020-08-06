@@ -35,7 +35,7 @@ class ContributionForm extends React.Component {
     if (this.props.campaign) {
     return (
       <div className="form-headers">
-        <h1 className="campaign_form-header1">
+        <h1 id="contributionformheader" className="campaign_form-header1">
          {this.props.campaign.title}
         </h1>
       </div>
@@ -93,7 +93,7 @@ class ContributionForm extends React.Component {
 
   contribution_appearance() {
     return (
-      <div>
+      <div id="contribution_appearance">
         <h1 className="question-header1">Contribution Appearance</h1>
         <div className="campaign-radio">
           <input
@@ -125,7 +125,7 @@ class ContributionForm extends React.Component {
 
     return (
       <div>
-        <form>
+        <form id="contributionform">
       <div>{this.header()}</div>
         {this.contributionAmount()}
           {this.nameAndCardInfo()}

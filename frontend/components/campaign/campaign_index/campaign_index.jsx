@@ -17,6 +17,7 @@ class CampaignIndex extends React.Component {
   campaignRender() {
 
     if (this.props.campaigns) {
+      let lastIndex = Object.values(this.props.campaigns).length - 1
       return (
         <div className="homepage_parent">
           {Object.values(this.props.campaigns).map((campaign, idx) => (
@@ -28,7 +29,8 @@ class CampaignIndex extends React.Component {
                 <span className="homepage_description">{campaign.description}</span>
                 </div>
             </Link>
-          ))}
+          )
+          )}
         </div>
       )
     } else {

@@ -216,3 +216,39 @@ a {
       height: 650px;
     }
 
+    .dropdown {
+        position: relative;
+        display: inline-block;
+        height: 40px;
+    }
+
+    #logout {
+    display: none;
+    position: absolute;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    text-align: center;
+    width: 90px;
+    font-family: Helvetica,"Sans-serif";
+    font-weight: 100px;
+    padding: 5px 5px 5px 5px;
+    top: 40px;
+    right: 1px;
+    background-color: white;
+    }
+
+    #logout:hover {
+       color: #e51075;
+    }
+
+    .dropdown:hover #logout {
+      display: block;
+      cursor: pointer;
+    }
+
+    #username_dropdown {
+      margin-bottom: 0px;
+    }
+
+
+

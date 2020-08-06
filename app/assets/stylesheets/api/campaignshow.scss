@@ -7,7 +7,7 @@
 
 #campaignshowheader {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   margin-bottom: 50px;
 }
@@ -15,14 +15,121 @@
 #campaignshowheader-right {
   display: flex;
   flex-direction: column;
-
+  height: 350px;
+  margin-top: 25px;
+  width: 450px;
+    
 }
 
 #campaignshowheader-right > span {
-  padding: 30px;
+  
 }
 
 #campaignshowlower {
   border-top: 1px solid #2a2a2a;
   padding: 20px;
+}
+
+.showpageimage {
+  max-width: 600px;
+  max-height: 350px;
+  margin-top: 20px;
+}
+
+#showpage_funding {
+  text-align: left;
+  font-size: 12px;
+  color: #088366;
+  font-family: Helvetica,
+    "Sans-serif";
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+}
+
+#showpage_title {
+  font-family: Helvetica,"Sans-serif";
+  color: #2a2a2a;
+  font-weight: 500;
+  font-size: 22px;
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+#showpage_description {
+  font-family: Helvetica, "Sans-serif";
+  color: #2a2a2a;
+  font-weight: 200;
+  font-size: 16px;
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+#showpage_creator {
+  text-align: left;
+  margin-bottom: 30px;
+  font-family: Helvetica,
+    "Sans-serif";
+  color: #2a2a2a;
+}
+
+.space {
+  width: 50px;
+}
+
+#btn-backit {
+  margin-top: 50px;
+  width: 80px;
+  height: 15px;
+  font-size: 14px;
+  background-color: #e51075;
+  text-decoration: none;
+  border-radius: 3px;
+}
+
+#btn-backit:hover {
+  background-color: #E5005F;
+}
+
+#progressbar {
+  height: 24px;
+  width: 20%;
+  background-color: #088366;
+  border-radius: 20%;
+  height: 10px;
+
+}
+
+.progressbar_parent {
+  width: 450px;
+  background-color: #6a6a6a;
+  border-radius: 15%;
+  height: 10px;
+  margin-bottom: 3px;
+}
+
+#showpage_amountraised {
+  text-align: left;
+  margin-bottom: 5px;
+  font-family: Helvetica,
+  "Sans-serif";
+  color: #2a2a2a;
+  font-weight: 700;
+}
+
+#raisedandbackers {
+  display: flex;
+  justify-content: space-between;
+}
+
+#showpage_backers {
+  color: #2a2a2a;
+  font-family: Helvetica,
+    "Sans-serif";
+  margin-right: 5px;
+}
+
+#showpage_percent_raised {
+  color: #2a2a2a;
+  font-family: Helvetica,
+  "Sans-serif";
 }

@@ -13,11 +13,32 @@ class Campaign < ApplicationRecord
     foreign_key: :campaign_id,
     class_name: :Contribution
 
+  has_many :backers,
+    through: :contributions,
+    source: :backer
+
+
   has_one_attached :image
 
   def ensure_image
     unless self.image.attached?
       errors[:image] << "Must be attached"
     end  
+  end
+  
+  def number_of_backers
+    return backers.length
+  end  
+
+  def amount_raised
+    sum = 0
+    self.contributions.each do |contribution|
+      sum += contribution.contribution_amount
+    end
+    return sum  
+  end  
+
+  def percent_raised
+    return ((self.amount_raised * 1.0) / self.funding_goal * 1.0).round(2) * 100
   end  
 end

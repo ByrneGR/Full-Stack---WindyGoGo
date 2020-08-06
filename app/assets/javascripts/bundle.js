@@ -490,6 +490,7 @@ var CampaignForm = /*#__PURE__*/function (_React$Component) {
 
     _this.state = {
       step: 1,
+      funding_goal: 1000,
       creator_type: "",
       location: "",
       banking_location: "",
@@ -548,6 +549,7 @@ var CampaignForm = /*#__PURE__*/function (_React$Component) {
       formData1.append('campaign[title]', this.state.title);
       formData1.append('campaign[creator_type]', this.state.creator_type);
       formData1.append('campaign[location]', this.state.location);
+      formData1.append('campaign[funding_goal]', this.state.funding_goal);
       formData1.append('campaign[banking_location]', this.state.banking_location);
       formData1.append('campaign[description]', this.state.description);
       formData1.append('campaign[duration]', this.state.duration);
@@ -572,14 +574,18 @@ var CampaignForm = /*#__PURE__*/function (_React$Component) {
           banking_location = _this$state.banking_location,
           title = _this$state.title,
           description = _this$state.description,
-          duration = _this$state.duration;
+          duration = _this$state.duration,
+          imageFile = _this$state.imageFile,
+          funding_goal = _this$state.funding_goal;
       var values = {
         creator_type: creator_type,
         location: location,
         banking_location: banking_location,
         title: title,
         description: description,
-        duration: duration
+        duration: duration,
+        imageFile: imageFile,
+        funding_goal: funding_goal
       };
 
       switch (step) {
@@ -971,10 +977,17 @@ var CampaignFormPt2 = /*#__PURE__*/function (_Component) {
     key: "render",
     value: function render() {
       var errors = this.props.errors;
+      var _this$props = this.props,
+          values = _this$props.values,
+          handleInput = _this$props.handleInput;
+      var banking_location = values.banking_location;
+      var imageFile = values.imageFile;
+      var isEnabled = imageFile !== null && banking_location.length > 0;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "campaignformp2"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn-formp1",
+        disabled: !isEnabled,
         id: "launch-top",
         onClick: this.props.handleSubmit
       }, "LAUNCH CAMPAIGN"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -1044,6 +1057,18 @@ var CampaignFormPt2 = /*#__PURE__*/function (_Component) {
         className: "input-label_campaign"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "input-label_header"
+      }, "Campaign Goal Amount (USD)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "sublabel"
+      }, "How much money would you like to raise for this campaign? A minimum goal of $500 is required. Make sure you keep in mind our fees and your reserved funds."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-field_campaign",
+        type: "text",
+        id: "funding_goal",
+        value: this.props.values.funding_goal,
+        onChange: this.props.handleInput("funding_goal")
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "input-label_campaign"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "input-label_header"
       }, "Campaign Duration"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sublabel"
       }, "How many days will you be running your campaign for? You can run a campaign for any number of days, with a 60 day duration maximum."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -1055,6 +1080,7 @@ var CampaignFormPt2 = /*#__PURE__*/function (_Component) {
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn-formp1",
         id: "campaignform2btn",
+        disabled: !isEnabled,
         onClick: this.props.handleSubmit
       }, "LAUNCH CAMPAIGN"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, errors))));
     }
@@ -1127,6 +1153,7 @@ var CampaignIndex = /*#__PURE__*/function (_React$Component) {
     key: "campaignRender",
     value: function campaignRender() {
       if (this.props.campaigns) {
+        var lastIndex = Object.values(this.props.campaigns).length - 1;
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "homepage_parent"
         }, Object.values(this.props.campaigns).map(function (campaign, idx) {
@@ -1266,7 +1293,7 @@ var CampaignShow = /*#__PURE__*/function (_React$Component) {
   _createClass(CampaignShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.fetchCampaign(this.props.id);
+      this.props.fetchCampaign(this.props.id); // this.progressBar()
     }
   }, {
     key: "contributions",
@@ -1280,6 +1307,13 @@ var CampaignShow = /*#__PURE__*/function (_React$Component) {
       } else return null;
     }
   }, {
+    key: "progressBar",
+    value: function progressBar() {
+      var progress = document.getElementById("progressbar");
+      var percent = this.props.campaign.amount_raised / this.props.campaign.funding_goal * 100;
+      progress.style.width = percent + "%";
+    }
+  }, {
     key: "campaignRender",
     value: function campaignRender() {
       if (this.props.campaign) {
@@ -1288,15 +1322,38 @@ var CampaignShow = /*#__PURE__*/function (_React$Component) {
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           id: "campaignshowheader"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "showpageimage",
           src: this.props.campaign.photoUrl
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "space"
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           id: "campaignshowheader-right"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.props.campaign.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          id: "showpage_funding"
+        }, "FUNDING"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          id: "showpage_title"
+        }, this.props.campaign.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          id: "showpage_description"
+        }, this.props.campaign.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          id: "showpage_creator"
+        }, this.props.campaign.creator.first_name, " ", this.props.campaign.creator.last_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          id: "raisedandbackers"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          id: "showpage_amountraised"
+        }, "$", this.props.campaign.amount_raised, " USD"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          id: "showpage_backers"
+        }, this.props.campaign.number_of_backers, " backers")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          "class": "progressbar_parent"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          id: "progressbar"
+        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          id: "showpage_percent_raised"
+        }, this.props.campaign.percent_raised, "% of $", this.props.campaign.funding_goal, " Flexible Goal"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          className: "btn-formp1",
+          id: "btn-backit",
           to: "/contributions/".concat(this.props.campaign.id, "/new"),
           campaign: this.props.campaign
-        }, "BACK IT"), "              ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          id: "campaignshowlower"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.props.campaign.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.contributions())));
+        }, "BACK IT"))));
       } else {
         return null;
       }
@@ -1442,6 +1499,7 @@ var ContributionForm = /*#__PURE__*/function (_React$Component) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "form-headers"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+          id: "contributionformheader",
           className: "campaign_form-header1"
         }, this.props.campaign.title));
       } else {
@@ -1491,7 +1549,9 @@ var ContributionForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "contribution_appearance",
     value: function contribution_appearance() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "contribution_appearance"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "question-header1"
       }, "Contribution Appearance"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "campaign-radio"
@@ -1516,7 +1576,9 @@ var ContributionForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.header()), this.contributionAmount(), this.nameAndCardInfo(), this.contribution_appearance(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        id: "contributionform"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.header()), this.contributionAmount(), this.nameAndCardInfo(), this.contribution_appearance(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn-formp1",
         id: "campaignform2btn",
         onClick: this.handleSubmit
@@ -2062,8 +2124,13 @@ __webpack_require__.r(__webpack_exports__);
   var currentUser = _ref.currentUser,
       logout = _ref.logout,
       openModal = _ref.openModal;
-  var display = currentUser ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, currentUser.first_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+  var display = currentUser ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    "class": "dropdown"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "navbtn",
+    id: "username_dropdown"
+  }, currentUser.first_name, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    id: "logout",
     onClick: logout
   }, "Log Out")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "navbtn",

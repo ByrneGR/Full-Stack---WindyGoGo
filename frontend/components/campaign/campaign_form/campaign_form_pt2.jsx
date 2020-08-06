@@ -3,10 +3,14 @@ import React, { Component } from 'react'
 export class CampaignFormPt2 extends Component {
   render() {
     const errors = this.props.errors
+    const { values, handleInput } = this.props;
+    const banking_location = values.banking_location    
+    const imageFile = values.imageFile
+    const isEnabled = imageFile !== null && banking_location.length > 0
     return (
       <div id="campaignformp2">
         <button
-          className="btn-formp1" id="launch-top" onClick={this.props.handleSubmit}>LAUNCH CAMPAIGN</button>   
+          className="btn-formp1" disabled={!isEnabled} id="launch-top" onClick={this.props.handleSubmit}>LAUNCH CAMPAIGN</button>   
         <button
           className="btn-formp1" id="goback-top" onClick={this.props.prevStep}>BACK</button>                     
         <form
@@ -74,6 +78,20 @@ export class CampaignFormPt2 extends Component {
             </label>
             <br></br>
             <label className="input-label_campaign">
+              <h2 className="input-label_header">Campaign Goal Amount (USD)</h2>
+              <div className="sublabel">How much money would you like to raise for this campaign? A minimum goal of $500 is required. 
+               Make sure you keep in mind our fees and your reserved funds.
+              </div>
+              <input
+                className="form-field_campaign"
+                type="text"
+                id="funding_goal"
+                value={this.props.values.funding_goal}
+                onChange={this.props.handleInput("funding_goal")}
+              />
+            </label>
+            <br></br>
+            <label className="input-label_campaign">
               <h2 className="input-label_header">Campaign Duration</h2>
               <div className="sublabel">How many days will you be running your campaign for? 
               You can run a campaign for any number of days, with a 60 day duration maximum.    
@@ -88,7 +106,7 @@ export class CampaignFormPt2 extends Component {
             </label>
             <br></br>
             <button
-              className="btn-formp1" id="campaignform2btn" onClick={this.props.handleSubmit}>LAUNCH CAMPAIGN</button>
+              className="btn-formp1" id="campaignform2btn" disabled={!isEnabled}  onClick={this.props.handleSubmit}>LAUNCH CAMPAIGN</button>
             <div>{errors}</div>
           </div>
         </form>
