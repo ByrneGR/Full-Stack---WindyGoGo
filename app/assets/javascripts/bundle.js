@@ -634,9 +634,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var msp = function msp(state) {
+  var last = Object.values(state.entities.campaigns).length - 1;
   return {
     errors: state.errors.session,
-    campaign: Object.values(state.entities.campaigns)[0]
+    campaign: Object.values(state.entities.campaigns)[last]
   };
 };
 
