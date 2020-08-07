@@ -1,6 +1,6 @@
-**WindyGoGo**\
+**WindyGoGo**
 
- App Academy Bootcamp Cohort May '20 Project\
+ App Academy Bootcamp Cohort May '20 Project
 
 
 ![Imgur](https://imgur.com/9UkEbOs.jpg)
