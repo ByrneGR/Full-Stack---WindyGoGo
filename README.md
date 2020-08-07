@@ -1,24 +1,13 @@
-# README
+**WindyGoGo**
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+README
 
-Things you may want to cover:
+WindyGoGo is a clone of the popular crowdfunding site, Indiegogo. The goal of WindyGoGo is to enhance my backend (Ruby on Rails) and frontend (React/Redux/CSS) skills by replicating an established successful web app and to showcase my abilitites as a developer.
 
-* Ruby version
+CONTACT
 
-* System dependencies
+If you have any questions or comments, please reach me by email at ByrneGR@gmail.com
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+ACKNOWLEDGEMENTS
+*https://fonts.google.com/
+*https://www.canva.com/
