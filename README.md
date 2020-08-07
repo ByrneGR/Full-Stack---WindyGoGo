@@ -1,4 +1,4 @@
-**WindyGoGo**
+# WindyGoGo
 
  Project for App Academy Bootcamp Cohort May '20
 
