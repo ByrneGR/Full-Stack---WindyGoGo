@@ -3,7 +3,7 @@
 
 README
 
-!(image)[https://imgur.com/a/Kl0DfoB]
+![Imgur Image](https://imgur.com/a/Kl0DfoB.jpg)
 
 WindyGoGo is a clone of the popular crowdfunding site, Indiegogo. The goal of WindyGoGo is to enhance my backend (Ruby on Rails) and frontend (React/Redux/CSS) skills by replicating an established successful web app and to showcase my abilitites as a developer.
 
