@@ -1,4 +1,5 @@
 **WindyGoGo**
+App Academy Bootcamp Cohort May '20 Final Project
 
 README
 
@@ -9,5 +10,5 @@ CONTACT
 If you have any questions or comments, please reach me by email at ByrneGR@gmail.com
 
 ACKNOWLEDGEMENTS
-*https://fonts.google.com/
-*https://www.canva.com/
+* https://fonts.google.com/
+* https://www.canva.com/
