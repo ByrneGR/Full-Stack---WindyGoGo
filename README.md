@@ -1,4 +1,4 @@
-**WindyGoGo**
+**WindyGoGo**\
  App Academy Bootcamp Cohort May '20 Final Project
 
 README
