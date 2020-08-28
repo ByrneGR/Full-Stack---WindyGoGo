@@ -1,9 +1,17 @@
-export const fetchcampaigns = () => {
+export const fetchallcampaigns = () => {
   return $.ajax({
-    url: 'api/campaigns',
+    url: 'api/users/:user_id/campaigns',
     method: 'GET'
   })
 }
+
+export const fetchusercampaigns = (userId) => {
+  return $.ajax({
+    url: `api/users/${userId}/campaigns`,
+    method: 'GET'
+  })
+}
+
 export const fetchcampaign = (campaignId) => {
   return $.ajax({
     url: `api/campaigns/${campaignId}`,

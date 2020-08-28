@@ -90,7 +90,7 @@
 /*!**********************************************!*\
   !*** ./frontend/actions/campaign_actions.js ***!
   \**********************************************/
-/*! exports provided: RECEIVE_CAMPAIGNS, RECEIVE_CAMPAIGN, REMOVE_CAMPAIGN, RECEIVE_ERRORS, fetchCampaigns, fetchCampaign, createCampaign, deleteCampaign */
+/*! exports provided: RECEIVE_CAMPAIGNS, RECEIVE_CAMPAIGN, REMOVE_CAMPAIGN, RECEIVE_ERRORS, fetchAllCampaigns, fetchUserCampaigns, fetchCampaign, createCampaign, deleteCampaign */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -99,7 +99,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_CAMPAIGN", function() { return RECEIVE_CAMPAIGN; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_CAMPAIGN", function() { return REMOVE_CAMPAIGN; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ERRORS", function() { return RECEIVE_ERRORS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCampaigns", function() { return fetchCampaigns; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAllCampaigns", function() { return fetchAllCampaigns; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchUserCampaigns", function() { return fetchUserCampaigns; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCampaign", function() { return fetchCampaign; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createCampaign", function() { return createCampaign; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteCampaign", function() { return deleteCampaign; });
@@ -138,9 +139,16 @@ var receiveErrors = function receiveErrors(errors) {
   };
 };
 
-var fetchCampaigns = function fetchCampaigns() {
+var fetchAllCampaigns = function fetchAllCampaigns() {
   return function (dispatch) {
-    return Object(_util_campaign_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchcampaigns"])().then(function (campaigns) {
+    return Object(_util_campaign_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchallcampaigns"])().then(function (campaigns) {
+      return dispatch(receiveCampaigns(campaigns));
+    });
+  };
+};
+var fetchUserCampaigns = function fetchUserCampaigns(userId) {
+  return function (dispatch) {
+    return Object(_util_campaign_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchusercampaigns"])(userId).then(function (campaigns) {
       return dispatch(receiveCampaigns(campaigns));
     });
   };
@@ -1150,7 +1158,7 @@ var CampaignIndex = /*#__PURE__*/function (_React$Component) {
   _createClass(CampaignIndex, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.fetchCampaigns();
+      this.props.fetchAllCampaigns();
     }
   }, {
     key: "campaignRender",
@@ -1232,8 +1240,8 @@ var msp = function msp(state, _ref) {
 
 var mdp = function mdp(dispatch) {
   return {
-    fetchCampaigns: function fetchCampaigns() {
-      return dispatch(Object(_actions_campaign_actions__WEBPACK_IMPORTED_MODULE_1__["fetchCampaigns"])());
+    fetchAllCampaigns: function fetchAllCampaigns() {
+      return dispatch(Object(_actions_campaign_actions__WEBPACK_IMPORTED_MODULE_1__["fetchAllCampaigns"])());
     }
   };
 };
@@ -2280,10 +2288,14 @@ __webpack_require__.r(__webpack_exports__);
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "navbtn",
     id: "username_dropdown"
-  }, currentUser.first_name, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    id: "logout",
+  }, currentUser.first_name, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    id: "dropdown-items"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    "class": "dropdown-links",
+    to: "/api/campaigns/}"
+  }, "My_Campaigns"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     onClick: logout
-  }, "Log Out")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+  }, "Log Out"))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "navbtn",
     id: "login-btn",
     onClick: function onClick() {
@@ -2725,18 +2737,25 @@ var configureStore = function configureStore() {
 /*!********************************************!*\
   !*** ./frontend/util/campaign_api_util.js ***!
   \********************************************/
-/*! exports provided: fetchcampaigns, fetchcampaign, createcampaign, deletecampaign */
+/*! exports provided: fetchallcampaigns, fetchusercampaigns, fetchcampaign, createcampaign, deletecampaign */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchcampaigns", function() { return fetchcampaigns; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchallcampaigns", function() { return fetchallcampaigns; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchusercampaigns", function() { return fetchusercampaigns; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchcampaign", function() { return fetchcampaign; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createcampaign", function() { return createcampaign; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deletecampaign", function() { return deletecampaign; });
-var fetchcampaigns = function fetchcampaigns() {
+var fetchallcampaigns = function fetchallcampaigns() {
   return $.ajax({
-    url: 'api/campaigns',
+    url: 'api/users/:user_id/campaigns',
+    method: 'GET'
+  });
+};
+var fetchusercampaigns = function fetchusercampaigns(userId) {
+  return $.ajax({
+    url: "api/users/".concat(userId, "/campaigns"),
     method: 'GET'
   });
 };

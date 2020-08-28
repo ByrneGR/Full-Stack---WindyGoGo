@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       resources :campaigns, only: [:index]
     end  
 
-    resources :campaigns, only: [:create, :show, :index, :destroy]
+    resources :campaigns, only: [:create, :show, :destroy]
     resources :contributions, only: [:create, :show, :index]
   end  
 end

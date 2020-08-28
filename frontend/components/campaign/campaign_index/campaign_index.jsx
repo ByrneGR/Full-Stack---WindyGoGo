@@ -10,7 +10,7 @@ class CampaignIndex extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchCampaigns()
+    this.props.fetchAllCampaigns()
   }
 
 

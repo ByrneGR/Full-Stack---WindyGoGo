@@ -19,10 +19,10 @@ class Api::CampaignsController < ApplicationController
   
   def index
     user_id = params[:user_id]
-    if user_id
-      @campaigns = Campaign.find_by(user_id: user_id)
-    else  
+    if user_id == ":user_id"
       @campaigns = Campaign.all
+    else  
+      @campaigns = Campaign.find_by(creator_id: user_id)
     end  
     render :index
   end

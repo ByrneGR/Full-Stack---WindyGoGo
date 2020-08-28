@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { fetchAllCampaigns } from "../../../actions/campaign_actions";
+import { fetchUserCampaigns } from "../../../actions/campaign_actions";
 import CampaignIndex from "./campaign_index";
 
 const msp = (state, { match }) => {
@@ -10,7 +10,7 @@ const msp = (state, { match }) => {
 };
 
 const mdp = (dispatch) => ({
-  fetchAllCampaigns: () => dispatch(fetchAllCampaigns()),
+  fetchUserCampaigns: () => dispatch(fetchUserCampaigns()),
 });
 
 export default connect(msp, mdp)(CampaignIndex);

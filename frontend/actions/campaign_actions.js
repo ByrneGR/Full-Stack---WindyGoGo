@@ -1,4 +1,4 @@
-import {fetchcampaigns, fetchcampaign, createcampaign, deletecampaign} from '../util/campaign_api_util';
+import {fetchallcampaigns, fetchusercampaigns, fetchcampaign, createcampaign, deletecampaign} from '../util/campaign_api_util';
 
 export const RECEIVE_CAMPAIGNS = 'RECEIVE_CAMPAIGNS';
 export const RECEIVE_CAMPAIGN = 'RECEIVE_CAMPAIGN';
@@ -28,8 +28,12 @@ const receiveErrors = (errors) => {
   }
 };
 
-export const fetchCampaigns = () => dispatch => (
-  fetchcampaigns().then(campaigns => dispatch(receiveCampaigns(campaigns)))
+export const fetchAllCampaigns = () => dispatch => (
+  fetchallcampaigns().then(campaigns => dispatch(receiveCampaigns(campaigns)))
+)
+
+export const fetchUserCampaigns = (userId) => dispatch => (
+  fetchusercampaigns(userId).then(campaigns => dispatch(receiveCampaigns(campaigns)))
 )
 
 export const fetchCampaign = campaignId => dispatch => (
