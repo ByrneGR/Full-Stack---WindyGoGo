@@ -1157,9 +1157,10 @@ var CampaignIndex = /*#__PURE__*/function (_React$Component) {
     value: function campaignRender() {
       if (this.props.campaigns) {
         var lastIndex = Object.values(this.props.campaigns).length - 1;
+        debugger;
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "homepage_parent"
-        }, Object.values(this.props.campaigns).map(function (campaign, idx) {
+        }, Object.values(this.props.campaigns).slice(lastIndex - 8, lastIndex).map(function (campaign, idx) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
             to: "/api/campaigns/".concat(campaign.id),
             className: "homepage_container"
@@ -2162,6 +2163,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _gogobanner1_jpg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./gogobanner1.jpg */ "./frontend/components/splash/gogobanner1.jpg");
 /* harmony import */ var _gogobanner2_jpeg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./gogobanner2.jpeg */ "./frontend/components/splash/gogobanner2.jpeg");
 /* harmony import */ var _gogobanner3_jpg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./gogobanner3.jpg */ "./frontend/components/splash/gogobanner3.jpg");
+/* harmony import */ var _campaign_campaign_index_campaign_index_container_jsx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../campaign/campaign_index/campaign_index_container.jsx */ "./frontend/components/campaign/campaign_index/campaign_index_container.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2190,6 +2192,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var SplashPage = /*#__PURE__*/function (_React$Component) {
   _inherits(SplashPage, _React$Component);
 
@@ -2207,7 +2210,7 @@ var SplashPage = /*#__PURE__*/function (_React$Component) {
       var settings = {
         dots: true,
         infinite: true,
-        speed: 3000,
+        speed: 5000,
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true
@@ -2233,7 +2236,15 @@ var SplashPage = /*#__PURE__*/function (_React$Component) {
         src: _gogobanner3_jpg__WEBPACK_IMPORTED_MODULE_4__["default"],
         alt: "d1",
         className: "Dog"
-      }))));
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_campaign_campaign_index_campaign_index_container_jsx__WEBPACK_IMPORTED_MODULE_5__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "helpful-information-banner-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "helpful-information-banner-parts"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "EXPLORE"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "What We Do"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Funding"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "GoFundMe")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "helpful-information-banner-parts"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "ABOUT"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "About Us"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Blog"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Trust and Safety"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Help and Support"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Press"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Careers"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Contact")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "helpful-information-banner-parts"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "ENTREPRENEURS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "How It Works"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Indiegogo vs Kickstarter"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Education Center"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Experts Directory"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Fees"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Enterprise"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "China"))));
     }
   }]);
 

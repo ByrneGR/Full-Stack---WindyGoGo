@@ -4,8 +4,10 @@
 
 
 .homepage_parent {
-  display: flex;
-  max-width: 1200px;
+    grid-template-columns: 25% 25% 25% 25%;
+    display: grid;
+    width: 85%;
+    margin: auto;
 
 }
 
@@ -78,3 +80,22 @@
     "Sans-serif";
   letter-spacing: 2px;
 }
+
+.helpful-information-banner-container {
+  display: flex;
+  padding: 50px 20px;
+  background-color: #FaFaFa;
+  justify-content: space-between;
+
+  #helpful-information-banner-parts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 50px;
+
+    img {
+      height: 50px;
+    }
+  }
+}
+

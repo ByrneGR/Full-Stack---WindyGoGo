@@ -18,9 +18,10 @@ class CampaignIndex extends React.Component {
 
     if (this.props.campaigns) {
       let lastIndex = Object.values(this.props.campaigns).length - 1
+      debugger
       return (
         <div className="homepage_parent">
-          {Object.values(this.props.campaigns).map((campaign, idx) => (
+          {Object.values(this.props.campaigns).slice(lastIndex - 8, lastIndex).map((campaign, idx) => (
             <Link to={`/api/campaigns/${campaign.id}`} className="homepage_container">
                 <img className="homepage_images" src={campaign.photoUrl}/>
                 <div id="homepage_lowertext">
