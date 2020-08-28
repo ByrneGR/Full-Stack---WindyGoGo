@@ -9,7 +9,7 @@ import CampaignFormContainer from './campaign/campaign_form/campaign_form_contai
 import CampaignShowContainer from './campaign/campaign_show/campaign_show_container.jsx'
 import ContributionFormContainer from './contribution/contribution_form_container'
 import CampaignIndexContainer from './campaign/campaign_index/campaign_index_container.jsx'
-
+import SplashPage from './splash/splash.jsx'
 
 
 
@@ -48,7 +48,8 @@ const App = () => (
     <ProtectedRoute path="/start-a-campaign" component={CampaignFormContainer} />
     <Route path="/api/campaigns/:campaignId" component={CampaignShowContainer} />
     <Route path='/contributions/:campaignId/new' component={ContributionFormContainer}/>
-    <Route path='/home' component={CampaignIndexContainer} />
+    {/* <Route path='/home' component={CampaignIndexContainer} /> */}
+    <Route path='/home' component={SplashPage} />
     
   </div>
 );

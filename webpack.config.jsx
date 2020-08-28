@@ -1,4 +1,7 @@
-const path = require('path');
+const path = require("path");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const outputDir = "./dist";
+
 
 module.exports = {
   context: __dirname,
@@ -28,7 +31,56 @@ module.exports = {
           },
         },
       },
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              // you can specify a publicPath here
+              // by default it uses publicPath in webpackOptions.output
+              publicPath: "../",
+              hmr: process.env.NODE_ENV === "development",
+            },
+          },
+          "css-loader",
+          "postcss-loader",
+        ],
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              // you can specify a publicPath here
+              // by default it uses publicPath in webpackOptions.output
+              name: "[name].[ext]",
+              outputPath: "assets/images/",
+              publicPath: "assets/images/",
+            },
+          },
+        ],
+      },
+      {
+        test: /\.scss/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              // you can specify a publicPath here
+              // by default it uses publicPath in webpackOptions.output
+              publicPath: "../",
+              hmr: process.env.NODE_ENV === "development",
+            },
+          },
+          "css-loader",
+          "sass-loader",
+          "postcss-loader",
+        ],
+      },
     ],
   },
+
   devtool: "source-map",
 };
