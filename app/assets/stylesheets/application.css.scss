@@ -216,43 +216,48 @@ a {
       height: 650px;
     }
 
-    .dropdown {
+    .dropdown-trigger {
         position: relative;
         display: inline-block;
-        height: 40px;
+   
     }
 
     #dropdown-items {
-    display: flex;
+    display: none;
     position: absolute;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    min-width: 90px;
     z-index: 100;
-    text-align: center;
-    width: 90px;
+    text-align: left;
     font-family: Helvetica,"Sans-serif";
     font-weight: 100px;
     padding: 5px 5px 5px 5px;
-    // top: 40px;
+    top: 20px;
     right: 1px;
     background-color: white;
     }
 
-    #dropdown-items:hover {
+    .dropdown-links:hover {
        color: #e51075;
     }
 
-    #dropdown-items > .dropdown-links {
-      border-bottom: 1px solid black;
-      padding-bottom: 100px;
+    #dropdown-items a:hover {
+      color: #e51075;
     }
 
-    .dropdown:hover #dropdown-items {
+    .dropdown-trigger:hover > #dropdown-items {
       display: block;
       cursor: pointer;
     }
 
-    #username_dropdown {
-      margin-bottom: 0px;
+    #dropdown-items a {
+      text-decoration: none;
+      color: #6a6a6a;
+    }
+
+    #dropdown-items > li {
+      padding: 10px;
+       list-style-type: none;
     }
 
     .banner {

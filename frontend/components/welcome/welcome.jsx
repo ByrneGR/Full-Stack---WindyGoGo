@@ -4,12 +4,14 @@ import CampaignFormContainer from '../campaign/campaign_form/campaign_form_conta
 
 export default ({ currentUser, logout, openModal }) => {
   const display = currentUser ? (
-    <div class="dropdown">
+    <div class="dropdown-trigger">
       <p className="navbtn" id="username_dropdown">{currentUser.first_name} </p>
-      <div id="dropdown-items">
-        <Link class="dropdown-links" to={`/api/campaigns/}`}>My_Campaigns</Link>
-        <span onClick={logout}>Log Out</span>
-      </div>
+      <ul id="dropdown-items">
+        <li><Link class="dropdown-links" to={`/api/users/${currentUser.id}/campaigns/}`}>My Campaigns</Link></li>
+        <li><Link class="dropdown-links" to={`/api/campaigns/}`}>My Contributions</Link></li>
+        <li><Link class="dropdown-links" to={`/api/campaigns/}`}>Profile</Link></li>
+        <li><span class="dropdown-links" onClick={logout}>Log Out</span></li>
+      </ul>
     </div>) : (
       <div>
         <a className="navbtn" id="login-btn" onClick={() => openModal('login')}>Log In</a>
