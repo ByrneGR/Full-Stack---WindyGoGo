@@ -20,16 +20,17 @@ class MyCampaigns extends React.Component {
       let lastIndex = Object.values(this.props.campaigns).length - 1
       debugger
       return (
-        <div className="homepage_parent">
+        <div className="my_campaign_parent">
           {Object.values(this.props.campaigns).slice(lastIndex - 8, lastIndex).map((campaign, idx) => (
-            <Link to={`/api/campaigns/${campaign.id}`} className="homepage_container">
+            <div className ="my-campaigns-campaign-container">
                 <img className="homepage_images" src={campaign.photoUrl}/>
-                <div id="homepage_lowertext">
-                <span id="homepage_funding">FUNDING</span>
-                <span className="homepage_title">{campaign.title}</span>
-                <span className="homepage_description">{campaign.description}</span>
-                </div>
-            </Link>
+                  <div className="my-campaigns-details">
+                    <Link to={`/api/campaigns/${campaign.id}`} className="homepage_container">{campaign.title}</Link>
+                    <span className="homepage_description">By {campaign.creator.first_name} {campaign.creator.last_name}</span>  
+                    <span className="homepage_description">Campaign Id:{campaign.id}</span>  
+                  </div>
+                  
+            </div>
           )
           )}
         </div>
@@ -54,8 +55,9 @@ class MyCampaigns extends React.Component {
 
   render() {
     return(
-      <div>
+      <div class="my-campaigns-container-all">
         <h1 id="popular_projects">{this.props.currentUser.first_name}</h1>
+        <h2>Campaigns I'm On</h2>
       {this.campaignRender()}
       </div >
     );
