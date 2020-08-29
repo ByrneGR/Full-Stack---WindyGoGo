@@ -7,39 +7,19 @@ class PerkForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      step: 1,
-      funding_goal: 1000,
-      creator_type: "",
-      location: "",
-      banking_location: "",
-      title: "My Campaign Title",
+      title: "",
       description: "",
-      duration: 30,
-      imageFile: null,
-      imageUrl: null,
+      delivery_date: "",
+      quantity_available: "",
+      price: "",
+      retail_price: "",
+      campaign_id: "",
+      
     };
-   this.nextStep = this.nextStep.bind(this); 
-   this.prevStep = this.prevStep.bind(this); 
-   this.handleInput = this.handleInput.bind(this);
-   this.handleSubmit = this.handleSubmit.bind(this);
-   this.handleFile = this.handleFile.bind(this);
+
   }
 
   // proceed to next step
-  nextStep = function() {
-
-    const { step } = this.state;
-    this.setState({
-      step: step + 1
-    });
-  }
-
-  prevStep = function() {
-    const { step } = this.state;
-    this.setState({
-      step: step - 1
-    });
-  }
 
   handleInput(type) { return e => {
     this.setState({[type]: e.currentTarget.value})

@@ -2268,6 +2268,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -2288,8 +2290,6 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 
@@ -2306,38 +2306,15 @@ var PerkForm = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, PerkForm);
 
     _this = _super.call(this, props);
-
-    _defineProperty(_assertThisInitialized(_this), "nextStep", function () {
-      var step = this.state.step;
-      this.setState({
-        step: step + 1
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "prevStep", function () {
-      var step = this.state.step;
-      this.setState({
-        step: step - 1
-      });
-    });
-
     _this.state = {
-      step: 1,
-      funding_goal: 1000,
-      creator_type: "",
-      location: "",
-      banking_location: "",
-      title: "My Campaign Title",
+      title: "",
       description: "",
-      duration: 30,
-      imageFile: null,
-      imageUrl: null
+      delivery_date: "",
+      quantity_available: "",
+      price: "",
+      retail_price: "",
+      campaign_id: ""
     };
-    _this.nextStep = _this.nextStep.bind(_assertThisInitialized(_this));
-    _this.prevStep = _this.prevStep.bind(_assertThisInitialized(_this));
-    _this.handleInput = _this.handleInput.bind(_assertThisInitialized(_this));
-    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
-    _this.handleFile = _this.handleFile.bind(_assertThisInitialized(_this));
     return _this;
   } // proceed to next step
 
@@ -2490,17 +2467,13 @@ var PerkFormQuestions = /*#__PURE__*/function (_Component) {
       var _this$props = this.props,
           values = _this$props.values,
           handleInput = _this$props.handleInput;
-      var banking_location = values.banking_location;
-      var imageFile = values.imageFile;
-      var isEnabled = imageFile !== null && banking_location.length > 0;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "campaignformp2"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn-formp1",
-        disabled: !isEnabled,
         id: "launch-top",
         onClick: this.props.handleSubmit
-      }, "LAUNCH CAMPAIGN"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "ADD PERK"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn-formp1",
         id: "goback-top",
         onClick: this.props.prevStep
@@ -2528,7 +2501,7 @@ var PerkFormQuestions = /*#__PURE__*/function (_Component) {
         className: "form-field_campaign",
         type: "text",
         value: this.props.values.title,
-        onChange: this.props.handleInput("title")
+        onChange: this.props.handleInput("price")
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "input-label_campaign"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
@@ -2537,7 +2510,7 @@ var PerkFormQuestions = /*#__PURE__*/function (_Component) {
         className: "form-field_campaign",
         type: "text",
         value: this.props.values.title,
-        onChange: this.props.handleInput("title")
+        onChange: this.props.handleInput("retail_price")
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "input-label_campaign"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
@@ -2549,7 +2522,7 @@ var PerkFormQuestions = /*#__PURE__*/function (_Component) {
         id: "campaigndescription",
         type: "text",
         value: this.props.values.description,
-        onChange: this.props.handleInput("description")
+        onChange: this.props.handleInput("title")
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "input-label_campaign"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
@@ -2560,7 +2533,7 @@ var PerkFormQuestions = /*#__PURE__*/function (_Component) {
         className: "form-field_campaign",
         type: "file" // value={this.props.values.}
         ,
-        onChange: this.props.handleFile
+        onChange: this.props.handleInput("description")
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "input-label_campaign"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
@@ -2571,7 +2544,7 @@ var PerkFormQuestions = /*#__PURE__*/function (_Component) {
         className: "form-field_campaign",
         type: "text",
         value: this.props.values.location,
-        onChange: this.props.handleInput("location")
+        onChange: this.props.handleInput("quantity_avalable")
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "input-label_campaign"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
@@ -2583,25 +2556,12 @@ var PerkFormQuestions = /*#__PURE__*/function (_Component) {
         type: "text",
         id: "funding_goal",
         value: this.props.values.funding_goal,
-        onChange: this.props.handleInput("funding_goal")
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "input-label_campaign"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-        className: "input-label_header"
-      }, "Campaign Duration"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "sublabel"
-      }, "How many days will you be running your campaign for? You can run a campaign for any number of days, with a 60 day duration maximum."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "form-field_campaign",
-        type: "text",
-        id: "campaign_duration",
-        value: this.props.values.duration,
-        onChange: this.props.handleInput("duration")
+        onChange: this.props.handleInput("delivery_date")
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn-formp1",
         id: "campaignform2btn",
-        disabled: !isEnabled,
         onClick: this.props.handleSubmit
-      }, "LAUNCH CAMPAIGN"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, errors))));
+      }, "ADD PERK"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, errors))));
     }
   }]);
 

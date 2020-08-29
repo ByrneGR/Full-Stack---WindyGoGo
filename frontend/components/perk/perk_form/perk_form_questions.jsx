@@ -4,13 +4,10 @@ export class PerkFormQuestions extends Component {
   render() {
     const errors = this.props.errors
     const { values, handleInput } = this.props;
-    const banking_location = values.banking_location    
-    const imageFile = values.imageFile
-    const isEnabled = imageFile !== null && banking_location.length > 0
     return (
       <div id="campaignformp2">
         <button
-          className="btn-formp1" disabled={!isEnabled} id="launch-top" onClick={this.props.handleSubmit}>LAUNCH CAMPAIGN</button>   
+          className="btn-formp1" id="launch-top" onClick={this.props.handleSubmit}>ADD PERK</button>   
         <button
           className="btn-formp1" id="goback-top" onClick={this.props.prevStep}>BACK</button>                     
         <form
@@ -33,7 +30,7 @@ export class PerkFormQuestions extends Component {
                 className="form-field_campaign"
                 type="text"
                 value={this.props.values.title}
-                onChange={this.props.handleInput("title")}
+                onChange={this.props.handleInput("price")}
               />
             </label>
             <br></br>
@@ -43,7 +40,7 @@ export class PerkFormQuestions extends Component {
                 className="form-field_campaign"
                 type="text"
                 value={this.props.values.title}
-                onChange={this.props.handleInput("title")}
+                onChange={this.props.handleInput("retail_price")}
               />
             </label>
             <br></br>
@@ -55,7 +52,7 @@ export class PerkFormQuestions extends Component {
                 id="campaigndescription"
                 type="text"
                 value={this.props.values.description}
-                onChange={this.props.handleInput("description")}
+                onChange={this.props.handleInput("title")}
               />
             </label>
             <br></br>
@@ -67,7 +64,7 @@ export class PerkFormQuestions extends Component {
                 className="form-field_campaign"
                 type="file"
                 // value={this.props.values.}
-                onChange={this.props.handleFile}
+                onChange={this.props.handleInput("description")}
               />
             </label>
             <br></br>
@@ -79,7 +76,7 @@ export class PerkFormQuestions extends Component {
                 className="form-field_campaign"
                 type="text"
                 value={this.props.values.location}
-                onChange={this.props.handleInput("location")}
+                onChange={this.props.handleInput("quantity_avalable")}
               />
             </label>
             <br></br>
@@ -92,26 +89,12 @@ export class PerkFormQuestions extends Component {
                 type="text"
                 id="funding_goal"
                 value={this.props.values.funding_goal}
-                onChange={this.props.handleInput("funding_goal")}
-              />
-            </label>
-            <br></br>
-            <label className="input-label_campaign">
-              <h2 className="input-label_header">Campaign Duration</h2>
-              <div className="sublabel">How many days will you be running your campaign for? 
-              You can run a campaign for any number of days, with a 60 day duration maximum.    
-              </div>                               
-              <input
-                className="form-field_campaign"
-                type="text"
-                id="campaign_duration"
-                value={this.props.values.duration}
-                onChange={this.props.handleInput("duration")}
+                onChange={this.props.handleInput("delivery_date")}
               />
             </label>
             <br></br>
             <button
-              className="btn-formp1" id="campaignform2btn" disabled={!isEnabled}  onClick={this.props.handleSubmit}>LAUNCH CAMPAIGN</button>
+              className="btn-formp1" id="campaignform2btn" onClick={this.props.handleSubmit}>ADD PERK</button>
             <div>{errors}</div>
           </div>
         </form>
