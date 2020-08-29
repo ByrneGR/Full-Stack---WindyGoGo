@@ -23,9 +23,9 @@ class MyCampaigns extends React.Component {
         <div className="my_campaign_parent">
           {Object.values(this.props.campaigns).slice(lastIndex - 8, lastIndex).map((campaign, idx) => (
             <div className ="my-campaigns-campaign-container">
-                <img className="homepage_images" src={campaign.photoUrl}/>
+                <img className="my_campaign_images" src={campaign.photoUrl}/>
                   <div className="my-campaigns-details">
-                    <Link to={`/api/campaigns/${campaign.id}`} className="homepage_container">{campaign.title}</Link>
+                    <Link to={`/api/campaigns/${campaign.id}`} className="my_campaigns_title">{campaign.title}</Link>
                     <span className="homepage_description">By {campaign.creator.first_name} {campaign.creator.last_name}</span>  
                     <span className="homepage_description">Campaign Id:{campaign.id}</span>  
                   </div>

@@ -1,9 +1,9 @@
 import React from "react";
 import CampaignFormPt1 from './campaign_form_pt1'
-import CampaignFormPt2 from './campaign_form_pt2'
+import PerkFormQuestions from './perk_form_questions'
 import { withRouter } from 'react-router-dom'
 
-class CampaignForm extends React.Component {
+class PerkForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -76,29 +76,20 @@ class CampaignForm extends React.Component {
     }
     this.props
       .createCampaign(formData1)
-      .then(() => this.props.history.push(`/perks/create/${this.props.campaign.id}`));
-      // .then(() => this.props.history.push(`api/campaigns/${this.props.campaign.id}`));
+      .then(() => this.props.history.push(`api/campaigns/${this.props.campaign.id}`));
 
     }
 
   render() {
     const errors = this.props.errors;
     // const preview = this.state.photoUrl ? <img src= {this.state.photoUrl} />
-    const { step } = this.state;
     const {creator_type, location, banking_location, title, description, duration, imageFile, funding_goal} = this.state
     const values = { creator_type, location, banking_location, title, description, duration, imageFile, funding_goal }
-    switch(step) {
-      case 1:
         return (
-          <CampaignFormPt1 errors={errors} nextStep={this.nextStep} handleInput={this.handleInput} values={values}
-          />
-        )
-      case 2:
-        return (
-          <CampaignFormPt2 errors={errors} prevStep={this.prevStep} handleFile={this.handleFile} handleInput={this.handleInput} values={values} handleSubmit={this.handleSubmit} />
+          <PerkFormQuestions errors={errors} prevStep={this.prevStep} handleFile={this.handleFile} handleInput={this.handleInput} values={values} handleSubmit={this.handleSubmit} />
         )
     }
   }
-}
 
-export default CampaignForm;
+
+export default PerkForm;

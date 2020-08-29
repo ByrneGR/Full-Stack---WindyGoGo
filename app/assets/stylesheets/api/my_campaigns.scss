@@ -6,8 +6,26 @@
 .my-campaigns-details {
   display: flex;
   flex-direction: column;
+    position: relative;
+    top: 10%;
+    // transform: translateY(-50%);
 }
 
 .my-campaigns-container-all {
   margin: 10%;
+}
+
+.my-campaigns-campaign-container {
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  height: 250px;
+}
+
+.my_campaign_images {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+    width: 193px;
+    height: 200px;
+    position: relative;
+    top: 10%;
 }

@@ -11,6 +11,7 @@ import ContributionFormContainer from './contribution/contribution_form_containe
 import CampaignIndexContainer from './campaign/campaign_index/campaign_index_container.jsx'
 import MyCampaignsContainer from './campaign/my_campaigns/my_campaigns_container.jsx'
 import SplashPage from './splash/splash.jsx'
+import PerkFormContainer from './perk/perk_form/perk_form_container.jsx'
 
 
 
@@ -51,6 +52,7 @@ const App = () => (
     <Route path='/contributions/:campaignId/new' component={ContributionFormContainer}/>
     <Route path='/api/:userId/campaigns/' component={MyCampaignsContainer} />
     <Route path='/home' component={SplashPage} />
+    <Route path="/perks/create/:campaignId" component={PerkFormContainer} />
     
   </div>
 );

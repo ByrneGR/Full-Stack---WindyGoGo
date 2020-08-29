@@ -11,5 +11,6 @@ Rails.application.routes.draw do
 
     resources :campaigns, only: [:create, :show, :destroy]
     resources :contributions, only: [:create, :show, :index]
+    resources :perks, only: [:create, :show, :index]
   end  
 end

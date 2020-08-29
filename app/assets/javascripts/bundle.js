@@ -265,6 +265,63 @@ var closeModal = function closeModal() {
 
 /***/ }),
 
+/***/ "./frontend/actions/perk_actions.js":
+/*!******************************************!*\
+  !*** ./frontend/actions/perk_actions.js ***!
+  \******************************************/
+/*! exports provided: RECEIVE_PERKS, RECEIVE_Perk, fetchPerks, fetchPerk, createPerk */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_PERKS", function() { return RECEIVE_PERKS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_Perk", function() { return RECEIVE_Perk; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchPerks", function() { return fetchPerks; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchPerk", function() { return fetchPerk; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createPerk", function() { return createPerk; });
+/* harmony import */ var _util_perk_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/perk_api_util */ "./frontend/util/perk_api_util.js");
+
+var RECEIVE_PERKS = 'RECEIVE_PERKS';
+var RECEIVE_Perk = 'RECEIVE_PERK';
+
+var receivePerks = function receivePerks(perks) {
+  return {
+    type: RECEIVE_PERKS,
+    perks: perks
+  };
+};
+
+var receivePerk = function receivePerk(perk) {
+  return {
+    type: RECEIVE_PERK,
+    perk: perk
+  };
+};
+
+var fetchPerks = function fetchPerks() {
+  return function (dispatch) {
+    return Object(_util_perk_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchperks"])().then(function (perks) {
+      return dispatch(receivePerks(perks));
+    });
+  };
+};
+var fetchPerk = function fetchPerk(perkId) {
+  return function (dispatch) {
+    return Object(_util_perk_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchperk"])(perkId).then(function (perk) {
+      return dispatch(receivePerk(perk));
+    });
+  };
+};
+var createPerk = function createPerk(perk) {
+  return function (dispatch) {
+    return Object(_util_perk_api_util__WEBPACK_IMPORTED_MODULE_0__["createperk"])(perk).then(function (perk) {
+      return dispatch(receivePerk(perk));
+    });
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/session_actions.js":
 /*!*********************************************!*\
   !*** ./frontend/actions/session_actions.js ***!
@@ -366,6 +423,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _campaign_campaign_index_campaign_index_container_jsx__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./campaign/campaign_index/campaign_index_container.jsx */ "./frontend/components/campaign/campaign_index/campaign_index_container.jsx");
 /* harmony import */ var _campaign_my_campaigns_my_campaigns_container_jsx__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./campaign/my_campaigns/my_campaigns_container.jsx */ "./frontend/components/campaign/my_campaigns/my_campaigns_container.jsx");
 /* harmony import */ var _splash_splash_jsx__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./splash/splash.jsx */ "./frontend/components/splash/splash.jsx");
+/* harmony import */ var _perk_perk_form_perk_form_container_jsx__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./perk/perk_form/perk_form_container.jsx */ "./frontend/components/perk/perk_form/perk_form_container.jsx");
+
 
 
 
@@ -427,6 +486,9 @@ var App = function App() {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Route"], {
     path: "/home",
     component: _splash_splash_jsx__WEBPACK_IMPORTED_MODULE_12__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Route"], {
+    path: "/perks/create/:campaignId",
+    component: _perk_perk_form_perk_form_container_jsx__WEBPACK_IMPORTED_MODULE_13__["default"]
   }));
 };
 
@@ -574,8 +636,8 @@ var CampaignForm = /*#__PURE__*/function (_React$Component) {
       }
 
       this.props.createCampaign(formData1).then(function () {
-        return _this4.props.history.push("api/campaigns/".concat(_this4.props.campaign.id));
-      });
+        return _this4.props.history.push("/perks/create/".concat(_this4.props.campaign.id));
+      }); // .then(() => this.props.history.push(`api/campaigns/${this.props.campaign.id}`));
     }
   }, {
     key: "render",
@@ -1496,13 +1558,13 @@ var MyCampaigns = /*#__PURE__*/function (_React$Component) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "my-campaigns-campaign-container"
           }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            className: "homepage_images",
+            className: "my_campaign_images",
             src: campaign.photoUrl
           }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "my-campaigns-details"
           }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
             to: "/api/campaigns/".concat(campaign.id),
-            className: "homepage_container"
+            className: "my_campaigns_title"
           }, campaign.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
             className: "homepage_description"
           }, "By ", campaign.creator.first_name, " ", campaign.creator.last_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
@@ -1875,6 +1937,677 @@ var mdp = function mdp(dispatch) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(msp, mdp)(Modal));
+
+/***/ }),
+
+/***/ "./frontend/components/perk/perk_form/campaign_form_pt1.jsx":
+/*!******************************************************************!*\
+  !*** ./frontend/components/perk/perk_form/campaign_form_pt1.jsx ***!
+  \******************************************************************/
+/*! exports provided: CampaignFormPt1, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CampaignFormPt1", function() { return CampaignFormPt1; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+var CampaignFormPt1 = /*#__PURE__*/function (_Component) {
+  _inherits(CampaignFormPt1, _Component);
+
+  var _super = _createSuper(CampaignFormPt1);
+
+  function CampaignFormPt1() {
+    var _this;
+
+    _classCallCheck(this, CampaignFormPt1);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty(_assertThisInitialized(_this), "continue", function (e) {
+      e.preventDefault();
+
+      _this.props.nextStep();
+
+      $("html, body").animate({
+        scrollTop: 0
+      }, 400);
+    });
+
+    return _this;
+  }
+
+  _createClass(CampaignFormPt1, [{
+    key: "header",
+    value: function header() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-headers"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "campaign_form-header1"
+      }, "Let\u2019s get ready to start your campaign!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "campaignsubheader"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "campaign_form-header2"
+      }, "We want to create the best onboarding for you \u2013 please fill out the information below."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "campaign_form-header2",
+        id: "boldcampaignheader"
+      }, "Your answers will be locked for this campaign and can\u2019t be changed later.")));
+    }
+  }, {
+    key: "creatorTypeSelect",
+    value: function creatorTypeSelect() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "question-header1"
+      }, "Who are you raising money for?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "question-header2"
+      }, "Please choose the type of account that will be receiving your funds."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "campaign-radio"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "radio",
+        name: "creator_type",
+        id: "individual",
+        value: "Individual",
+        onChange: this.props.handleInput("creator_type")
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "individual"
+      }, "Individual"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "radio",
+        name: "creator_type",
+        id: "business/nonprofit",
+        value: "Business/Nonprofit",
+        onChange: this.props.handleInput("creator_type")
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "business/nonprofit"
+      }, "Business or Nonprofit")));
+    }
+  }, {
+    key: "location",
+    value: function location() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "campaign-form-parent"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "question-header1"
+      }, "Where are you located?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "question-header2"
+      }, "If you are raising funds as an individual, what is your country of legal residence? If you are raising funds for a business, where is the business headquartered? Learn more about country limitations."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        id: "dropdown_list",
+        className: "form-field_campaign",
+        onChange: this.props.handleInput("location")
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item_default",
+        value: "",
+        className: "location_dropdowns"
+      }, "Select a residence country"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item0",
+        value: "United States",
+        className: "location_dropdowns"
+      }, "United States"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item1",
+        value: "Australia",
+        className: "location_dropdowns"
+      }, "Australia"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item2",
+        value: "Austria",
+        className: "location_dropdowns"
+      }, "Austria"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item3",
+        value: "Belgium",
+        className: "location_dropdowns"
+      }, "Belgium"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item4",
+        value: "Canada",
+        className: "location_dropdowns"
+      }, "Canada"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item5",
+        value: "Denmark",
+        className: "location_dropdowns"
+      }, "Denmark"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item6",
+        value: "Finland",
+        className: "location_dropdowns"
+      }, "Finland"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item7",
+        value: "France",
+        className: "location_dropdowns"
+      }, "France"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item8",
+        value: "Germany",
+        className: "location_dropdowns"
+      }, "Germany"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item9",
+        value: "Hong Kong",
+        className: "location_dropdowns"
+      }, "Hong Kong"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item10",
+        value: "Ireland",
+        className: "location_dropdowns"
+      }, "Ireland"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item11",
+        value: "Italy",
+        className: "location_dropdowns"
+      }, "Italy"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item12",
+        value: "Luxembourg",
+        className: "location_dropdowns"
+      }, "Luxembourg"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item13",
+        value: "Netherlands",
+        className: "location_dropdowns"
+      }, "Netherlands"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item14",
+        value: "Norway",
+        className: "location_dropdowns"
+      }, "Norway"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item15",
+        value: "Portugal",
+        className: "location_dropdowns"
+      }, "Portugal"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item16",
+        value: "Singapore",
+        className: "location_dropdowns"
+      }, "Singapore"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item17",
+        value: "Spain",
+        className: "location_dropdowns"
+      }, "Spain"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item18",
+        value: "Sweden",
+        className: "location_dropdowns"
+      }, "Sweden"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item19",
+        value: "Switzerland",
+        className: "location_dropdowns"
+      }, "Switzerland"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item20",
+        value: "United Kingdom",
+        className: "location_dropdowns"
+      }, "United Kingdom"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item21",
+        value: "Other",
+        className: "location_dropdowns"
+      }, "Other countries")));
+    }
+  }, {
+    key: "banking_location",
+    value: function banking_location() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "question-header1"
+      }, "Where is your bank?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "question-header2"
+      }, "Your bank account location determines the currency in which you can raise funds."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        id: "dropdown_list-bl",
+        className: "form-field_campaign",
+        onChange: this.props.handleInput("banking_location")
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item_default",
+        value: "",
+        className: "location_dropdowns"
+      }, "Select a bank country"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item0",
+        value: "United States",
+        className: "location_dropdowns"
+      }, "United States"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        id: "dropdown_item21",
+        value: "Other",
+        className: "location_dropdowns"
+      }, "Other countries")));
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          values = _this$props.values,
+          handleInput = _this$props.handleInput;
+      var banking_location = values.banking_location;
+      var creator_type = values.creator_type;
+      var location = values.location;
+      var isEnabled = banking_location.length > 0 && creator_type.length > 0 && location.length > 0;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "campaign-form-parent"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        id: "pinkrobot",
+        src: window.pinkrobot
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "campaign-form",
+        id: "campaign-form1"
+      }, this.header(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "campaign-form-parent"
+      }, this.creatorTypeSelect(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.location(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.banking_location()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        disabled: !isEnabled,
+        className: "btn-formp1",
+        onClick: this["continue"]
+      }, "START MY CAMPAIGN")));
+    }
+  }]);
+
+  return CampaignFormPt1;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+/* harmony default export */ __webpack_exports__["default"] = (CampaignFormPt1);
+
+/***/ }),
+
+/***/ "./frontend/components/perk/perk_form/perk_form_container.jsx":
+/*!********************************************************************!*\
+  !*** ./frontend/components/perk/perk_form/perk_form_container.jsx ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_perk_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../actions/perk_actions */ "./frontend/actions/perk_actions.js");
+/* harmony import */ var _perk_form_fake__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./perk_form_fake */ "./frontend/components/perk/perk_form/perk_form_fake.jsx");
+
+
+
+
+var msp = function msp(state) {
+  debugger;
+  var last = Object.values(state.entities.campaigns).length - 1;
+  return {
+    errors: state.errors.session,
+    campaign: Object.values(state.entities.campaigns)[last]
+  };
+};
+
+var mdp = function mdp(dispatch) {
+  return {
+    createPerk: function createPerk(perk) {
+      return dispatch(Object(_actions_perk_actions__WEBPACK_IMPORTED_MODULE_1__["createPerk"])(perk));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(_perk_form_fake__WEBPACK_IMPORTED_MODULE_2__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/perk/perk_form/perk_form_fake.jsx":
+/*!***************************************************************!*\
+  !*** ./frontend/components/perk/perk_form/perk_form_fake.jsx ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _campaign_form_pt1__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./campaign_form_pt1 */ "./frontend/components/perk/perk_form/campaign_form_pt1.jsx");
+/* harmony import */ var _perk_form_questions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./perk_form_questions */ "./frontend/components/perk/perk_form/perk_form_questions.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+var PerkForm = /*#__PURE__*/function (_React$Component) {
+  _inherits(PerkForm, _React$Component);
+
+  var _super = _createSuper(PerkForm);
+
+  function PerkForm(props) {
+    var _this;
+
+    _classCallCheck(this, PerkForm);
+
+    _this = _super.call(this, props);
+
+    _defineProperty(_assertThisInitialized(_this), "nextStep", function () {
+      var step = this.state.step;
+      this.setState({
+        step: step + 1
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "prevStep", function () {
+      var step = this.state.step;
+      this.setState({
+        step: step - 1
+      });
+    });
+
+    _this.state = {
+      step: 1,
+      funding_goal: 1000,
+      creator_type: "",
+      location: "",
+      banking_location: "",
+      title: "My Campaign Title",
+      description: "",
+      duration: 30,
+      imageFile: null,
+      imageUrl: null
+    };
+    _this.nextStep = _this.nextStep.bind(_assertThisInitialized(_this));
+    _this.prevStep = _this.prevStep.bind(_assertThisInitialized(_this));
+    _this.handleInput = _this.handleInput.bind(_assertThisInitialized(_this));
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.handleFile = _this.handleFile.bind(_assertThisInitialized(_this));
+    return _this;
+  } // proceed to next step
+
+
+  _createClass(PerkForm, [{
+    key: "handleInput",
+    value: function handleInput(type) {
+      var _this2 = this;
+
+      return function (e) {
+        _this2.setState(_defineProperty({}, type, e.currentTarget.value));
+      };
+    }
+  }, {
+    key: "handleFile",
+    value: function handleFile(e) {
+      var _this3 = this;
+
+      var file = e.currentTarget.files[0];
+      var fileReader = new FileReader();
+
+      fileReader.onloadend = function () {
+        _this3.setState({
+          imageFile: file,
+          imageURL: fileReader.result
+        });
+      };
+
+      if (file) {
+        fileReader.readAsDataURL(file);
+      }
+
+      ;
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      var _this4 = this;
+
+      e.preventDefault();
+      var formData1 = new FormData();
+      formData1.append('campaign[title]', this.state.title);
+      formData1.append('campaign[creator_type]', this.state.creator_type);
+      formData1.append('campaign[location]', this.state.location);
+      formData1.append('campaign[funding_goal]', this.state.funding_goal);
+      formData1.append('campaign[banking_location]', this.state.banking_location);
+      formData1.append('campaign[description]', this.state.description);
+      formData1.append('campaign[duration]', this.state.duration);
+
+      if (this.state.imageFile) {
+        formData1.append('campaign[image]', this.state.imageFile);
+      }
+
+      this.props.createCampaign(formData1).then(function () {
+        return _this4.props.history.push("api/campaigns/".concat(_this4.props.campaign.id));
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var errors = this.props.errors; // const preview = this.state.photoUrl ? <img src= {this.state.photoUrl} />
+
+      var _this$state = this.state,
+          creator_type = _this$state.creator_type,
+          location = _this$state.location,
+          banking_location = _this$state.banking_location,
+          title = _this$state.title,
+          description = _this$state.description,
+          duration = _this$state.duration,
+          imageFile = _this$state.imageFile,
+          funding_goal = _this$state.funding_goal;
+      var values = {
+        creator_type: creator_type,
+        location: location,
+        banking_location: banking_location,
+        title: title,
+        description: description,
+        duration: duration,
+        imageFile: imageFile,
+        funding_goal: funding_goal
+      };
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_perk_form_questions__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        errors: errors,
+        prevStep: this.prevStep,
+        handleFile: this.handleFile,
+        handleInput: this.handleInput,
+        values: values,
+        handleSubmit: this.handleSubmit
+      });
+    }
+  }]);
+
+  return PerkForm;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (PerkForm);
+
+/***/ }),
+
+/***/ "./frontend/components/perk/perk_form/perk_form_questions.jsx":
+/*!********************************************************************!*\
+  !*** ./frontend/components/perk/perk_form/perk_form_questions.jsx ***!
+  \********************************************************************/
+/*! exports provided: PerkFormQuestions, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PerkFormQuestions", function() { return PerkFormQuestions; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+var PerkFormQuestions = /*#__PURE__*/function (_Component) {
+  _inherits(PerkFormQuestions, _Component);
+
+  var _super = _createSuper(PerkFormQuestions);
+
+  function PerkFormQuestions() {
+    _classCallCheck(this, PerkFormQuestions);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(PerkFormQuestions, [{
+    key: "render",
+    value: function render() {
+      var errors = this.props.errors;
+      var _this$props = this.props,
+          values = _this$props.values,
+          handleInput = _this$props.handleInput;
+      var banking_location = values.banking_location;
+      var imageFile = values.imageFile;
+      var isEnabled = imageFile !== null && banking_location.length > 0;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "campaignformp2"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn-formp1",
+        disabled: !isEnabled,
+        id: "launch-top",
+        onClick: this.props.handleSubmit
+      }, "LAUNCH CAMPAIGN"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn-formp1",
+        id: "goback-top",
+        onClick: this.props.prevStep
+      }, "BACK"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.createCampaign,
+        className: "campaign-form2-parent",
+        id: "campaign-form2"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "campaign-form2-parent"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "form-header1",
+        id: "basics"
+      }, "Perk Details"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "form-header2",
+        id: "basicsdescription"
+      }, "Perks are incentives offered to backers in exchange for their support. Make sure your perks are not prohibited. Learn more about perks in the help center.            ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "formpt2-inputs"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "input-label_campaign"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "input-label_header"
+      }, "Price"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "sublabel"
+      }, "Set an amount that you want to collect from backers who claim this perk. This amount should represent how much you want to receive for all the items included in this perk."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-field_campaign",
+        type: "text",
+        value: this.props.values.title,
+        onChange: this.props.handleInput("title")
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "input-label_campaign"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "input-label_header"
+      }, "Retail Price"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-field_campaign",
+        type: "text",
+        value: this.props.values.title,
+        onChange: this.props.handleInput("title")
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "input-label_campaign"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "input-label_header"
+      }, "Title"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "sublabel"
+      }, "The title for your perk is what will appear on your campaign page and throughout Indiegogo. Create a title that best describes the contents of what this perk is offering."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-field_campaign",
+        id: "campaigndescription",
+        type: "text",
+        value: this.props.values.description,
+        onChange: this.props.handleInput("description")
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "input-label_campaign"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "input-label_header"
+      }, "Description"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "sublabel"
+      }, "Describe the details of this perk. Be creative, this is your opportunity to educate backers on what they will be receiving after they claim this perk."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-field_campaign",
+        type: "file" // value={this.props.values.}
+        ,
+        onChange: this.props.handleFile
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "input-label_campaign"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "input-label_header"
+      }, "Quantity Available"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "sublabel"
+      }, "You can limit the quantity available to backers based on production volume. Leaving this field blank indicates that there is no quantity limit."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-field_campaign",
+        type: "text",
+        value: this.props.values.location,
+        onChange: this.props.handleInput("location")
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "input-label_campaign"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "input-label_header"
+      }, "Estimated Delivery Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "sublabel"
+      }, "Estimate a delivery date for this perk for your backers. This date and future changes to it will appear on the perk card for your backers to see. We recommend that you post an update to backers whenever you change this date."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-field_campaign",
+        type: "text",
+        id: "funding_goal",
+        value: this.props.values.funding_goal,
+        onChange: this.props.handleInput("funding_goal")
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "input-label_campaign"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "input-label_header"
+      }, "Campaign Duration"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "sublabel"
+      }, "How many days will you be running your campaign for? You can run a campaign for any number of days, with a 60 day duration maximum."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-field_campaign",
+        type: "text",
+        id: "campaign_duration",
+        value: this.props.values.duration,
+        onChange: this.props.handleInput("duration")
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn-formp1",
+        id: "campaignform2btn",
+        disabled: !isEnabled,
+        onClick: this.props.handleSubmit
+      }, "LAUNCH CAMPAIGN"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, errors))));
+    }
+  }]);
+
+  return PerkFormQuestions;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+/* harmony default export */ __webpack_exports__["default"] = (PerkFormQuestions);
 
 /***/ }),
 
@@ -2660,6 +3393,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/users_reducer.js");
 /* harmony import */ var _campaigns_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./campaigns_reducer */ "./frontend/reducers/campaigns_reducer.js");
 /* harmony import */ var _contributions_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./contributions_reducer */ "./frontend/reducers/contributions_reducer.js");
+/* harmony import */ var _perks_reducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./perks_reducer */ "./frontend/reducers/perks_reducer.js");
+
 
 
 
@@ -2667,7 +3402,8 @@ __webpack_require__.r(__webpack_exports__);
 var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
   campaigns: _campaigns_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
-  contributions: _contributions_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
+  contributions: _contributions_reducer__WEBPACK_IMPORTED_MODULE_3__["default"],
+  perks: _perks_reducer__WEBPACK_IMPORTED_MODULE_4__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (entitiesReducer);
 
@@ -2720,6 +3456,41 @@ function modalReducer() {
       return state;
   }
 }
+
+/***/ }),
+
+/***/ "./frontend/reducers/perks_reducer.js":
+/*!********************************************!*\
+  !*** ./frontend/reducers/perks_reducer.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_perk_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/perk_actions */ "./frontend/actions/perk_actions.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+var perksReducer = function perksReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_perk_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PERKS"]:
+      action.perks;
+
+    case _actions_perk_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PERK"]:
+      return Object.assign({}, state, _defineProperty({}, action.perk.id, action.perk));
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (perksReducer);
 
 /***/ }),
 
@@ -2975,6 +3746,40 @@ var fetchcontributions = function fetchcontributions() {
 var fetchcontribution = function fetchcontribution(contributionId) {
   return $.ajax({
     url: "api/contributions/".concat(contributionId),
+    method: 'GET'
+  });
+};
+
+/***/ }),
+
+/***/ "./frontend/util/perk_api_util.js":
+/*!****************************************!*\
+  !*** ./frontend/util/perk_api_util.js ***!
+  \****************************************/
+/*! exports provided: createperk, fetchperks, fetchperk */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createperk", function() { return createperk; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchperks", function() { return fetchperks; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchperk", function() { return fetchperk; });
+var createperk = function createperk(perk) {
+  return $.ajax({
+    url: 'api/perks',
+    method: 'POST',
+    data: perk
+  });
+};
+var fetchperks = function fetchperks() {
+  return $.ajax({
+    url: "api/perks/",
+    method: 'GET'
+  });
+};
+var fetchperk = function fetchperk(perkId) {
+  return $.ajax({
+    url: "api/perks/".concat(perkId),
     method: 'GET'
   });
 };
