@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
   
 
-class CampaignIndex extends React.Component {
+class MyCampaigns extends React.Component {
   constructor(props) {
     super(props) 
     
@@ -10,7 +10,7 @@ class CampaignIndex extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchAllCampaigns(this.props.userId)
+    this.props.fetchUserCampaigns(this.props.currentUser.id)
   }
 
 
@@ -55,7 +55,7 @@ class CampaignIndex extends React.Component {
   render() {
     return(
       <div>
-        <h1 id="popular_projects">Popular Projects</h1>
+        <h1 id="popular_projects">{this.props.currentUser.first_name}</h1>
       {this.campaignRender()}
       </div >
     );
@@ -64,7 +64,7 @@ class CampaignIndex extends React.Component {
 
 }
 
-export default CampaignIndex;
+export default MyCampaigns;
   
   
   

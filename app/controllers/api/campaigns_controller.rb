@@ -22,7 +22,7 @@ class Api::CampaignsController < ApplicationController
     if user_id == ":user_id"
       @campaigns = Campaign.all
     else  
-      @campaigns = Campaign.find_by(creator_id: user_id)
+      @campaigns = Campaign.where(creator_id: user_id)
     end  
     render :index
   end
