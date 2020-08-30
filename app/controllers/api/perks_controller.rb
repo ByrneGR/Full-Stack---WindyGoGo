@@ -3,7 +3,6 @@ class Api::PerksController < ApplicationController
   def create
     @perk = Perk.new(perk_params)
     if @perk.save
-      debugger
       render :show
     else
     

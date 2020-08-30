@@ -19,7 +19,15 @@ class CampaignShow extends React.Component {
      return(
     <div>
      {this.props.campaign.perks.map((perk, idx) => (
-        <li key={perk.id}>{perk.title} - {perk.description}</li>
+       <Link perk={perk} to={`/contributions/${this.props.campaign.id}/new/${perk.id}`} id="perk_card_link">
+       <div className="perk-card-container">
+         <h3 id="perk-card-header">{perk.title}</h3>
+         <span id="perk-price" key={perk.id}>${perk.price} USD</span> <br></br><br></br>
+         <span id="estimated_shipping">Estimated Shipping</span> <br></br>
+         <span>{perk.delivery_date}</span> <br></br><br></br>
+           <span>Only <span id="quantity_avail">{perk.quantity_available}</span> left</span> <br></br><br></br>
+        </div>
+        </Link>
       ))};
       </div >)
     } else return null;
@@ -42,7 +50,6 @@ class CampaignShow extends React.Component {
             <div id="campaignshowheader-right">
               <span id="showpage_funding">FUNDING</span>
               <span id="showpage_title">{this.props.campaign.title}</span>
-              <span id="showpage_description">{this.props.campaign.description}</span>
               <span id="showpage_creator">{this.props.campaign.creator.first_name} {this.props.campaign.creator.last_name}</span>
             <div id="raisedandbackers">
               <span id="showpage_amountraised">${this.props.campaign.amount_raised} USD</span>
@@ -56,8 +63,12 @@ class CampaignShow extends React.Component {
             </div>
             </div>  
           <div id="campaignshowlower">
-            <span>{this.props.campaign.description}</span>
-            <ul>
+            <div id="campaign-description">
+              <h2 className="campaignshowlower-header">STORY</h2>
+              <span id="campaign-description-body">{this.props.campaign.description}</span>
+            </div>
+            <ul id="perk-parent">
+            <h2 className="campaignshowlower-header" >Select a perk</h2>
               {this.perks()}
             </ul>
           </div>

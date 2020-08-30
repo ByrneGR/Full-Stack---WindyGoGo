@@ -49,7 +49,7 @@ const App = () => (
     <AuthRoute path="/signup" component={SignupFormContainer} />
     <ProtectedRoute path="/start-a-campaign" component={CampaignFormContainer} />
     <Route path="/api/campaigns/:campaignId" component={CampaignShowContainer} />
-    <Route path='/contributions/:campaignId/new' component={ContributionFormContainer}/>
+    <Route path='/contributions/:campaignId/new/:perkId' component={ContributionFormContainer}/>
     <Route path='/api/:userId/campaigns/' component={MyCampaignsContainer} />
     <Route path='/home' component={SplashPage} />
     <Route path="/perks/create/:campaignId" component={PerkFormContainer} />

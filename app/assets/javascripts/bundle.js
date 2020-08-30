@@ -478,7 +478,7 @@ var App = function App() {
     path: "/api/campaigns/:campaignId",
     component: _campaign_campaign_show_campaign_show_container_jsx__WEBPACK_IMPORTED_MODULE_8__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Route"], {
-    path: "/contributions/:campaignId/new",
+    path: "/contributions/:campaignId/new/:perkId",
     component: _contribution_contribution_form_container__WEBPACK_IMPORTED_MODULE_9__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Route"], {
     path: "/api/:userId/campaigns/",
@@ -1377,11 +1377,26 @@ var CampaignShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "perks",
     value: function perks() {
+      var _this2 = this;
+
       if (this.props.campaign.perks) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.campaign.perks.map(function (perk, idx) {
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+            perk: perk,
+            to: "/contributions/".concat(_this2.props.campaign.id, "/new/").concat(perk.id),
+            id: "perk_card_link"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "perk-card-container"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+            id: "perk-card-header"
+          }, perk.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+            id: "perk-price",
             key: perk.id
-          }, perk.title, " - ", perk.description);
+          }, "$", perk.price, " USD"), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+            id: "estimated_shipping"
+          }, "Estimated Shipping"), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, perk.delivery_date), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Only ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+            id: "quantity_avail"
+          }, perk.quantity_available), " left"), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)));
         }), ";");
       } else return null;
     }
@@ -1412,8 +1427,6 @@ var CampaignShow = /*#__PURE__*/function (_React$Component) {
         }, "FUNDING"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           id: "showpage_title"
         }, this.props.campaign.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-          id: "showpage_description"
-        }, this.props.campaign.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           id: "showpage_creator"
         }, this.props.campaign.creator.first_name, " ", this.props.campaign.creator.last_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           id: "raisedandbackers"
@@ -1434,7 +1447,17 @@ var CampaignShow = /*#__PURE__*/function (_React$Component) {
           campaign: this.props.campaign
         }, "BACK IT"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           id: "campaignshowlower"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.props.campaign.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.perks())));
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          id: "campaign-description"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+          className: "campaignshowlower-header"
+        }, "STORY"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          id: "campaign-description-body"
+        }, this.props.campaign.description)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+          id: "perk-parent"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+          className: "campaignshowlower-header"
+        }, "Select a perk"), this.perks())));
       } else {
         return null;
       }
@@ -1705,6 +1728,7 @@ var ContributionForm = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchCampaign(this.props.id);
+      this.props.fetchPerk(this.props.perkId);
     }
   }, {
     key: "handleInput",
@@ -1730,10 +1754,33 @@ var ContributionForm = /*#__PURE__*/function (_React$Component) {
       if (this.props.campaign) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "form-headers"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "You're contributing to"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
           id: "contributionformheader",
           className: "campaign_form-header1"
         }, this.props.campaign.title));
+      } else {
+        return null;
+      }
+    }
+  }, {
+    key: "perk",
+    value: function perk() {
+      var perk = this.props.perk;
+      debugger;
+
+      if (perk) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "perk-card-container"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+          id: "perk-card-header"
+        }, perk.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          id: "perk-price",
+          key: perk.id
+        }, "$", perk.price, " USD"), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          id: "estimated_shipping"
+        }, "Estimated Shipping"), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, perk.delivery_date), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Only ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          id: "quantity_avail"
+        }, perk.quantity_available), " left"), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)));
       } else {
         return null;
       }
@@ -1808,13 +1855,15 @@ var ContributionForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "contribution-form-parent"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         id: "contributionform"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.header()), this.contributionAmount(), this.nameAndCardInfo(), this.contribution_appearance(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn-formp1",
         id: "campaignform2btn",
         onClick: this.handleSubmit
-      }, "Submit Payment")));
+      }, "Submit Payment"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.perk()));
     }
   }]);
 
@@ -1837,7 +1886,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_contribution_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/contribution_actions */ "./frontend/actions/contribution_actions.js");
 /* harmony import */ var _actions_campaign_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/campaign_actions */ "./frontend/actions/campaign_actions.js");
-/* harmony import */ var _contribution_form__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./contribution_form */ "./frontend/components/contribution/contribution_form.jsx");
+/* harmony import */ var _actions_perk_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/perk_actions */ "./frontend/actions/perk_actions.js");
+/* harmony import */ var _contribution_form__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./contribution_form */ "./frontend/components/contribution/contribution_form.jsx");
+
 
 
 
@@ -1846,11 +1897,15 @@ __webpack_require__.r(__webpack_exports__);
 var msp = function msp(state, _ref) {
   var match = _ref.match;
   var id = parseInt(match.params.campaignId);
+  var perkId = parseInt(match.params.perkId);
   var campaign = state.entities.campaigns[id];
+  var perk = state.entities.perks[perkId];
   return {
     errors: state.errors.session,
     id: id,
-    campaign: campaign
+    perkId: perkId,
+    campaign: campaign,
+    perk: perk
   };
 };
 
@@ -1861,11 +1916,14 @@ var mdp = function mdp(dispatch) {
     },
     fetchCampaign: function fetchCampaign(campaignId) {
       return dispatch(Object(_actions_campaign_actions__WEBPACK_IMPORTED_MODULE_2__["fetchCampaign"])(campaignId));
+    },
+    fetchPerk: function fetchPerk(perkId) {
+      return dispatch(Object(_actions_perk_actions__WEBPACK_IMPORTED_MODULE_3__["fetchPerk"])(perkId));
     }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(_contribution_form__WEBPACK_IMPORTED_MODULE_3__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(_contribution_form__WEBPACK_IMPORTED_MODULE_4__["default"]));
 
 /***/ }),
 
@@ -2094,6 +2152,7 @@ var PerkForm = /*#__PURE__*/function (_React$Component) {
           retail_price = _this$state.retail_price,
           title = _this$state.title,
           description = _this$state.description,
+          quantity_available = _this$state.quantity_available,
           duration = _this$state.duration,
           price = _this$state.price,
           delivery_date = _this$state.delivery_date;

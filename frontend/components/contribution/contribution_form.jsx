@@ -8,13 +8,14 @@ class ContributionForm extends React.Component {
       name_on_card: "Name on Card",
       card_number: "Demo Credit Card # (no input needed)",
       contribution_appearance: "Anonymous",
-      campaign_id: this.props.id
+      campaign_id: this.props.id,
     };
    this.handleSubmit = this.handleSubmit.bind(this); 
   }
 
   componentDidMount() {
     this.props.fetchCampaign(this.props.id)
+    this.props.fetchPerk(this.props.perkId)
   }  
 
 
@@ -35,6 +36,7 @@ class ContributionForm extends React.Component {
     if (this.props.campaign) {
     return (
       <div className="form-headers">
+        <span>You're contributing to</span>
         <h1 id="contributionformheader" className="campaign_form-header1">
          {this.props.campaign.title}
         </h1>
@@ -43,6 +45,24 @@ class ContributionForm extends React.Component {
       return null;
     }
   } 
+
+  perk() {
+    const { perk } = this.props
+    debugger
+    if (perk) {
+      return (
+        <div>
+              <div className="perk-card-container">
+                <h3 id="perk-card-header">{perk.title}</h3>
+                <span id="perk-price" key={perk.id}>${perk.price} USD</span> <br></br><br></br>
+                <span id="estimated_shipping">Estimated Shipping</span> <br></br>
+                <span>{perk.delivery_date}</span> <br></br><br></br>
+                <span>Only <span id="quantity_avail">{perk.quantity_available}</span> left</span> <br></br><br></br>
+              </div>
+        </div > )
+    } else {
+      return null }
+  }
 
   contributionAmount() {
     return (
@@ -124,6 +144,7 @@ class ContributionForm extends React.Component {
   render() {
 
     return (
+      <div class="contribution-form-parent">
       <div>
         <form id="contributionform">
       <div>{this.header()}</div>
@@ -134,6 +155,8 @@ class ContributionForm extends React.Component {
             className="btn-formp1" id="campaignform2btn" onClick={this.handleSubmit}>Submit Payment</button>
       </form>
       </div >
+      <div>{this.perk()}</div>
+    </div >        
     )
   }
 }

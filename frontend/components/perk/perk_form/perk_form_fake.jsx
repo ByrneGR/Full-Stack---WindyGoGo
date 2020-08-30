@@ -54,7 +54,7 @@ class PerkForm extends React.Component {
   render() {
     const errors = this.props.errors;
     // const preview = this.state.photoUrl ? <img src= {this.state.photoUrl} />
-    const { retail_price, title, description, duration, price, delivery_date} = this.state
+    const { retail_price, title, description, quantity_available, duration, price, delivery_date} = this.state
     const values = { retail_price, title, description, duration, price, delivery_date, quantity_available }
         return (
           <PerkFormQuestions errors={errors} prevStep={this.prevStep} handleInput={this.handleInput} values={values} handleSubmit={this.handleSubmit} />
