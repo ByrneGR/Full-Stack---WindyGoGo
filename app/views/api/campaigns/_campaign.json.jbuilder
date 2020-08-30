@@ -4,3 +4,4 @@ json.extract! campaign, :id, :title, :description, :duration, :creator_id, :imag
   json.creator campaign.creator
   json.number_of_backers campaign.number_of_backers
   json.percent_raised campaign.percent_raised
+  json.perks campaign.perks

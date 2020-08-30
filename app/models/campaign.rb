@@ -18,6 +18,10 @@ class Campaign < ApplicationRecord
     through: :contributions,
     source: :backer
 
+  has_many :perks,
+    foreign_key: :campaign_id,
+    class_name: :Perk
+
 
   has_one_attached :image
 

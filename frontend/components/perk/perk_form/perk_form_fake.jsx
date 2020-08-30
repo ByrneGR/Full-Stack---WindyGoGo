@@ -1,5 +1,4 @@
 import React from "react";
-import CampaignFormPt1 from './campaign_form_pt1'
 import PerkFormQuestions from './perk_form_questions'
 import { withRouter } from 'react-router-dom'
 
@@ -13,11 +12,12 @@ class PerkForm extends React.Component {
       quantity_available: "",
       price: "",
       retail_price: "",
-      campaign_id: "",
+      campaign_id: this.props.id,
       
     };
 
     this.handleInput = this.handleInput.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this); 
 
   }
 
@@ -43,22 +43,11 @@ class PerkForm extends React.Component {
   }
 
   handleSubmit(e) {
-    e.preventDefault()
-    const formData1 = new FormData();
-    formData1.append('campaign[title]', this.state.title)
-    formData1.append('campaign[creator_type]', this.state.creator_type)
-    formData1.append('campaign[location]', this.state.location)
-    formData1.append('campaign[funding_goal]', this.state.funding_goal)
-    formData1.append('campaign[banking_location]', this.state.banking_location)
-    formData1.append('campaign[description]', this.state.description)
-    formData1.append('campaign[duration]', this.state.duration)
-    if (this.state.imageFile) {
-
-      formData1.append('campaign[image]', this.state.imageFile)
-    }
-    this.props
-      .createCampaign(formData1)
-      .then(() => this.props.history.push(`api/campaigns/${this.props.campaign.id}`));
+    e.preventDefault();
+    const perk = Object.assign({}, this.state)
+    debugger
+    this.props.createPerk({perk})
+      .then(document.location.href = `#/api/campaigns/${this.props.id}`);
 
     }
 
@@ -66,9 +55,9 @@ class PerkForm extends React.Component {
     const errors = this.props.errors;
     // const preview = this.state.photoUrl ? <img src= {this.state.photoUrl} />
     const { retail_price, title, description, duration, price, delivery_date} = this.state
-    const values = { retail_price, title, description, duration, price, delivery_date }
+    const values = { retail_price, title, description, duration, price, delivery_date, quantity_available }
         return (
-          <PerkFormQuestions errors={errors} prevStep={this.prevStep} handleFile={this.handleFile} handleInput={this.handleInput} values={values} handleSubmit={this.handleSubmit} />
+          <PerkFormQuestions errors={errors} prevStep={this.prevStep} handleInput={this.handleInput} values={values} handleSubmit={this.handleSubmit} />
         )
     }
   }

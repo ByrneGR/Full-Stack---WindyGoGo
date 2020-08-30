@@ -1,7 +1,7 @@
 import {fetchperks, fetchperk, createperk} from '../util/perk_api_util';
 
 export const RECEIVE_PERKS = 'RECEIVE_PERKS';
-export const RECEIVE_Perk = 'RECEIVE_PERK';
+export const RECEIVE_PERK = 'RECEIVE_PERK';
 
 const receivePerks = perks => ({
   type: RECEIVE_PERKS,

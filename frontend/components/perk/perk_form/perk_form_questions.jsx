@@ -76,7 +76,7 @@ export class PerkFormQuestions extends Component {
                 className="form-field_campaign"
                 type="text"
                 value={this.props.values.quantity_available}
-                onChange={this.props.handleInput("quantity_avalable")}
+                onChange={this.props.handleInput("quantity_available")}
               />
             </label>
             <br></br>

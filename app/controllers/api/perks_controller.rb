@@ -2,9 +2,8 @@ class Api::PerksController < ApplicationController
 
   def create
     @perk = Perk.new(perk_params)
-    # @perk.backer_id = current_user.id
-    @perk.backer_id = 44
     if @perk.save
+      debugger
       render :show
     else
     
@@ -22,7 +21,7 @@ class Api::PerksController < ApplicationController
   end  
   
   def perk_params
-    params.require(:perk).permit(:title, :description, :delivery_date, :quantity_available, :price, :retail_price)
+    params.require(:perk).permit(:title, :description, :delivery_date, :quantity_available, :campaign_id, :price, :retail_price)
   end  
 
   

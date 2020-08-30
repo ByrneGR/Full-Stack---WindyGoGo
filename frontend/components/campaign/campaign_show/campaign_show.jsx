@@ -13,13 +13,13 @@ class CampaignShow extends React.Component {
   }
 
   
-  contributions() {
+  perks() {
 
-   if (this.props.campaign.contributions) {
+   if (this.props.campaign.perks) {
      return(
     <div>
-     {this.props.campaign.contributions.map((contribution, idx) => (
-        <li key={contribution.id}>{contribution.name_on_card} - {contribution.contribution_amount}</li>
+     {this.props.campaign.perks.map((perk, idx) => (
+        <li key={perk.id}>{perk.title} - {perk.description}</li>
       ))};
       </div >)
     } else return null;
@@ -55,12 +55,12 @@ class CampaignShow extends React.Component {
             <Link className="btn-formp1" id="btn-backit" to={`/contributions/${this.props.campaign.id}/new`} campaign={this.props.campaign}>BACK IT</Link>
             </div>
             </div>  
-          {/* <div id="campaignshowlower">
+          <div id="campaignshowlower">
             <span>{this.props.campaign.description}</span>
             <ul>
-              {this.contributions()}
+              {this.perks()}
             </ul>
-          </div> */}
+          </div>
       </div>
     )
     } else {
