@@ -2309,12 +2309,13 @@ var PerkForm = /*#__PURE__*/function (_React$Component) {
     _this.state = {
       title: "",
       description: "",
-      delivery_date: "",
+      delivery_date: "mm/dd/yyyy",
       quantity_available: "",
       price: "",
       retail_price: "",
       campaign_id: ""
     };
+    _this.handleInput = _this.handleInput.bind(_assertThisInitialized(_this));
     return _this;
   } // proceed to next step
 
@@ -2378,23 +2379,19 @@ var PerkForm = /*#__PURE__*/function (_React$Component) {
       var errors = this.props.errors; // const preview = this.state.photoUrl ? <img src= {this.state.photoUrl} />
 
       var _this$state = this.state,
-          creator_type = _this$state.creator_type,
-          location = _this$state.location,
-          banking_location = _this$state.banking_location,
+          retail_price = _this$state.retail_price,
           title = _this$state.title,
           description = _this$state.description,
           duration = _this$state.duration,
-          imageFile = _this$state.imageFile,
-          funding_goal = _this$state.funding_goal;
+          price = _this$state.price,
+          delivery_date = _this$state.delivery_date;
       var values = {
-        creator_type: creator_type,
-        location: location,
-        banking_location: banking_location,
+        retail_price: retail_price,
         title: title,
         description: description,
         duration: duration,
-        imageFile: imageFile,
-        funding_goal: funding_goal
+        price: price,
+        delivery_date: delivery_date
       };
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_perk_form_questions__WEBPACK_IMPORTED_MODULE_2__["default"], {
         errors: errors,
@@ -2500,7 +2497,7 @@ var PerkFormQuestions = /*#__PURE__*/function (_Component) {
       }, "Set an amount that you want to collect from backers who claim this perk. This amount should represent how much you want to receive for all the items included in this perk."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "form-field_campaign",
         type: "text",
-        value: this.props.values.title,
+        value: this.props.values.price,
         onChange: this.props.handleInput("price")
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "input-label_campaign"
@@ -2509,7 +2506,7 @@ var PerkFormQuestions = /*#__PURE__*/function (_Component) {
       }, "Retail Price"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "form-field_campaign",
         type: "text",
-        value: this.props.values.title,
+        value: this.props.values.retail_price,
         onChange: this.props.handleInput("retail_price")
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "input-label_campaign"
@@ -2519,9 +2516,8 @@ var PerkFormQuestions = /*#__PURE__*/function (_Component) {
         className: "sublabel"
       }, "The title for your perk is what will appear on your campaign page and throughout Indiegogo. Create a title that best describes the contents of what this perk is offering."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "form-field_campaign",
-        id: "campaigndescription",
         type: "text",
-        value: this.props.values.description,
+        value: this.props.values.title,
         onChange: this.props.handleInput("title")
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "input-label_campaign"
@@ -2531,8 +2527,8 @@ var PerkFormQuestions = /*#__PURE__*/function (_Component) {
         className: "sublabel"
       }, "Describe the details of this perk. Be creative, this is your opportunity to educate backers on what they will be receiving after they claim this perk."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "form-field_campaign",
-        type: "file" // value={this.props.values.}
-        ,
+        type: "text",
+        value: this.props.values.description,
         onChange: this.props.handleInput("description")
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "input-label_campaign"
@@ -2543,7 +2539,7 @@ var PerkFormQuestions = /*#__PURE__*/function (_Component) {
       }, "You can limit the quantity available to backers based on production volume. Leaving this field blank indicates that there is no quantity limit."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "form-field_campaign",
         type: "text",
-        value: this.props.values.location,
+        value: this.props.values.quantity_available,
         onChange: this.props.handleInput("quantity_avalable")
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "input-label_campaign"
@@ -2555,7 +2551,7 @@ var PerkFormQuestions = /*#__PURE__*/function (_Component) {
         className: "form-field_campaign",
         type: "text",
         id: "funding_goal",
-        value: this.props.values.funding_goal,
+        value: this.props.values.delivery_date,
         onChange: this.props.handleInput("delivery_date")
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn-formp1",

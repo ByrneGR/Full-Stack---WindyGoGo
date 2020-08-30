@@ -29,7 +29,7 @@ export class PerkFormQuestions extends Component {
               <input
                 className="form-field_campaign"
                 type="text"
-                value={this.props.values.title}
+                value={this.props.values.price}
                 onChange={this.props.handleInput("price")}
               />
             </label>
@@ -39,19 +39,19 @@ export class PerkFormQuestions extends Component {
               <input
                 className="form-field_campaign"
                 type="text"
-                value={this.props.values.title}
+                value={this.props.values.retail_price}
                 onChange={this.props.handleInput("retail_price")}
               />
             </label>
             <br></br>
             <label className="input-label_campaign">
               <h2 className="input-label_header">Title</h2>
-              <div className="sublabel">The title for your perk is what will appear on your campaign page and throughout Indiegogo. Create a title that best describes the contents of what this perk is offering.</div>
+              <div className="sublabel">The title for your perk is what will appear on your campaign page and throughout Indiegogo. Create a title that best describes the contents of what this perk is offering.
+              </div>              
               <input
                 className="form-field_campaign"
-                id="campaigndescription"
                 type="text"
-                value={this.props.values.description}
+                value={this.props.values.title}
                 onChange={this.props.handleInput("title")}
               />
             </label>
@@ -62,8 +62,8 @@ export class PerkFormQuestions extends Component {
               </div>
               <input
                 className="form-field_campaign"
-                type="file"
-                // value={this.props.values.}
+                type="text"
+                value={this.props.values.description}
                 onChange={this.props.handleInput("description")}
               />
             </label>
@@ -75,7 +75,7 @@ export class PerkFormQuestions extends Component {
               <input
                 className="form-field_campaign"
                 type="text"
-                value={this.props.values.location}
+                value={this.props.values.quantity_available}
                 onChange={this.props.handleInput("quantity_avalable")}
               />
             </label>
@@ -88,7 +88,7 @@ export class PerkFormQuestions extends Component {
                 className="form-field_campaign"
                 type="text"
                 id="funding_goal"
-                value={this.props.values.funding_goal}
+                value={this.props.values.delivery_date}
                 onChange={this.props.handleInput("delivery_date")}
               />
             </label>

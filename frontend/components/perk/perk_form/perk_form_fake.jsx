@@ -9,13 +9,15 @@ class PerkForm extends React.Component {
     this.state = {
       title: "",
       description: "",
-      delivery_date: "",
+      delivery_date: "mm/dd/yyyy",
       quantity_available: "",
       price: "",
       retail_price: "",
       campaign_id: "",
       
     };
+
+    this.handleInput = this.handleInput.bind(this);
 
   }
 
@@ -63,8 +65,8 @@ class PerkForm extends React.Component {
   render() {
     const errors = this.props.errors;
     // const preview = this.state.photoUrl ? <img src= {this.state.photoUrl} />
-    const {creator_type, location, banking_location, title, description, duration, imageFile, funding_goal} = this.state
-    const values = { creator_type, location, banking_location, title, description, duration, imageFile, funding_goal }
+    const { retail_price, title, description, duration, price, delivery_date} = this.state
+    const values = { retail_price, title, description, duration, price, delivery_date }
         return (
           <PerkFormQuestions errors={errors} prevStep={this.prevStep} handleFile={this.handleFile} handleInput={this.handleInput} values={values} handleSubmit={this.handleSubmit} />
         )
