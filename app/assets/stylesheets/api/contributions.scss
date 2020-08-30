@@ -33,4 +33,32 @@
   display: flex;
   justify-content: space-between;
   flex-direction: row;
+  text-align: left;
+}
+
+#perk-price-total {
+  font-weight: 800;
+}
+
+#contribution-perk-top {
+  background-color: #C8C8C8;
+  text-align: left;
+}
+
+
+.contribution-perk-card-container {
+  border: 1px solid #ddd;
+  background-color: #fff;
+  border-radius: 2px;
+  font-weight: 500;
+  line-height: 1.5;
+  text-align: left;
+  color: #2a2a2a;
+  margin-bottom: 5%;
+  text-decoration: none;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+  font-family: Helvetica,
+    "Sans-serif";
+
 }

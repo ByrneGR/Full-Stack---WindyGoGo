@@ -52,12 +52,18 @@ class ContributionForm extends React.Component {
     if (perk) {
       return (
         <div>
-              <div className="perk-card-container">
-                <h3 id="perk-card-header">{perk.title}</h3>
-                <span id="perk-price" key={perk.id}>${perk.price} USD</span> <br></br><br></br>
+              <div className="contribution-perk-card-container">
+                <div id="contribution-perk-top">
+                <h2>Review Your Contribution</h2>
+               <span id="perk-card-header">{perk.title}</span><br></br>
+                <span>{perk.description}</span><br></br>
                 <span id="estimated_shipping">Estimated Shipping</span> <br></br>
                 <span>{perk.delivery_date}</span> <br></br><br></br>
-                <span>Only <span id="quantity_avail">{perk.quantity_available}</span> left</span> <br></br><br></br>
+                </div>
+                <div id="contribution-perk-summary">
+                  <span id="perk-price" key={perk.id}>{perk.title}        ${perk.price} USD</span> <br></br><br></br>
+                  <span id="perk-price-total" key={perk.id}>Total        ${perk.price} USD</span> <br></br><br></br>
+                </div>  
               </div>
         </div > )
     } else {
