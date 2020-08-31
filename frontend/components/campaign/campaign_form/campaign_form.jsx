@@ -13,6 +13,7 @@ class CampaignForm extends React.Component {
       location: "",
       banking_location: "",
       title: "My Campaign Title",
+      tagline: "",
       description: "",
       duration: 30,
       imageFile: null,
@@ -66,6 +67,7 @@ class CampaignForm extends React.Component {
     formData1.append('campaign[title]', this.state.title)
     formData1.append('campaign[creator_type]', this.state.creator_type)
     formData1.append('campaign[location]', this.state.location)
+    formData1.append('campaign[tagline]', this.state.tagline)
     formData1.append('campaign[funding_goal]', this.state.funding_goal)
     formData1.append('campaign[banking_location]', this.state.banking_location)
     formData1.append('campaign[description]', this.state.description)

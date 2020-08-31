@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link, Route } from 'react-router-dom';
 
 export class PerkFormQuestions extends Component {
   render() {
@@ -8,8 +9,8 @@ export class PerkFormQuestions extends Component {
       <div id="campaignformp2">
         <button
           className="btn-formp1" id="launch-top" onClick={this.props.handleSubmit}>ADD PERK</button>   
-        <button
-          className="btn-formp1" id="goback-top" onClick={this.props.prevStep}>BACK</button>                     
+        <a
+          href={`#/api/campaigns/${this.props.id}`} className="btn-formp1 skip_perk" id="goback-top">SKIP PERKS</a>                     
         <form
           onSubmit={this.createCampaign}
           className="campaign-form2-parent"
@@ -86,7 +87,7 @@ export class PerkFormQuestions extends Component {
               </div>
               <input
                 className="form-field_campaign"
-                type="text"
+                type="date"
                 id="funding_goal"
                 value={this.props.values.delivery_date}
                 onChange={this.props.handleInput("delivery_date")}
@@ -94,7 +95,7 @@ export class PerkFormQuestions extends Component {
             </label>
             <br></br>
             <button
-              className="btn-formp1" id="campaignform2btn" onClick={this.props.handleSubmit}>ADD PERK</button>
+              className="btn-formp1" id="campaignform2btn2" onClick={this.props.handleSubmit}>ADD PERK</button>
             <div>{errors}</div>
           </div>
         </form>

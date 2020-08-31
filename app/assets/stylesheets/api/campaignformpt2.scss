@@ -19,6 +19,7 @@
   float: right;
   color: #683AAA;
   background-color: #F1E3F2;
+  height: 5%;
 }
 
 #launch-top {
@@ -108,8 +109,16 @@ input[type="file"] {
   width: 400px;
 }
 
-#campaignform2btn {
+#campaignform2btn2 {
+  margin-top: 3%;
+  position: absolute;
   float: right;
+  right: 20%;
+  cursor: pointer;
+}
+
+#campaignform2btn2:hover {
+  cursor: pointer;
 }
 
 #campaign_duration {

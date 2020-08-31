@@ -39,9 +39,21 @@ export class CampaignFormPt2 extends Component {
               />
             </label>
             <br></br>
+
+            <label className="input-label_campaign">
+              <h2 className="input-label_header">Campaign Tagline</h2>
+              <div className="sublabel">Provide a short description that best describes your campaign to your audience.</div>
+              <input
+                className="form-field_campaign"
+                type="text"
+                value={this.props.values.tagline}
+                onChange={this.props.handleInput("tagline")}
+              />
+            </label>
+            <br></br>
             <label className="input-label_campaign">
               <h2 className="input-label_header">Campaign Description</h2>
-              <div className="sublabel">Provide a short description that best describes your campaign to your audience.</div>
+              <div className="sublabel">Tell potential contributors more about your campaign. Provide details that will motivate people to contribute. A good pitch is compelling, informative, and easy to digest. Learn more.</div>
               <textarea
                 className="form-field_campaign"
                 id="campaigndescription"
@@ -105,7 +117,7 @@ export class CampaignFormPt2 extends Component {
             </label>
             <br></br>
             <button
-              className="btn-formp1" id="campaignform2btn" disabled={!isEnabled}  onClick={this.props.handleSubmit}>LAUNCH CAMPAIGN</button>
+              className="btn-formp1" id="campaignform2btn2" disabled={!isEnabled}  onClick={this.props.handleSubmit}>LAUNCH CAMPAIGN</button>
             <div>{errors}</div>
           </div>
         </form>

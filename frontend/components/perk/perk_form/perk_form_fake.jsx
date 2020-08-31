@@ -57,7 +57,7 @@ class PerkForm extends React.Component {
     const { retail_price, title, description, quantity_available, duration, price, delivery_date} = this.state
     const values = { retail_price, title, description, duration, price, delivery_date, quantity_available }
         return (
-          <PerkFormQuestions errors={errors} prevStep={this.prevStep} handleInput={this.handleInput} values={values} handleSubmit={this.handleSubmit} />
+          <PerkFormQuestions id={this.props.id} errors={errors} prevStep={this.prevStep} handleInput={this.handleInput} values={values} handleSubmit={this.handleSubmit} />
         )
     }
   }

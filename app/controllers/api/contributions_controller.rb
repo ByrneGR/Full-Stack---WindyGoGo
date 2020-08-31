@@ -3,15 +3,22 @@ class Api::ContributionsController < ApplicationController
   def create
     @contribution = Contribution.new(contribution_params)
     @contribution.backer_id = current_user.id
-    @perk = Perk.find(contribution_params[:perk_id])
+
+    if contribution_params[:perk_id] != "0"
+      @perk = Perk.find(contribution_params[:perk_id])
     
-    if @contribution.save
+      if @contribution.save
       @perk.quantity_available -= 1
       @perk.save
       render :show
+      end
+
     else
-    
-      render json: @contribution.errors.full_messages, status: 401
+      if @contribution.save
+        render :show
+      else  
+        render json: @contribution.errors.full_messages, status: 401
+      end  
     end  
 
   end

@@ -12,6 +12,7 @@ import CampaignIndexContainer from './campaign/campaign_index/campaign_index_con
 import MyCampaignsContainer from './campaign/my_campaigns/my_campaigns_container.jsx'
 import SplashPage from './splash/splash.jsx'
 import PerkFormContainer from './perk/perk_form/perk_form_container.jsx'
+import Footer from './footer/footer.jsx'
 
 
 
@@ -54,6 +55,9 @@ const App = () => (
     <Route path='/home' component={SplashPage} />
     <Route path="/perks/create/:campaignId" component={PerkFormContainer} />
     
+  <footer>
+    <Footer />
+  </footer>
   </div>
 );
 

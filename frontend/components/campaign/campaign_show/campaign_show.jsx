@@ -5,6 +5,7 @@ class CampaignShow extends React.Component {
   constructor(props) {
     super(props)
     this.state = this.props.campaign
+    debugger
   }
 
   componentDidMount() {
@@ -15,7 +16,8 @@ class CampaignShow extends React.Component {
   
   perks() {
 
-   if (this.props.campaign.perks) {
+   if (this.props.campaign.perks.length > 0) {
+     debugger
      return(
     <div>
      {this.props.campaign.perks.map((perk, idx) => (
@@ -30,7 +32,11 @@ class CampaignShow extends React.Component {
         </Link>
       ))}
       </div >)
-    } else return null;
+    } else return (
+     <div className="perk-card-container">
+       <h3 id="perk-card-header">No Perks Added Yet</h3>
+     </div>
+    );
   }
 
   progressBar() {
@@ -50,7 +56,7 @@ class CampaignShow extends React.Component {
   }
 
   campaignRender() {
-
+    let perk = 0
     if (this.props.campaign) {
     return (
       <div id="campaignshowparent">
@@ -60,6 +66,7 @@ class CampaignShow extends React.Component {
             <div id="campaignshowheader-right">
               <span id="showpage_funding">FUNDING</span>
               <span id="showpage_title">{this.props.campaign.title}</span>
+              <span id="showpage_tagline">{this.props.campaign.tagline}</span>
               <span id="showpage_creator">{this.props.campaign.creator.first_name} {this.props.campaign.creator.last_name}</span>
             <div id="raisedandbackers">
               <span id="showpage_amountraised">${this.props.campaign.amount_raised} USD</span>
@@ -69,7 +76,7 @@ class CampaignShow extends React.Component {
               <div id="progressbar"></div>
             </div>
             <span id="showpage_percent_raised">{this.props.campaign.percent_raised}% of ${this.props.campaign.funding_goal} Flexible Goal</span>       
-            <Link className="btn-formp1" id="btn-backit" to={`/contributions/${this.props.campaign.id}/new`} campaign={this.props.campaign}>BACK IT</Link>
+            <Link className="btn-formp1" id="btn-backit" to={`/contributions/${this.props.campaign.id}/new/${perk}`} campaign={this.props.campaign}>BACK IT</Link>
             </div>
             </div>  
           <div id="campaignshowlower">

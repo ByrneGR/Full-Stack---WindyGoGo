@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_31_150610) do
+ActiveRecord::Schema.define(version: 2020_08_31_184703) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2020_08_31_150610) do
     t.string "banking_location"
     t.integer "funding_goal"
     t.integer "funding_raised"
+    t.string "tagline"
     t.index ["creator_id"], name: "index_campaigns_on_creator_id"
   end
 

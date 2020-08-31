@@ -424,6 +424,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _campaign_my_campaigns_my_campaigns_container_jsx__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./campaign/my_campaigns/my_campaigns_container.jsx */ "./frontend/components/campaign/my_campaigns/my_campaigns_container.jsx");
 /* harmony import */ var _splash_splash_jsx__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./splash/splash.jsx */ "./frontend/components/splash/splash.jsx");
 /* harmony import */ var _perk_perk_form_perk_form_container_jsx__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./perk/perk_form/perk_form_container.jsx */ "./frontend/components/perk/perk_form/perk_form_container.jsx");
+/* harmony import */ var _footer_footer_jsx__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./footer/footer.jsx */ "./frontend/components/footer/footer.jsx");
+
 
 
 
@@ -489,7 +491,7 @@ var App = function App() {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Route"], {
     path: "/perks/create/:campaignId",
     component: _perk_perk_form_perk_form_container_jsx__WEBPACK_IMPORTED_MODULE_13__["default"]
-  }));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_footer_footer_jsx__WEBPACK_IMPORTED_MODULE_14__["default"], null)));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
@@ -572,6 +574,7 @@ var CampaignForm = /*#__PURE__*/function (_React$Component) {
       location: "",
       banking_location: "",
       title: "My Campaign Title",
+      tagline: "",
       description: "",
       duration: 30,
       imageFile: null,
@@ -626,6 +629,7 @@ var CampaignForm = /*#__PURE__*/function (_React$Component) {
       formData1.append('campaign[title]', this.state.title);
       formData1.append('campaign[creator_type]', this.state.creator_type);
       formData1.append('campaign[location]', this.state.location);
+      formData1.append('campaign[tagline]', this.state.tagline);
       formData1.append('campaign[funding_goal]', this.state.funding_goal);
       formData1.append('campaign[banking_location]', this.state.banking_location);
       formData1.append('campaign[description]', this.state.description);
@@ -1101,9 +1105,20 @@ var CampaignFormPt2 = /*#__PURE__*/function (_Component) {
         className: "input-label_campaign"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "input-label_header"
+      }, "Campaign Tagline"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "sublabel"
+      }, "Provide a short description that best describes your campaign to your audience."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-field_campaign",
+        type: "text",
+        value: this.props.values.tagline,
+        onChange: this.props.handleInput("tagline")
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "input-label_campaign"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "input-label_header"
       }, "Campaign Description"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sublabel"
-      }, "Provide a short description that best describes your campaign to your audience."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+      }, "Tell potential contributors more about your campaign. Provide details that will motivate people to contribute. A good pitch is compelling, informative, and easy to digest. Learn more."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         className: "form-field_campaign",
         id: "campaigndescription",
         value: this.props.values.description,
@@ -1156,7 +1171,7 @@ var CampaignFormPt2 = /*#__PURE__*/function (_Component) {
         onChange: this.props.handleInput("duration")
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn-formp1",
-        id: "campaignform2btn",
+        id: "campaignform2btn2",
         disabled: !isEnabled,
         onClick: this.props.handleSubmit
       }, "LAUNCH CAMPAIGN"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, errors))));
@@ -1225,16 +1240,23 @@ var CampaignIndex = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchAllCampaigns(this.props.userId);
+      debugger;
     }
   }, {
     key: "campaignRender",
     value: function campaignRender() {
       if (this.props.campaigns) {
-        var lastIndex = Object.values(this.props.campaigns).length - 1;
+        var lastIndex = Object.values(this.props.campaigns).length;
+        var firstIndex = 0;
+
+        if (Object.values(this.props.campaigns).length >= 8) {
+          var _firstIndex = lastIndex - 8;
+        }
+
         debugger;
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "homepage_parent"
-        }, Object.values(this.props.campaigns).slice(lastIndex - 8, lastIndex).map(function (campaign, idx) {
+        }, Object.values(this.props.campaigns).slice(firstIndex, lastIndex).map(function (campaign, idx) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
             to: "/api/campaigns/".concat(campaign.id),
             className: "homepage_container"
@@ -1249,7 +1271,7 @@ var CampaignIndex = /*#__PURE__*/function (_React$Component) {
             className: "homepage_title"
           }, campaign.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
             className: "homepage_description"
-          }, campaign.description)));
+          }, campaign.tagline)));
         }));
       } else {
         return null;
@@ -1365,6 +1387,7 @@ var CampaignShow = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = _this.props.campaign;
+    debugger;
     return _this;
   }
 
@@ -1378,7 +1401,8 @@ var CampaignShow = /*#__PURE__*/function (_React$Component) {
     value: function perks() {
       var _this2 = this;
 
-      if (this.props.campaign.perks) {
+      if (this.props.campaign.perks.length > 0) {
+        debugger;
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.campaign.perks.map(function (perk, idx) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
             perk: perk,
@@ -1397,7 +1421,11 @@ var CampaignShow = /*#__PURE__*/function (_React$Component) {
             id: "quantity_avail"
           }, perk.quantity_available), " left"), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)));
         }));
-      } else return null;
+      } else return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "perk-card-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        id: "perk-card-header"
+      }, "No Perks Added Yet"));
     }
   }, {
     key: "progressBar",
@@ -1421,6 +1449,8 @@ var CampaignShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "campaignRender",
     value: function campaignRender() {
+      var perk = 0;
+
       if (this.props.campaign) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           id: "campaignshowparent"
@@ -1438,6 +1468,8 @@ var CampaignShow = /*#__PURE__*/function (_React$Component) {
         }, "FUNDING"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           id: "showpage_title"
         }, this.props.campaign.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          id: "showpage_tagline"
+        }, this.props.campaign.tagline), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           id: "showpage_creator"
         }, this.props.campaign.creator.first_name, " ", this.props.campaign.creator.last_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           id: "raisedandbackers"
@@ -1454,7 +1486,7 @@ var CampaignShow = /*#__PURE__*/function (_React$Component) {
         }, this.props.campaign.percent_raised, "% of $", this.props.campaign.funding_goal, " Flexible Goal"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
           className: "btn-formp1",
           id: "btn-backit",
-          to: "/contributions/".concat(this.props.campaign.id, "/new"),
+          to: "/contributions/".concat(this.props.campaign.id, "/new/").concat(perk),
           campaign: this.props.campaign
         }, "BACK IT"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           id: "campaignshowlower"
@@ -1813,7 +1845,27 @@ var ContributionForm = /*#__PURE__*/function (_React$Component) {
           onClick: this.handleSubmit
         }, "Submit Payment"), " ")));
       } else {
-        return null;
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "contribution-perk-parent"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "contribution-perk-card-container"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          id: "contribution-perk-top"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+          id: "review-contribution-heading"
+        }, "Review Your Contribution"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          id: "perk-card-header"
+        }, "No Perk Selected"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          id: "contribution-perk-bottom"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          id: "perk-price"
+        }, "No Perk Selected"), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          id: "contribution-button-container"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "btn-formp1 contribution-btn",
+          id: "campaignform2btn",
+          onClick: this.handleSubmit
+        }, "Submit Payment"), " ")));
       }
     }
   }, {
@@ -1951,6 +2003,74 @@ var mdp = function mdp(dispatch) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(_contribution_form__WEBPACK_IMPORTED_MODULE_4__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/footer/footer.jsx":
+/*!***********************************************!*\
+  !*** ./frontend/components/footer/footer.jsx ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+var Footer = /*#__PURE__*/function (_React$Component) {
+  _inherits(Footer, _React$Component);
+
+  var _super = _createSuper(Footer);
+
+  function Footer() {
+    _classCallCheck(this, Footer);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(Footer, [{
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "helpful-information-banner-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "helpful-information-banner-parts"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "EXPLORE"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "What We Do"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Funding"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "GoFundMe")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "helpful-information-banner-parts"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "ABOUT"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "About Us"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Blog"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Trust and Safety"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Help and Support"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Press"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Careers"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Contact")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "helpful-information-banner-parts"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "ENTREPRENEURS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "How It Works"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Indiegogo vs Kickstarter"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Education Center"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Experts Directory"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Fees"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Enterprise"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "China")));
+    }
+  }]);
+
+  return Footer;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (Footer);
 
 /***/ }),
 
@@ -2193,6 +2313,7 @@ var PerkForm = /*#__PURE__*/function (_React$Component) {
         quantity_available: quantity_available
       };
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_perk_form_questions__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        id: this.props.id,
         errors: errors,
         prevStep: this.prevStep,
         handleInput: this.handleInput,
@@ -2221,6 +2342,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PerkFormQuestions", function() { return PerkFormQuestions; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2242,6 +2364,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
 
 
 var PerkFormQuestions = /*#__PURE__*/function (_Component) {
@@ -2268,11 +2391,11 @@ var PerkFormQuestions = /*#__PURE__*/function (_Component) {
         className: "btn-formp1",
         id: "launch-top",
         onClick: this.props.handleSubmit
-      }, "ADD PERK"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn-formp1",
-        id: "goback-top",
-        onClick: this.props.prevStep
-      }, "BACK"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      }, "ADD PERK"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#/api/campaigns/".concat(this.props.id),
+        className: "btn-formp1 skip_perk",
+        id: "goback-top"
+      }, "SKIP PERKS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.createCampaign,
         className: "campaign-form2-parent",
         id: "campaign-form2"
@@ -2347,13 +2470,13 @@ var PerkFormQuestions = /*#__PURE__*/function (_Component) {
         className: "sublabel"
       }, "Estimate a delivery date for this perk for your backers. This date and future changes to it will appear on the perk card for your backers to see. We recommend that you post an update to backers whenever you change this date."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "form-field_campaign",
-        type: "text",
+        type: "date",
         id: "funding_goal",
         value: this.props.values.delivery_date,
         onChange: this.props.handleInput("delivery_date")
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn-formp1",
-        id: "campaignform2btn",
+        id: "campaignform2btn2",
         onClick: this.props.handleSubmit
       }, "ADD PERK"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, errors))));
     }

@@ -11,23 +11,29 @@ class CampaignIndex extends React.Component {
 
   componentDidMount() {
     this.props.fetchAllCampaigns(this.props.userId)
+    debugger;
+
   }
 
 
   campaignRender() {
 
     if (this.props.campaigns) {
-      let lastIndex = Object.values(this.props.campaigns).length - 1
+      let lastIndex = Object.values(this.props.campaigns).length
+      let firstIndex = 0
+      if (Object.values(this.props.campaigns).length >= 8) {
+        let firstIndex = lastIndex - 8
+      }
       debugger
       return (
         <div className="homepage_parent">
-          {Object.values(this.props.campaigns).slice(lastIndex - 8, lastIndex).map((campaign, idx) => (
+          {Object.values(this.props.campaigns).slice(firstIndex, lastIndex).map((campaign, idx) => (
             <Link to={`/api/campaigns/${campaign.id}`} className="homepage_container">
                 <img className="homepage_images" src={campaign.photoUrl}/>
                 <div id="homepage_lowertext">
                 <span id="homepage_funding">FUNDING</span>
                 <span className="homepage_title">{campaign.title}</span>
-                <span className="homepage_description">{campaign.description}</span>
+                <span className="homepage_description">{campaign.tagline}</span>
                 </div>
             </Link>
           )

@@ -1,4 +1,4 @@
-json.extract! campaign, :id, :title, :description, :duration, :creator_id, :image, :funding_goal, :amount_raised, :banking_location
+json.extract! campaign, :id, :title, :description, :duration, :creator_id, :image, :funding_goal, :amount_raised, :banking_location, :tagline
   json.photoUrl url_for(campaign.image)
   json.contributions campaign.contributions
   json.creator campaign.creator

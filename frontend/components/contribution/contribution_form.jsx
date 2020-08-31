@@ -71,7 +71,24 @@ class ContributionForm extends React.Component {
               </div>
         </div > )
     } else {
-      return null }
+      return (<div className="contribution-perk-parent">
+        <div className="contribution-perk-card-container">
+          <div id="contribution-perk-top">
+            <h2 id="review-contribution-heading">Review Your Contribution</h2>
+            <span id="perk-card-header">No Perk Selected</span><br></br>
+            {/* <span>{perk.description}</span><br></br>
+            <span id="estimated_shipping">Estimated Shipping</span> <br></br>
+            <span>{perk.delivery_date}</span> <br></br><br></br> */}
+          </div>
+          <div id="contribution-perk-bottom">
+            <span id="perk-price">No Perk Selected</span> <br></br><br></br>
+            {/* < id="perk-price-total"></span> <br></br><br></br> */}
+          </div>
+          <div id="contribution-button-container">
+            <button
+              className="btn-formp1 contribution-btn" id="campaignform2btn" onClick={this.handleSubmit}>Submit Payment</button> </div>
+        </div>
+      </div > ) }
   }
 
   contributionAmount() {
