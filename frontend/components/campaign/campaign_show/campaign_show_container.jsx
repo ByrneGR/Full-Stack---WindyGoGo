@@ -5,9 +5,12 @@ import CampaignShow from "./campaign_show";
 const msp = (state, {match}) => {
   const id = parseInt(match.params.campaignId);
   const campaign = state.entities.campaigns[id]
+  const currentUser = state.session
+  debugger
   return {
     campaign,
-    id
+    id,
+    currentUser
   }
 };
 

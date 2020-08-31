@@ -42,10 +42,9 @@ export class CampaignFormPt2 extends Component {
             <label className="input-label_campaign">
               <h2 className="input-label_header">Campaign Description</h2>
               <div className="sublabel">Provide a short description that best describes your campaign to your audience.</div>
-              <input
+              <textarea
                 className="form-field_campaign"
                 id="campaigndescription"
-                type="text"
                 value={this.props.values.description}
                 onChange={this.props.handleInput("description")}
               />

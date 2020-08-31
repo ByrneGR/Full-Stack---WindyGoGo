@@ -230,3 +230,23 @@
 #perk-card-header {
   font-weight: 600;
 }
+
+#add_perk_show {
+  font-family: benton-sans,
+  Helvetica,
+  "Sans-serif";
+  font-weight: 300;
+  color: white;
+  background-color: #835FB5;
+  padding: 3%;
+  border: none;
+  letter-spacing: 2px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+#add_perk_show:hover {
+
+  background-color: #683AAA;
+
+}

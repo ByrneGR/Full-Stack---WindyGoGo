@@ -39,6 +39,16 @@ class CampaignShow extends React.Component {
     progress.style.width = percent + "%"
   }
 
+  addPerk() {
+    if (this.props.currentUser.id === this.props.campaign.creator_id) {
+      return (
+        <Link id="add_perk_show" to={`/perks/create/${this.props.campaign.id}`}>Add Perk</Link>
+      )
+    } else {
+      return null;
+    }
+  }
+
   campaignRender() {
 
     if (this.props.campaign) {
@@ -68,6 +78,7 @@ class CampaignShow extends React.Component {
               <span id="campaign-description-body">{this.props.campaign.description}</span>
             </div>
             <ul id="perk-parent">
+            {this.addPerk()}
             <h2 className="campaignshowlower-header" >Select a perk</h2>
               {this.perks()}
             </ul>

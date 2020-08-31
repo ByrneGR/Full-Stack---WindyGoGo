@@ -1103,10 +1103,9 @@ var CampaignFormPt2 = /*#__PURE__*/function (_Component) {
         className: "input-label_header"
       }, "Campaign Description"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sublabel"
-      }, "Provide a short description that best describes your campaign to your audience."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, "Provide a short description that best describes your campaign to your audience."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         className: "form-field_campaign",
         id: "campaigndescription",
-        type: "text",
         value: this.props.values.description,
         onChange: this.props.handleInput("description")
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
@@ -1408,6 +1407,18 @@ var CampaignShow = /*#__PURE__*/function (_React$Component) {
       progress.style.width = percent + "%";
     }
   }, {
+    key: "addPerk",
+    value: function addPerk() {
+      if (this.props.currentUser.id === this.props.campaign.creator_id) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          id: "add_perk_show",
+          to: "/perks/create/".concat(this.props.campaign.id)
+        }, "Add Perk");
+      } else {
+        return null;
+      }
+    }
+  }, {
     key: "campaignRender",
     value: function campaignRender() {
       if (this.props.campaign) {
@@ -1455,7 +1466,7 @@ var CampaignShow = /*#__PURE__*/function (_React$Component) {
           id: "campaign-description-body"
         }, this.props.campaign.description)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
           id: "perk-parent"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        }, this.addPerk(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
           className: "campaignshowlower-header"
         }, "Select a perk"), this.perks())));
       } else {
@@ -1496,9 +1507,12 @@ var msp = function msp(state, _ref) {
   var match = _ref.match;
   var id = parseInt(match.params.campaignId);
   var campaign = state.entities.campaigns[id];
+  var currentUser = state.session;
+  debugger;
   return {
     campaign: campaign,
-    id: id
+    id: id,
+    currentUser: currentUser
   };
 };
 
