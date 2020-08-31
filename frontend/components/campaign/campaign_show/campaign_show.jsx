@@ -28,7 +28,7 @@ class CampaignShow extends React.Component {
            <span>Only <span id="quantity_avail">{perk.quantity_available}</span> left</span> <br></br><br></br>
         </div>
         </Link>
-      ))};
+      ))}
       </div >)
     } else return null;
   }

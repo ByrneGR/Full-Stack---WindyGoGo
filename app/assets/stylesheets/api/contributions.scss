@@ -4,6 +4,7 @@
 
 #nameandcardnumber-parent {
   display: flex;
+  margin-bottom: 5%;
 }
 
 #contribution_nameoncard {
@@ -17,7 +18,7 @@
 
 #contributionform {
   margin-top: 5%;
-  width: 35%;
+  width: 40%;
 }
 
 #contributionformheader {
@@ -127,7 +128,7 @@
     color: #2a2a2a;
     font-size: 18px;
     text-align: left;
-    margin-bottom: 5%;
+    margin-bottom: 15%;
 
 }
 
@@ -136,4 +137,8 @@
     "Sans-serif";
     color: #2a2a2a;
     text-align: left;
+}
+
+.contributionform > div {
+  margin-bottom: 10%;
 }

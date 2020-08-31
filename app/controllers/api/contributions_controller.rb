@@ -3,7 +3,11 @@ class Api::ContributionsController < ApplicationController
   def create
     @contribution = Contribution.new(contribution_params)
     @contribution.backer_id = current_user.id
+    @perk = Perk.find(contribution_params[:perk_id])
+    
     if @contribution.save
+      @perk.quantity_available -= 1
+      @perk.save
       render :show
     else
     
@@ -21,7 +25,7 @@ class Api::ContributionsController < ApplicationController
   end  
   
   def contribution_params
-    params.require(:contribution).permit(:contribution_amount, :name_on_card, :card_number, :contribution_appearance, :campaign_id)
+    params.require(:contribution).permit(:contribution_amount, :name_on_card, :card_number, :contribution_appearance, :campaign_id, :perk_id)
   end  
 
   

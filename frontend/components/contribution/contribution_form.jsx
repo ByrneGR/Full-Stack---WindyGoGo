@@ -8,6 +8,7 @@ class ContributionForm extends React.Component {
       name_on_card: "Name on Card",
       card_number: "Demo Credit Card # (no input needed)",
       contribution_appearance: "Anonymous",
+      perk_id: this.props.perkId,
       campaign_id: this.props.id,
     };
    this.handleSubmit = this.handleSubmit.bind(this); 
@@ -160,8 +161,6 @@ class ContributionForm extends React.Component {
         {this.contributionAmount()}
           {this.nameAndCardInfo()}
           {this.contribution_appearance()}
-          <button
-            className="btn-formp1" id="campaignform2btn" onClick={this.handleSubmit}>Submit Payment</button>
       </form>
       {this.perk()}
     </div >        

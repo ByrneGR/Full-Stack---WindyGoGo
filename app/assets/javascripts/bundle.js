@@ -1397,7 +1397,7 @@ var CampaignShow = /*#__PURE__*/function (_React$Component) {
           }, "Estimated Shipping"), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, perk.delivery_date), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Only ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
             id: "quantity_avail"
           }, perk.quantity_available), " left"), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)));
-        }), ";");
+        }));
       } else return null;
     }
   }, {
@@ -1718,6 +1718,7 @@ var ContributionForm = /*#__PURE__*/function (_React$Component) {
       name_on_card: "Name on Card",
       card_number: "Demo Credit Card # (no input needed)",
       contribution_appearance: "Anonymous",
+      perk_id: _this.props.perkId,
       campaign_id: _this.props.id
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
@@ -1875,11 +1876,7 @@ var ContributionForm = /*#__PURE__*/function (_React$Component) {
         "class": "contribution-form-parent"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         id: "contributionform"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.header()), this.contributionAmount(), this.nameAndCardInfo(), this.contribution_appearance(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn-formp1",
-        id: "campaignform2btn",
-        onClick: this.handleSubmit
-      }, "Submit Payment")), this.perk());
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.header()), this.contributionAmount(), this.nameAndCardInfo(), this.contribution_appearance()), this.perk());
     }
   }]);
 
