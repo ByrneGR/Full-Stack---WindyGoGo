@@ -81,23 +81,7 @@
   letter-spacing: 2px;
 }
 
-.helpful-information-banner-container {
-  display: flex;
-  padding: 50px 20px;
-  background-color: #FaFaFa;
-  justify-content: space-between;
 
-  #helpful-information-banner-parts {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 50px;
-
-    img {
-      height: 50px;
-    }
-  }
-}
 
 .skip_perk {
   text-decoration: none;

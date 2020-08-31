@@ -1,0 +1,43 @@
+// Place all the styles related to the Api::Campaigns controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.footer-header {
+    color: #6a6a6a;
+    // margin-bottom: 10px;
+     font-family: Helvetica,
+     "Sans-serif";
+     font-size: 14px;
+     font-weight: 500;
+     text-align: left;
+}
+#footer-container {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+#footer-container span {
+ text-align: left; 
+ color: #2a2a2a;
+font-family: Helvetica,
+"Sans-serif";
+font-size: 14px;
+line-height: 1.5;
+}  
+
+.helpful-information-banner-container {
+  display: flex;
+  padding: 50px;
+  background-color: #FaFaFa;
+  justify-content: center;
+
+  #helpful-information-banner-parts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 12%;
+
+
+  }
+}
