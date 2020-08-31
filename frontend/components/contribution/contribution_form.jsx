@@ -51,19 +51,22 @@ class ContributionForm extends React.Component {
     debugger
     if (perk) {
       return (
-        <div>
+        <div className="contribution-perk-parent">
               <div className="contribution-perk-card-container">
                 <div id="contribution-perk-top">
-                <h2>Review Your Contribution</h2>
+                <h2 id="review-contribution-heading">Review Your Contribution</h2>
                <span id="perk-card-header">{perk.title}</span><br></br>
                 <span>{perk.description}</span><br></br>
                 <span id="estimated_shipping">Estimated Shipping</span> <br></br>
                 <span>{perk.delivery_date}</span> <br></br><br></br>
                 </div>
-                <div id="contribution-perk-summary">
+                <div id="contribution-perk-bottom">
                   <span id="perk-price" key={perk.id}>{perk.title}        ${perk.price} USD</span> <br></br><br></br>
                   <span id="perk-price-total" key={perk.id}>Total        ${perk.price} USD</span> <br></br><br></br>
-                </div>  
+                </div> 
+                <div id="contribution-button-container">
+            <button
+              className="btn-formp1 contribution-btn" id="campaignform2btn" onClick={this.handleSubmit}>Submit Payment</button> </div>
               </div>
         </div > )
     } else {
@@ -161,7 +164,7 @@ class ContributionForm extends React.Component {
             className="btn-formp1" id="campaignform2btn" onClick={this.handleSubmit}>Submit Payment</button>
       </form>
       </div >
-      <div>{this.perk()}</div>
+      {this.perk()}
     </div >        
     )
   }
