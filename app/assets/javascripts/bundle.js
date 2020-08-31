@@ -1753,10 +1753,11 @@ var ContributionForm = /*#__PURE__*/function (_React$Component) {
     value: function header() {
       if (this.props.campaign) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "form-headers"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "You're contributing to"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-          id: "contributionformheader",
-          className: "campaign_form-header1"
+          className: "contribution-form-headers"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          id: "yourecontributing"
+        }, "You're contributing to"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+          id: "contributiontitleheader"
         }, this.props.campaign.title));
       } else {
         return null;
@@ -1872,13 +1873,13 @@ var ContributionForm = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         "class": "contribution-form-parent"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         id: "contributionform"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.header()), this.contributionAmount(), this.nameAndCardInfo(), this.contribution_appearance(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn-formp1",
         id: "campaignform2btn",
         onClick: this.handleSubmit
-      }, "Submit Payment"))), this.perk());
+      }, "Submit Payment")), this.perk());
     }
   }]);
 

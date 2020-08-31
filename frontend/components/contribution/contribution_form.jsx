@@ -35,9 +35,9 @@ class ContributionForm extends React.Component {
   header() {
     if (this.props.campaign) {
     return (
-      <div className="form-headers">
-        <span>You're contributing to</span>
-        <h1 id="contributionformheader" className="campaign_form-header1">
+      <div className="contribution-form-headers">
+        <span id="yourecontributing">You're contributing to</span>
+        <h1 id="contributiontitleheader">
          {this.props.campaign.title}
         </h1>
       </div>
@@ -154,7 +154,7 @@ class ContributionForm extends React.Component {
 
     return (
       <div class="contribution-form-parent">
-      <div>
+
         <form id="contributionform">
       <div>{this.header()}</div>
         {this.contributionAmount()}
@@ -163,7 +163,6 @@ class ContributionForm extends React.Component {
           <button
             className="btn-formp1" id="campaignform2btn" onClick={this.handleSubmit}>Submit Payment</button>
       </form>
-      </div >
       {this.perk()}
     </div >        
     )

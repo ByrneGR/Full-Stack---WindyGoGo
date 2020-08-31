@@ -16,9 +16,8 @@
 }
 
 #contributionform {
-  margin-top: 30px;
-  width: 40%;
-  margin-left: 50px;
+  margin-top: 5%;
+  width: 35%;
 }
 
 #contributionformheader {
@@ -31,8 +30,7 @@
 
 .contribution-form-parent {
   display: flex;
-  justify-content: space-between;
-  flex-direction: row;
+  justify-content: center;
   text-align: left;
 }
 
@@ -110,4 +108,32 @@
   margin-bottom: 0;
   width: 80%;
   background-color:#EB1478;
+}
+
+#yourecontributing {
+  text-align: left;
+   color: #2a2a2a;
+   font-size: 16px;
+}
+
+.contribution-form-headers {
+  text-align: left;
+  line-height: .5;
+}
+
+#contributiontitleheader {
+    font-family: Helvetica,
+    "Sans-serif";
+    color: #2a2a2a;
+    font-size: 18px;
+    text-align: left;
+    margin-bottom: 5%;
+
+}
+
+#yourecontributing {
+    font-family: Helvetica,
+    "Sans-serif";
+    color: #2a2a2a;
+    text-align: left;
 }
