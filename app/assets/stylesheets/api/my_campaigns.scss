@@ -12,7 +12,7 @@
 }
 
 .my-campaigns-container-all {
-  margin: 10%;
+  margin: 5% 10% 10% 10%;
 }
 
 .my-campaigns-campaign-container {
@@ -28,4 +28,37 @@
     height: 200px;
     position: relative;
     top: 10%;
+}
+
+#campaign-firstname {
+    text-align: left;
+    margin-top: 4%;
+    font-family: Helvetica,
+    "Sans-serif";
+    color: #2a2a2a;
+    margin-bottom: 2%;
+}
+
+#campaign-links {
+  text-decoration: none;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+  
+
+}
+
+#campaign-links a {
+  text-decoration: none;
+  margin-right: 10px;
+  color: #2a2a2a;
+}
+
+#campaign-links a:hover {
+  color: #e51075;
+}
+
+#campaigns-im-on {
+  text-align: left;
+  color: #2a2a2a;
+  font-weight: 400;
 }

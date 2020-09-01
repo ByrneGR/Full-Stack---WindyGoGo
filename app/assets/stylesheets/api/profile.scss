@@ -6,13 +6,17 @@
   text-align: left;
   margin: 0% 20%;
   margin-top: 7%;
+  font-family: Helvetica,
+  "Sans-serif";
+  color: #2a2a2a;
+  margin-bottom: 2%;
 }
 
 #profile-links {
   text-decoration: none;
   text-align: left;
   margin: 0% 20%;
-  margin-bottom: 0%;
+  // margin-bottom: 0%;
 
 }
 
@@ -30,7 +34,7 @@
   display: flex;
   justify-content: space-between;
   margin: 20%;
-  margin-top: 2%;
+  margin-top: 1%;
   margin-bottom: 10%;
   border-top: 1px solid #ccc;
 }
@@ -44,4 +48,29 @@
 #profile-right {
   margin-right: 200px;
   margin-top: 5%
+}
+
+.profile-image {
+  margin-left: 100px;
+}
+
+#profile-aboutme {
+  font-size: 22px;
+  font-weight: 400;
+}
+
+#profile-count {
+   color: #2a2a2a;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+#profile-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#pink-link {
+  color: #e51075;
 }

@@ -56,8 +56,13 @@ class MyCampaigns extends React.Component {
   render() {
     return(
       <div class="my-campaigns-container-all">
-        <h1 id="popular_projects">{this.props.currentUser.first_name}</h1>
-        <h2>Campaigns I'm On</h2>
+        <h2 id="campaign-firstname">{this.props.currentUser.first_name}</h2>
+        <div id="campaign-links">
+          <Link class="dropdown-links" id="pink-link" to={`/api/individuals/${this.props.currentUser.id}`}>Profile</Link>
+          <Link class="dropdown-links" user={this.props.currentUser} to={`/api/${this.props.currentUser.id}/campaigns/`}>Campaigns</Link>
+          <Link class="dropdown-links" to={`/api/campaigns/}`}>Contributions</Link>
+        </div>
+        <h2 id="campaigns-im-on">Campaigns I'm On</h2>
       {this.campaignRender()}
       </div >
     );
