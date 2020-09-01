@@ -23,7 +23,7 @@ class CampaignIndex extends React.Component {
       if (Object.values(this.props.campaigns).length >= 8) {
         let firstIndex = lastIndex - 8
       }
-      debugger
+
       return (
         <div className="homepage_parent">
           {Object.values(this.props.campaigns).slice(firstIndex, lastIndex).map((campaign, idx) => (

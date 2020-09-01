@@ -49,7 +49,7 @@ class ContributionForm extends React.Component {
 
   perk() {
     const { perk } = this.props
-    debugger
+
     if (perk) {
       return (
         <div className="contribution-perk-parent">

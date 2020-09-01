@@ -461,7 +461,7 @@ var App = function App() {
   }, "Explore"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
     className: "navbtn",
     to: "/aboutme"
-  }, "About Me")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "About")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "nav-right"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
     className: "navbtn",
@@ -526,6 +526,7 @@ var App = function App() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _headshotv6_jpeg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./headshotv6.jpeg */ "./frontend/components/bio/headshotv6.jpeg");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -550,6 +551,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var AboutMe = /*#__PURE__*/function (_React$Component) {
   _inherits(AboutMe, _React$Component);
 
@@ -567,10 +569,33 @@ var AboutMe = /*#__PURE__*/function (_React$Component) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "aboutme-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        id: "aboutme-header-text"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        id: "aboutwindy-header-text"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        id: "pinkrobot",
+        src: window.pinkrobot
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         id: "aboutme-h1"
-      }, "About Me"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Hi there! My name is Gabe and I'm a software developer, growth marketer and music lover. I have built web applications with Javascript, React, and Ruby on Rails and I love testing my critical-thinking and creative problem-solving through writing code. I also have a background in digital marketing and managed advertising efforts at Industrious, a national coworking space provider and Ampush, an ad agency in San Francisco. Outside of work, I love going to concerts, making beats, and travelling to new places. Let's build something incredible together!"))));
+      }, "About Windygogo"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "aboutme-header-text"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        id: "about-windy-text"
+      }, "Windygogo is a clone of the popular crowdfunding site, Indiegogo. The goal of WindyGoGo is to enhance my backend (Ruby on Rails) and frontend (React/Redux/CSS) skills by replicating an established successful web app and to showcase my abilitites as a developer."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        id: "aboutme-h1"
+      }, "About Me"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "aboutme-header-text"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "headshot-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "img-responsive",
+        src: window.headshotv5,
+        alt: "d1"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        id: "about-me-bio"
+      }, "Hi there! My name is Gabe and I'm a software developer, growth marketer and music lover. I have built web applications with Javascript, React, and Ruby on Rails and I love testing my critical-thinking and creative problem-solving through writing code.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "I also have a background in digital marketing and managed advertising efforts at Industrious, a national coworking space provider and Ampush, an ad agency in San Francisco. Outside of work, I love going to concerts, making beats, and travelling to new places. Learn more at ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        target: "_blank",
+        id: "gb-link",
+        href: "gabebyrne.com"
+      }, "gabebyrne.com")))));
     }
   }]);
 
@@ -578,6 +603,19 @@ var AboutMe = /*#__PURE__*/function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (AboutMe);
+
+/***/ }),
+
+/***/ "./frontend/components/bio/headshotv6.jpeg":
+/*!*************************************************!*\
+  !*** ./frontend/components/bio/headshotv6.jpeg ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("assets/images/headshotv6.jpeg");
 
 /***/ }),
 
@@ -1335,7 +1373,6 @@ var CampaignIndex = /*#__PURE__*/function (_React$Component) {
           var _firstIndex = lastIndex - 8;
         }
 
-        debugger;
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "homepage_parent"
         }, Object.values(this.props.campaigns).slice(firstIndex, lastIndex).map(function (campaign, idx) {
@@ -1471,7 +1508,6 @@ var CampaignShow = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = _this.props.campaign;
-    debugger;
     return _this;
   }
 
@@ -1486,7 +1522,6 @@ var CampaignShow = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       if (this.props.campaign.perks.length > 0) {
-        debugger;
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.campaign.perks.map(function (perk, idx) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
             perk: perk,
@@ -1624,7 +1659,6 @@ var msp = function msp(state, _ref) {
   var id = parseInt(match.params.campaignId);
   var campaign = state.entities.campaigns[id];
   var currentUser = state.session;
-  debugger;
   return {
     campaign: campaign,
     id: id,
@@ -1912,7 +1946,6 @@ var ContributionForm = /*#__PURE__*/function (_React$Component) {
     key: "perk",
     value: function perk() {
       var perk = this.props.perk;
-      debugger;
 
       if (perk) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2465,7 +2498,6 @@ var PerkForm = /*#__PURE__*/function (_React$Component) {
     value: function handleSubmit(e) {
       e.preventDefault();
       var perk = Object.assign({}, this.state);
-      debugger;
       this.props.createPerk({
         perk: perk
       }).then(document.location.href = "#/api/campaigns/".concat(this.props.id));

@@ -5,7 +5,7 @@ class CampaignShow extends React.Component {
   constructor(props) {
     super(props)
     this.state = this.props.campaign
-    debugger
+  
   }
 
   componentDidMount() {
@@ -17,7 +17,7 @@ class CampaignShow extends React.Component {
   perks() {
 
    if (this.props.campaign.perks.length > 0) {
-     debugger
+
      return(
     <div>
      {this.props.campaign.perks.map((perk, idx) => (

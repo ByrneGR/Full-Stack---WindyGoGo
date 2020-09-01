@@ -1,0 +1,51 @@
+#aboutme-header-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  margin: auto;
+  text-align: left;
+  margin-bottom: 5%;
+}
+
+.img-responsive {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 234px;
+  height: 350px; 
+  margin-top: 2%
+}
+
+#headshot-container {
+  display: flex;
+  justify-content: center;
+}
+
+#about-me-bio {
+  text-align: left;
+  margin-left: 10%;
+  line-height: 1.5;
+  color: #2a2a2a
+}
+
+#about-windy-text {
+text-align: left;
+width: 80%;
+line-height: 1.5;
+color: #2a2a2a
+}
+
+#aboutme-h1 {
+  color: #2a2a2a;
+  letter-spacing: 2px;
+}
+
+#gb-link {
+  color: #e51075;
+  text-decoration: none;
+}
+
+#gb-link:hover {
+  color: #e51075;
+  text-decoration: underline;
+}

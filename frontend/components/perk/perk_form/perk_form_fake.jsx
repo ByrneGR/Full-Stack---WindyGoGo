@@ -45,7 +45,7 @@ class PerkForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const perk = Object.assign({}, this.state)
-    debugger
+
     this.props.createPerk({perk})
       .then(document.location.href = `#/api/campaigns/${this.props.id}`);
 

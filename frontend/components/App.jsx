@@ -34,7 +34,7 @@ const App = () => (
             Explore
           </Link>
           <Link className="navbtn" to="/aboutme">
-            About Me
+            About
           </Link>
         </div>
         <div className="nav-right">
