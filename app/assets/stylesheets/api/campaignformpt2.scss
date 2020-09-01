@@ -111,10 +111,16 @@ input[type="file"] {
 
 #campaignform2btn2 {
   margin-top: 3%;
-  position: absolute;
   float: right;
   right: 20%;
   cursor: pointer;
+}
+
+#campaignform2btn3 {
+    margin-top: 3%;
+    float: right;
+    cursor: pointer;
+    margin-right: 10%;
 }
 
 #campaignform2btn2:hover {

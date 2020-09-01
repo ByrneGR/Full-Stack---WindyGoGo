@@ -11,7 +11,6 @@ class CampaignIndex extends React.Component {
 
   componentDidMount() {
     this.props.fetchAllCampaigns(this.props.userId)
-    debugger;
 
   }
 
@@ -60,7 +59,7 @@ class CampaignIndex extends React.Component {
 
   render() {
     return(
-      <div>
+      <div id="splash-parent">
         <h1 id="popular_projects">Popular Projects</h1>
       {this.campaignRender()}
       </div >

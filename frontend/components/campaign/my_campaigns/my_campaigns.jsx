@@ -59,7 +59,6 @@ class MyCampaigns extends React.Component {
         <div id="campaign-links">
           <Link class="dropdown-links" id="pink-link" to={`/api/individuals/${this.props.currentUser.id}`}>Profile</Link>
           <Link class="dropdown-links" user={this.props.currentUser} to={`/api/${this.props.currentUser.id}/campaigns/`}>Campaigns</Link>
-          <Link class="dropdown-links" to={`/api/campaigns/}`}>Contributions</Link>
         </div>
         <h2 id="campaigns-im-on">Campaigns I'm On</h2>
       {this.campaignRender()}

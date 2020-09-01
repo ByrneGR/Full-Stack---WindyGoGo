@@ -11,7 +11,6 @@ class Profile extends React.Component {
           <div id="profile-links">
             <Link class="dropdown-links" id="pink-link" to={`/api/individuals/${this.props.currentUser.id}`}>Profile</Link>
             <Link class="dropdown-links" user={this.props.currentUser} to={`/api/${this.props.currentUser.id}/campaigns/`}>Campaigns</Link>
-            <Link class="dropdown-links" to={`/api/campaigns/}`}>Contributions</Link>
           </div>
           <div id="profile-lower">
           <img className="profile-image" id="pinkrobot" src={window.pinkrobot} />

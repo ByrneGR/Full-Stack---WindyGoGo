@@ -176,8 +176,11 @@
       transition: all 0.3s ease-in-out;
       font-family: Helvetica,
         "Sans-serif";
+      overflow-wrap: break-word;
 
 }
+
+
 
 #perk-parent {
   margin-right: 15%;
@@ -238,6 +241,7 @@
 
 #perk-card-header {
   font-weight: 600;
+  white-space: pre-wrap;
 }
 
 #add_perk_show {

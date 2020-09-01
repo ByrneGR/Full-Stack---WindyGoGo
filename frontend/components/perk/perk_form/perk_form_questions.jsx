@@ -95,7 +95,7 @@ export class PerkFormQuestions extends Component {
             </label>
             <br></br>
             <button
-              className="btn-formp1" id="campaignform2btn2" onClick={this.props.handleSubmit}>ADD PERK</button>
+              className="btn-formp1" id="campaignform2btn3" onClick={this.props.handleSubmit}>ADD PERK</button>
             <div>{errors}</div>
           </div>
         </form>

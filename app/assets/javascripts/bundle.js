@@ -1247,7 +1247,6 @@ var CampaignIndex = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchAllCampaigns(this.props.userId);
-      debugger;
     }
   }, {
     key: "campaignRender",
@@ -1296,7 +1295,9 @@ var CampaignIndex = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "splash-parent"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         id: "popular_projects"
       }, "Popular Projects"), this.campaignRender());
     }
@@ -1681,10 +1682,7 @@ var MyCampaigns = /*#__PURE__*/function (_React$Component) {
         "class": "dropdown-links",
         user: this.props.currentUser,
         to: "/api/".concat(this.props.currentUser.id, "/campaigns/")
-      }, "Campaigns"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        "class": "dropdown-links",
-        to: "/api/campaigns/}"
-      }, "Contributions")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+      }, "Campaigns")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         id: "campaigns-im-on"
       }, "Campaigns I'm On"), this.campaignRender());
     }
@@ -2512,7 +2510,7 @@ var PerkFormQuestions = /*#__PURE__*/function (_Component) {
         onChange: this.props.handleInput("delivery_date")
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn-formp1",
-        id: "campaignform2btn2",
+        id: "campaignform2btn3",
         onClick: this.props.handleSubmit
       }, "ADD PERK"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, errors))));
     }
@@ -2589,10 +2587,7 @@ var Profile = /*#__PURE__*/function (_React$Component) {
         "class": "dropdown-links",
         user: this.props.currentUser,
         to: "/api/".concat(this.props.currentUser.id, "/campaigns/")
-      }, "Campaigns"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        "class": "dropdown-links",
-        to: "/api/campaigns/}"
-      }, "Contributions")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Campaigns")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "profile-lower"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "profile-image",
@@ -3227,9 +3222,6 @@ __webpack_require__.r(__webpack_exports__);
     user: currentUser,
     to: "/api/".concat(currentUser.id, "/campaigns/")
   }, "My Campaigns")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    "class": "dropdown-links",
-    to: "/api/campaigns/}"
-  }, "My Contributions")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     "class": "dropdown-links",
     to: "/api/individuals/".concat(currentUser.id)
   }, "Profile")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
