@@ -12,6 +12,10 @@ class User < ApplicationRecord
     has_many :campaigns,
         foreign_key: :creator_id,
         class_name: :Campaign
+    
+    has_many :contributions,
+    foreign_key: :backer_id,
+    class_name: :Contribution            
 
     def self.find_by_credentials(email, password)
         user = User.find_by(email: email)

@@ -1,0 +1,30 @@
+// Place all the styles related to the Api::Campaigns controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#profile-firstname {
+  // float: left;
+}
+
+#profile-links {
+  text-decoration: none;
+
+}
+
+#profile-links a {
+  text-decoration: none;
+    margin-right: 10px;
+ color: #2a2a2a;
+}
+
+#profile-links a:hover {
+  color: #e51075;
+}
+
+#profile-lower {
+  display: flex;
+  justify-content: space-between;
+  margin: 20%;
+  margin-top: 5%;
+  margin-bottom: 10%;
+}

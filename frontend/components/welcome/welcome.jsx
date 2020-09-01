@@ -9,7 +9,7 @@ export default ({ currentUser, logout, openModal }) => {
       <ul id="dropdown-items">
         <li><Link class="dropdown-links" user={currentUser} to={`/api/${currentUser.id}/campaigns/`}>My Campaigns</Link></li>
         <li><Link class="dropdown-links" to={`/api/campaigns/}`}>My Contributions</Link></li>
-        <li><Link class="dropdown-links" to={`/api/campaigns/}`}>Profile</Link></li>
+        <li><Link class="dropdown-links" to={`/api/individuals/${currentUser.id}`}>Profile</Link></li>
         <li><span class="dropdown-links" onClick={logout}>Log Out</span></li>
       </ul>
     </div>) : (
