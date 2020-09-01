@@ -1629,7 +1629,6 @@ var MyCampaigns = /*#__PURE__*/function (_React$Component) {
     value: function campaignRender() {
       if (this.props.campaigns) {
         var lastIndex = Object.values(this.props.campaigns).length - 1;
-        debugger;
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "my_campaign_parent"
         }, Object.values(this.props.campaigns).slice(lastIndex - 8, lastIndex).map(function (campaign, idx) {
@@ -1644,10 +1643,13 @@ var MyCampaigns = /*#__PURE__*/function (_React$Component) {
             to: "/api/campaigns/".concat(campaign.id),
             className: "my_campaigns_title"
           }, campaign.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-            className: "homepage_description"
-          }, "By ", campaign.creator.first_name, " ", campaign.creator.last_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-            className: "homepage_description"
-          }, "Campaign Id:", campaign.id)));
+            className: "my_campaigns_creatorparent"
+          }, "By ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+            to: "/api/individuals/".concat(campaign.creator.id),
+            id: "my_campaigns_creator"
+          }, campaign.creator.first_name, " ", campaign.creator.last_name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+            id: "my_campaigns_tagline"
+          }, campaign.tagline)));
         }));
       } else {
         return null;

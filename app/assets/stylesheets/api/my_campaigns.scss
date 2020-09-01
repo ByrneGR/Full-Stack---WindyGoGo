@@ -8,6 +8,7 @@
   flex-direction: column;
     position: relative;
     top: 10%;
+    margin-left: 3%;
     // transform: translateY(-50%);
 }
 
@@ -61,4 +62,34 @@
   text-align: left;
   color: #2a2a2a;
   font-weight: 400;
+}
+
+.my_campaigns_title {
+  color: #2a2a2a;
+  text-decoration: none;
+  text-align: left;
+  font-size: 20px;
+}
+
+.my_campaigns_title:hover {
+  text-decoration: underline;
+}
+
+#my_campaigns_creator {
+    color: #e51075;
+    text-align: left;
+  text-decoration: none;
+}
+
+#my_campaigns_creator:hover {
+  text-decoration: underline;
+}
+
+.my_campaigns_creatorparent {
+  text-align: left;
+  margin-bottom: 5%;
+}
+
+#my_campaigns_tagline {
+  text-align: left;
 }

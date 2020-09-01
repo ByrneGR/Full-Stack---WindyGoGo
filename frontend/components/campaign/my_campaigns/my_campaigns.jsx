@@ -18,7 +18,6 @@ class MyCampaigns extends React.Component {
 
     if (this.props.campaigns) {
       let lastIndex = Object.values(this.props.campaigns).length - 1
-      debugger
       return (
         <div className="my_campaign_parent">
           {Object.values(this.props.campaigns).slice(lastIndex - 8, lastIndex).map((campaign, idx) => (
@@ -26,8 +25,8 @@ class MyCampaigns extends React.Component {
                 <img className="my_campaign_images" src={campaign.photoUrl}/>
                   <div className="my-campaigns-details">
                     <Link to={`/api/campaigns/${campaign.id}`} className="my_campaigns_title">{campaign.title}</Link>
-                    <span className="homepage_description">By {campaign.creator.first_name} {campaign.creator.last_name}</span>  
-                    <span className="homepage_description">Campaign Id:{campaign.id}</span>  
+                <span className="my_campaigns_creatorparent">By <Link to={`/api/individuals/${campaign.creator.id}`} id="my_campaigns_creator">{campaign.creator.first_name} {campaign.creator.last_name}</Link></span>  
+                  <span id="my_campaigns_tagline">{campaign.tagline}</span>
                   </div>
                   
             </div>
