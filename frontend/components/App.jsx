@@ -15,6 +15,8 @@ import Explore from './explore/explore.jsx'
 import PerkFormContainer from './perk/perk_form/perk_form_container.jsx'
 import Footer from './footer/footer.jsx'
 import ProfileContainer from './profile/profile_container.jsx'
+import Bio from './bio/bio.jsx'
+
 
 
 
@@ -31,8 +33,8 @@ const App = () => (
           <Link className="navbtn" to="/explore">
             Explore
           </Link>
-          <Link className="navbtn" to="/login">
-            What We Do
+          <Link className="navbtn" to="/aboutme">
+            About Me
           </Link>
         </div>
         <div className="nav-right">
@@ -59,7 +61,7 @@ const App = () => (
     <Route path="/perks/create/:campaignId" component={PerkFormContainer} />
     <Route path="/api/individuals/:userId" component={ProfileContainer} />
     <Route path="/explore" component={Explore} />
-    
+    <Route path="/aboutme" component={Bio} />
   <footer>
     <div id="phantom-footer">
     <Footer />

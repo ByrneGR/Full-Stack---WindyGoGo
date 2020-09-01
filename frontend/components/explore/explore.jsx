@@ -3,14 +3,7 @@ import CampaignIndexContainer from '../campaign/campaign_index/campaign_index_co
 
 class Explore extends React.Component {
   render() {
-    const settings = {
-      dots: true,
-      infinite: true,
-      speed: 5000,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      autoplay: true,
-    };
+
     return (
       <div>
         <div id="explore-header-container">
