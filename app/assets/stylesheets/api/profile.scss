@@ -3,11 +3,16 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #profile-firstname {
-  // float: left;
+  text-align: left;
+  margin: 0% 20%;
+  margin-top: 7%;
 }
 
 #profile-links {
   text-decoration: none;
+  text-align: left;
+  margin: 0% 20%;
+  margin-bottom: 0%;
 
 }
 
@@ -25,6 +30,18 @@
   display: flex;
   justify-content: space-between;
   margin: 20%;
-  margin-top: 5%;
+  margin-top: 2%;
   margin-bottom: 10%;
+  border-top: 1px solid #ccc;
+}
+
+#profile-list {
+  list-style-type: none;
+  text-align: left;
+  margin-right: 30%;
+}
+
+#profile-right {
+  margin-right: 200px;
+  margin-top: 5%
 }

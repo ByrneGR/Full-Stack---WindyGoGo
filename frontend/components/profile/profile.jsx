@@ -18,8 +18,10 @@ class Profile extends React.Component {
 
           <div id="profile-right">
             <h3>About Me</h3>
-            <span>{this.props.currentUser.campaigns.length} Campaigns</span>
-            <span>{this.props.currentUser.contributions.length} Contributions</span>
+            <ul id="profile-list">
+            <li>{this.props.currentUser.campaigns.length} Campaigns</li>
+            <li>{this.props.currentUser.contributions.length} Contributions</li>
+            </ul>
         </div>
         </div>  
       </div>
