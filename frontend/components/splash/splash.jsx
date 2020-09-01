@@ -31,13 +31,13 @@ class SplashPage extends React.Component {
 
         <Slider {...settings}>
           <div>
-            <img src={gogoBanner1} alt="d1" className="Dog" />
+            <img src={window.gogobanner1} alt="d1" className="Dog" />
           </div>
           <div>
-            <img src={gogoBanner2} alt="d1" className="Dog" />
+            <img src={window.gogobanner2} alt="d1" className="Dog" />
           </div>
           <div>
-            <img src={gogoBanner3} alt="d1" className="Dog" />
+            <img src={window.gogobanner3} alt="d1" className="Dog" />
           </div>
         </Slider>
         <CampaignIndexContainer />

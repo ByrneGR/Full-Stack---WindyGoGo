@@ -3346,15 +3346,15 @@ var SplashPage = /*#__PURE__*/function (_React$Component) {
         type: "text/css",
         href: "https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_slick__WEBPACK_IMPORTED_MODULE_1___default.a, settings, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: _gogobanner1_jpg__WEBPACK_IMPORTED_MODULE_2__["default"],
+        src: window.gogobanner1,
         alt: "d1",
         className: "Dog"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: _gogobanner2_jpeg__WEBPACK_IMPORTED_MODULE_3__["default"],
+        src: window.gogobanner2,
         alt: "d1",
         className: "Dog"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: _gogobanner3_jpg__WEBPACK_IMPORTED_MODULE_4__["default"],
+        src: window.gogobanner3,
         alt: "d1",
         className: "Dog"
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_campaign_campaign_index_campaign_index_container_jsx__WEBPACK_IMPORTED_MODULE_5__["default"], null));
