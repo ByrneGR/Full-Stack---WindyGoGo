@@ -423,9 +423,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _campaign_campaign_index_campaign_index_container_jsx__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./campaign/campaign_index/campaign_index_container.jsx */ "./frontend/components/campaign/campaign_index/campaign_index_container.jsx");
 /* harmony import */ var _campaign_my_campaigns_my_campaigns_container_jsx__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./campaign/my_campaigns/my_campaigns_container.jsx */ "./frontend/components/campaign/my_campaigns/my_campaigns_container.jsx");
 /* harmony import */ var _splash_splash_jsx__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./splash/splash.jsx */ "./frontend/components/splash/splash.jsx");
-/* harmony import */ var _perk_perk_form_perk_form_container_jsx__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./perk/perk_form/perk_form_container.jsx */ "./frontend/components/perk/perk_form/perk_form_container.jsx");
-/* harmony import */ var _footer_footer_jsx__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./footer/footer.jsx */ "./frontend/components/footer/footer.jsx");
-/* harmony import */ var _profile_profile_container_jsx__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./profile/profile_container.jsx */ "./frontend/components/profile/profile_container.jsx");
+/* harmony import */ var _explore_explore_jsx__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./explore/explore.jsx */ "./frontend/components/explore/explore.jsx");
+/* harmony import */ var _perk_perk_form_perk_form_container_jsx__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./perk/perk_form/perk_form_container.jsx */ "./frontend/components/perk/perk_form/perk_form_container.jsx");
+/* harmony import */ var _footer_footer_jsx__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./footer/footer.jsx */ "./frontend/components/footer/footer.jsx");
+/* harmony import */ var _profile_profile_container_jsx__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./profile/profile_container.jsx */ "./frontend/components/profile/profile_container.jsx");
+
 
 
 
@@ -453,7 +455,7 @@ var App = function App() {
     to: "/"
   }, "WINDYGOGO"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
     className: "navbtn",
-    to: "/login"
+    to: "/explore"
   }, "Explore"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
     className: "navbtn",
     to: "/login"
@@ -492,13 +494,16 @@ var App = function App() {
     component: _splash_splash_jsx__WEBPACK_IMPORTED_MODULE_12__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Route"], {
     path: "/perks/create/:campaignId",
-    component: _perk_perk_form_perk_form_container_jsx__WEBPACK_IMPORTED_MODULE_13__["default"]
+    component: _perk_perk_form_perk_form_container_jsx__WEBPACK_IMPORTED_MODULE_14__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Route"], {
     path: "/api/individuals/:userId",
-    component: _profile_profile_container_jsx__WEBPACK_IMPORTED_MODULE_15__["default"]
+    component: _profile_profile_container_jsx__WEBPACK_IMPORTED_MODULE_16__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Route"], {
+    path: "/explore",
+    component: _explore_explore_jsx__WEBPACK_IMPORTED_MODULE_13__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "phantom-footer"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_footer_footer_jsx__WEBPACK_IMPORTED_MODULE_14__["default"], null))));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_footer_footer_jsx__WEBPACK_IMPORTED_MODULE_15__["default"], null))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
@@ -2025,6 +2030,84 @@ var mdp = function mdp(dispatch) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(_contribution_form__WEBPACK_IMPORTED_MODULE_4__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/explore/explore.jsx":
+/*!*************************************************!*\
+  !*** ./frontend/components/explore/explore.jsx ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _campaign_campaign_index_campaign_index_container_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../campaign/campaign_index/campaign_index_container.jsx */ "./frontend/components/campaign/campaign_index/campaign_index_container.jsx");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+var Explore = /*#__PURE__*/function (_React$Component) {
+  _inherits(Explore, _React$Component);
+
+  var _super = _createSuper(Explore);
+
+  function Explore() {
+    _classCallCheck(this, Explore);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(Explore, [{
+    key: "render",
+    value: function render() {
+      var settings = {
+        dots: true,
+        infinite: true,
+        speed: 5000,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true
+      };
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "explore-header-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        id: "explore-header-text"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        id: "explore-h1"
+      }, "Indiegogo Campaigns"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        id: "explore-h2"
+      }, "Fund new and groundbreaking projects, including hits from Indiegogo InDemand"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_campaign_campaign_index_campaign_index_container_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+    }
+  }]);
+
+  return Explore;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (Explore);
 
 /***/ }),
 

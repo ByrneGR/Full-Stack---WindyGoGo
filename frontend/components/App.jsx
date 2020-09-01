@@ -11,9 +11,11 @@ import ContributionFormContainer from './contribution/contribution_form_containe
 import CampaignIndexContainer from './campaign/campaign_index/campaign_index_container.jsx'
 import MyCampaignsContainer from './campaign/my_campaigns/my_campaigns_container.jsx'
 import SplashPage from './splash/splash.jsx'
+import Explore from './explore/explore.jsx'
 import PerkFormContainer from './perk/perk_form/perk_form_container.jsx'
 import Footer from './footer/footer.jsx'
 import ProfileContainer from './profile/profile_container.jsx'
+
 
 
 
@@ -26,7 +28,7 @@ const App = () => (
           <Link className="logo" to="/">
             WINDYGOGO
           </Link>
-          <Link className="navbtn" to="/login">
+          <Link className="navbtn" to="/explore">
             Explore
           </Link>
           <Link className="navbtn" to="/login">
@@ -56,6 +58,7 @@ const App = () => (
     <Route path='/home' component={SplashPage} />
     <Route path="/perks/create/:campaignId" component={PerkFormContainer} />
     <Route path="/api/individuals/:userId" component={ProfileContainer} />
+    <Route path="/explore" component={Explore} />
     
   <footer>
     <div id="phantom-footer">

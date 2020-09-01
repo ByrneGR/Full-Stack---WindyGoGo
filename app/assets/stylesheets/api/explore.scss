@@ -1,0 +1,25 @@
+#explore-header-container {
+  background: url("https://i.imgur.com/XAjjIWB.jpeg");
+  height: 225px;
+    background-size: cover;
+    overflow: hidden;
+  color: white;  
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+#explore-header-text {
+  font-family: Helvetica,
+  "Sans-serif";
+line-height: 48px;
+}
+
+#explore-h1 {
+  font-weight: 400;
+  font-size: 40px;
+}
+#explore-h2 {
+  font-weight: 300;
+}
+
