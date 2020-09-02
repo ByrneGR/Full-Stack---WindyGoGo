@@ -5,9 +5,11 @@ import { openModal } from '../../actions/modal_actions'
 
 
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state) => {
+  debugger
+  return {
   currentUser: state.entities.users[state.session.id]
-})
+}}
 
 const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logout()),

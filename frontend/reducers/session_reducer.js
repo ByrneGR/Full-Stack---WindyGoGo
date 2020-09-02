@@ -12,8 +12,6 @@ export default (state = _nullSession, action) => {
             return Object.assign({}, { id: action.user.id });
         case LOGOUT_CURRENT_USER:
             return _nullSession;
-        case RECEIVE_USER:
-            return Object.assign({}, { id: action.user.id });   
         default:
             return state;
     }
