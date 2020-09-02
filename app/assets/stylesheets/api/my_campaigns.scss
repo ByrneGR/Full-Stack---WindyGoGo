@@ -17,6 +17,8 @@
 }
 
 .my-campaigns-campaign-container {
+  display: flex;
+  justify-content: space-between;
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
   height: 250px;
@@ -92,4 +94,29 @@
 
 #my_campaigns_tagline {
   text-align: left;
+}
+
+#my-campaigns-left {
+  display: flex;
+  justify-content: flex-start;
+}
+
+#delete_campaign_btn {
+  margin-top: 30%;
+  margin-right: 5%;
+  font-family: benton-sans,
+  Helvetica,
+  "Sans-serif";
+  font-weight: 200;
+  color: #835FB5;
+  background-color: transparent;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+#delete_campaign_btn:hover {
+ background-color: #ccc;
 }

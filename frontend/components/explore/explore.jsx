@@ -1,5 +1,5 @@
 import React from "react";
-import CampaignIndexContainer from '../campaign/campaign_index/campaign_index_container.jsx'
+import CampaignIndexContainer2 from '../campaign/campaign_index/campaign_index_container2.jsx'
 
 class Explore extends React.Component {
   render() {
@@ -12,7 +12,7 @@ class Explore extends React.Component {
             <h2 id="explore-h2">Fund new and groundbreaking projects, including hits from Indiegogo InDemand</h2>
           </span>
         </div>
-        <CampaignIndexContainer />
+        <CampaignIndexContainer2 />
 
       </div>
     );

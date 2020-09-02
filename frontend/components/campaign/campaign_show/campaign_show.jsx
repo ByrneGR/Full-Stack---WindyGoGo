@@ -67,7 +67,7 @@ class CampaignShow extends React.Component {
               <span id="showpage_funding">FUNDING</span>
               <span id="showpage_title">{this.props.campaign.title}</span>
               <span id="showpage_tagline">{this.props.campaign.tagline}</span>
-              <span id="showpage_creator">{this.props.campaign.creator.first_name} {this.props.campaign.creator.last_name}</span>
+            <Link to={`/api/individuals/${this.props.campaign.creator.id}`} id="showpage_creator">{this.props.campaign.creator.first_name} {this.props.campaign.creator.last_name}</Link>
             <div id="raisedandbackers">
               <span id="showpage_amountraised">${this.props.campaign.amount_raised} USD</span>
               <span id="showpage_backers">{this.props.campaign.number_of_backers} backers</span>              

@@ -26,6 +26,13 @@ class Api::CampaignsController < ApplicationController
     end  
     render :index
   end
+
+  def destroy
+    @campaign = Campaign.find(params[:id])
+    @campaign.delete
+    @campaigns = Campaign.all
+    render :index
+  end  
   
   private
 

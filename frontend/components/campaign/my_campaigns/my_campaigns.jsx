@@ -13,23 +13,37 @@ class MyCampaigns extends React.Component {
     this.props.fetchUserCampaigns(this.props.currentUser.id)
   }
 
+  handleDelete(campaignId) {
+    this.props.deleteCampaign(campaignId)
+    window.location.reload(false);
+  }
+
 
   campaignRender() {
 
     if (this.props.campaigns) {
-      let lastIndex = Object.values(this.props.campaigns).length - 1
+      let lastIndex = Object.values(this.props.campaigns).length
+      let firstIndex = 0
+      if (Object.values(this.props.campaigns).length >= 8) {
+        let firstIndex = lastIndex - 8
+      }  
       return (
         <div className="my_campaign_parent">
-          {Object.values(this.props.campaigns).slice(lastIndex - 8, lastIndex).map((campaign, idx) => (
+          {Object.values(this.props.campaigns).slice(firstIndex, lastIndex).map((campaign, idx) => (
             <div className ="my-campaigns-campaign-container">
+              <div id="my-campaigns-left">
                 <img className="my_campaign_images" src={campaign.photoUrl}/>
                   <div className="my-campaigns-details">
                     <Link to={`/api/campaigns/${campaign.id}`} className="my_campaigns_title">{campaign.title}</Link>
                 <span className="my_campaigns_creatorparent">By <Link to={`/api/individuals/${campaign.creator.id}`} id="my_campaigns_creator">{campaign.creator.first_name} {campaign.creator.last_name}</Link></span>  
                   <span id="my_campaigns_tagline">{campaign.tagline}</span>
                   </div>
-                  
+                  </div>
+              <div> 
+                <button id="delete_campaign_btn" onClick={() => this.handleDelete(campaign.id)}>Delete Campaign</button>
+              </div>
             </div>
+ 
           )
           )}
         </div>

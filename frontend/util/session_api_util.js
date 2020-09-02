@@ -14,3 +14,9 @@ export const logOut = () => $.ajax({
     url: 'api/session',
     method: 'DELETE',
 });
+
+export const fetchuser = (userId) => $.ajax({
+    url: 'api/users',
+    method: 'GET',
+});
+

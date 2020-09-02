@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { fetchUserCampaigns } from "../../../actions/campaign_actions";
+import { fetchUserCampaigns, deleteCampaign } from "../../../actions/campaign_actions";
 import MyCampaigns from "./my_campaigns";
 
 const msp = (state, ownProps) => {
@@ -14,6 +14,7 @@ const msp = (state, ownProps) => {
 
 const mdp = (dispatch) => ({
   fetchUserCampaigns: (userId) => dispatch(fetchUserCampaigns(userId)),
+  deleteCampaign: campaignId => dispatch(deleteCampaign(campaignId)) 
 });
 
 export default connect(msp, mdp)(MyCampaigns);
