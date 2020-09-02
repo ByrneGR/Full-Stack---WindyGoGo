@@ -9,6 +9,9 @@ class Profile extends React.Component {
   }
 
   render() {
+    const {user} = this.props
+
+    if (user) {
     return (
 
         <div id="profile-left">
@@ -29,7 +32,10 @@ class Profile extends React.Component {
         </div>
         </div>  
       </div>
-    )
+      )
+    } else {
+      return null;
+    }
   }
 
 }

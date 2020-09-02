@@ -9,6 +9,7 @@ const mapStateToProps = (state, { match }) => {
 
   const id = parseInt(match.params.userId);
   const user = state.entities.users[id]
+  debugger
   return {
     id,
     user,

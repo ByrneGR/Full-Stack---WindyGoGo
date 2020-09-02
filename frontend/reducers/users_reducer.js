@@ -6,9 +6,7 @@ export default (state = {}, action) => {
     case RECEIVE_CURRENT_USER:
       return Object.assign({}, state, {[action.user.id]: action.user})
     case RECEIVE_USER:
-      return Object.assign({}, {
-                id: action.user.id
-              });
+      return Object.assign({}, state, {[action.user.id]: action.user})
     default:
       return state;  
   }

@@ -3438,41 +3438,47 @@ var Profile = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "profile-left"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-        id: "profile-firstname"
-      }, this.props.user.first_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "profile-links"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        "class": "dropdown-links",
-        id: "pink-link",
-        to: "/api/individuals/".concat(this.props.user.id)
-      }, "Profile"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        "class": "dropdown-links",
-        user: this.props.user,
-        to: "/api/".concat(this.props.user.id, "/campaigns/")
-      }, "Campaigns")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "profile-lower"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "profile-image",
-        id: "pinkrobot",
-        src: window.pinkrobot
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "profile-right"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-        id: "profile-aboutme"
-      }, "About Me"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        id: "profile-list"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        id: "profile-list-item"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        id: "profile-count"
-      }, this.props.user.campaigns.length, " "), " Campaigns"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        id: "profile-list-item"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        id: "profile-count"
-      }, this.props.user.contributions.length, " "), " Contributions")))));
+      var user = this.props.user;
+
+      if (user) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          id: "profile-left"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+          id: "profile-firstname"
+        }, this.props.user.first_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          id: "profile-links"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          "class": "dropdown-links",
+          id: "pink-link",
+          to: "/api/individuals/".concat(this.props.user.id)
+        }, "Profile"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          "class": "dropdown-links",
+          user: this.props.user,
+          to: "/api/".concat(this.props.user.id, "/campaigns/")
+        }, "Campaigns")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          id: "profile-lower"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "profile-image",
+          id: "pinkrobot",
+          src: window.pinkrobot
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          id: "profile-right"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+          id: "profile-aboutme"
+        }, "About Me"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+          id: "profile-list"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          id: "profile-list-item"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          id: "profile-count"
+        }, this.props.user.campaigns.length, " "), " Campaigns"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          id: "profile-list-item"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          id: "profile-count"
+        }, this.props.user.contributions.length, " "), " Contributions")))));
+      } else {
+        return null;
+      }
     }
   }]);
 
@@ -3505,6 +3511,7 @@ var mapStateToProps = function mapStateToProps(state, _ref) {
   var match = _ref.match;
   var id = parseInt(match.params.userId);
   var user = state.entities.users[id];
+  debugger;
   return {
     id: id,
     user: user
@@ -4537,9 +4544,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return Object.assign({}, state, _defineProperty({}, action.user.id, action.user));
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_USER"]:
-      return Object.assign({}, {
-        id: action.user.id
-      });
+      return Object.assign({}, state, _defineProperty({}, action.user.id, action.user));
 
     default:
       return state;
@@ -4821,7 +4826,7 @@ var logOut = function logOut() {
 };
 var fetchuser = function fetchuser(userId) {
   return $.ajax({
-    url: 'api/users',
+    url: "api/users/".concat(userId),
     method: 'GET'
   });
 };
