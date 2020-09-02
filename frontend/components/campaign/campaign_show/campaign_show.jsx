@@ -67,7 +67,9 @@ class CampaignShow extends React.Component {
     return (
       <div id="campaignshowparent">
           <div id="campaignshowheader">
+            <div id="showimagecontainer">
             <img className="showpageimage" src={this.props.campaign.photoUrl} />
+            </div>
             <div className="space"></div>
             <div id="campaignshowheader-right">
               <span id="showpage_funding">FUNDING</span>
