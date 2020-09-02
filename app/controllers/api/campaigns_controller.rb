@@ -27,6 +27,16 @@ class Api::CampaignsController < ApplicationController
     render :index
   end
 
+  def update
+    @campaign = Campaign.find(params[:id])
+    @campaign.update(create_campaign_params)
+    if @campaign.save
+      render :show
+    else
+      render json: @campaign.errors.full_messages, status: 401
+    end  
+  end  
+
   def destroy
     @campaign = Campaign.find(params[:id])
     @campaign.delete

@@ -1,4 +1,4 @@
-import {fetchallcampaigns, fetchusercampaigns, fetchcampaign, createcampaign, deletecampaign} from '../util/campaign_api_util';
+import {fetchallcampaigns, fetchusercampaigns, fetchcampaign, createcampaign, deletecampaign, updatecampaign} from '../util/campaign_api_util';
 
 export const RECEIVE_CAMPAIGNS = 'RECEIVE_CAMPAIGNS';
 export const RECEIVE_CAMPAIGN = 'RECEIVE_CAMPAIGN';
@@ -46,4 +46,8 @@ export const createCampaign = campaign => dispatch => (
 
 export const deleteCampaign = campaignId => dispatch => (
   deletecampaign(campaignId).then(() => dispatch(removeCampaign(campaignId)))
+)
+
+export const updateCampaign = campaign => dispatch => (
+  updatecampaign(campaign).then(() => dispatch(receiveCampaign(campaign)))
 )

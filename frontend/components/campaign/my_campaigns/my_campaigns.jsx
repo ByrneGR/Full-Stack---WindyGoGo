@@ -10,12 +10,30 @@ class MyCampaigns extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchUserCampaigns(this.props.currentUser.id)
+    this.props.fetchUserCampaigns(this.props.user.id)
   }
 
   handleDelete(campaignId) {
     this.props.deleteCampaign(campaignId)
     window.location.reload(false);
+  }
+
+  editAndDelete() {
+    if (this.props.user.id === this.props.currentUser.id) {
+      return (
+        <div>
+        <div>
+            <Link id="delete_campaign_btn" to={`/api/campaigns/edit/${campaign.id}/`}>Edit Campaign</Link>
+        </div>
+
+        <div>
+          <button id="delete_campaign_btn" onClick={() => this.handleDelete(campaign.id)}>Delete Campaign</button>
+        </div>
+        </div >
+      )
+    } else {
+      return null;
+    }
   }
 
 
@@ -39,9 +57,7 @@ class MyCampaigns extends React.Component {
                   <span id="my_campaigns_tagline">{campaign.tagline}</span>
                   </div>
                   </div>
-              <div> 
-                <button id="delete_campaign_btn" onClick={() => this.handleDelete(campaign.id)}>Delete Campaign</button>
-              </div>
+                {this.editAndDelete()}
             </div>
  
           )
@@ -69,10 +85,10 @@ class MyCampaigns extends React.Component {
   render() {
     return(
       <div class="my-campaigns-container-all">
-        <h2 id="campaign-firstname">{this.props.currentUser.first_name}</h2>
+        <h2 id="campaign-firstname">{this.props.user.first_name}</h2>
         <div id="campaign-links">
-          <Link class="dropdown-links" id="pink-link" to={`/api/individuals/${this.props.currentUser.id}`}>Profile</Link>
-          <Link class="dropdown-links" user={this.props.currentUser} to={`/api/${this.props.currentUser.id}/campaigns/`}>Campaigns</Link>
+          <Link class="dropdown-links" id="pink-link" to={`/api/individuals/${this.props.user.id}`}>Profile</Link>
+          <Link class="dropdown-links" user={this.props.user} to={`/api/${this.props.user.id}/campaigns/`}>Campaigns</Link>
         </div>
         <h2 id="campaigns-im-on">Campaigns I'm On</h2>
       {this.campaignRender()}

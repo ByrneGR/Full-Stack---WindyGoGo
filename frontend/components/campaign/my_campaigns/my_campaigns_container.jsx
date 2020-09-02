@@ -8,7 +8,8 @@ const msp = (state, ownProps) => {
   return {
     campaigns,
     userId,
-    currentUser: state.entities.users[state.session.id]
+    currentUser: state.entities.users[state.session.id],
+    user: state.entities.users[userId]
   }
 };
 

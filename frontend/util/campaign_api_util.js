@@ -34,3 +34,13 @@ export const deletecampaign = campaignId => {
     method: 'DELETE',
   })
 }
+
+export const updatecampaign = (campaign) => {
+  return $.ajax({
+    url: 'api/campaigns',
+    method: 'PATCH',
+    data: campaign,
+    contentType: false,
+    processData: false
+  })
+}

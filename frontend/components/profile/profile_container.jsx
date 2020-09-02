@@ -6,7 +6,7 @@ import { openModal } from '../../actions/modal_actions'
 
 
 const mapStateToProps = (state, { match }) => {
-  debugger
+
   const id = parseInt(match.params.userId);
   const user = state.entities.users[id]
   return {
