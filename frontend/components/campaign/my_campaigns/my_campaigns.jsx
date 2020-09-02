@@ -18,12 +18,12 @@ class MyCampaigns extends React.Component {
     window.location.reload(false);
   }
 
-  editAndDelete() {
+  editAndDelete(campaign) {
     if (this.props.user.id === this.props.currentUser.id) {
       return (
+        <div id="my_campaign_buttons">
         <div>
-        <div>
-            <Link id="delete_campaign_btn" to={`/api/campaigns/edit/${campaign.id}/`}>Edit Campaign</Link>
+            <Link id="delete_campaign_btn" className="edit_campaign_btn" to={`/api/campaigns/edit/${campaign.id}/`}>Edit Campaign</Link>
         </div>
 
         <div>
@@ -57,7 +57,7 @@ class MyCampaigns extends React.Component {
                   <span id="my_campaigns_tagline">{campaign.tagline}</span>
                   </div>
                   </div>
-                {this.editAndDelete()}
+                {this.editAndDelete(campaign)}
             </div>
  
           )

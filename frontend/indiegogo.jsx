@@ -4,8 +4,7 @@ import { logIn, logOut, signUp } from './util/session_api_util'
 import configureStore from './store/store';
 import Root from './components/root'
 import { login } from './actions/session_actions'
-import { fetchCampaigns, fetchCampaign, createCampaign } from './actions/campaign_actions'
-import { fetchContributions, fetchContribution, createContribution } from './actions/contribution_actions'
+
 
 
 
@@ -30,11 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.getState = store.getState;
   window.dispatch = store.dispatch;
-  window.fetchCampaigns = fetchCampaigns;
-  window.fetchCampaign = fetchCampaign;
-  window.createCampaign = createCampaign;
-  window.fetchContributions = fetchContributions;
-  window.createContribution = createContribution;
+
 
 
   ReactDOM.render(<Root store={store} />, root);

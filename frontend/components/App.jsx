@@ -16,7 +16,9 @@ import PerkFormContainer from './perk/perk_form/perk_form_container.jsx'
 import Footer from './footer/footer.jsx'
 import ProfileContainer from './profile/profile_container.jsx'
 import Bio from './bio/bio.jsx'
-import 
+import EditCampaignContainer from './campaign//edit_campaign/edit_campaign_container'
+
+
 
 
 
@@ -63,7 +65,7 @@ const App = () => (
     <Route path="/api/individuals/:userId" component={ProfileContainer} />
     <Route path="/explore" component={Explore} />
     <Route path="/aboutme" component={Bio} />
-    <Route path="/api/campaigns/edit/campaignId" component={EditCampaignContainer} />
+    <Route path="/api/campaigns/edit/:campaignId" component={EditCampaignContainer} />
   <footer>
     <div id="phantom-footer">
     <Footer />

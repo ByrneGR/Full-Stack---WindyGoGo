@@ -28,8 +28,8 @@ class Api::CampaignsController < ApplicationController
   end
 
   def update
-    @campaign = Campaign.find(params[:id])
-    @campaign.update(create_campaign_params)
+    @campaign = Campaign.find(edit_campaign_params[:id])
+    @campaign.update(edit_campaign_params)
     if @campaign.save
       render :show
     else
@@ -48,5 +48,9 @@ class Api::CampaignsController < ApplicationController
 
   def create_campaign_params
     params.require(:campaign).permit(:funding_goal, :tagline, :creator_type, :location, :banking_location, :title, :description, :duration, :image)
+  end  
+
+  def edit_campaign_params
+    params.require(:campaign).permit(:funding_goal, :tagline, :id, :location, :title, :description, :duration, :image)
   end  
 end

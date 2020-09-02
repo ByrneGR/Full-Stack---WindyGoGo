@@ -37,7 +37,7 @@ export const deletecampaign = campaignId => {
 
 export const updatecampaign = (campaign) => {
   return $.ajax({
-    url: 'api/campaigns',
+    url: `api/campaigns/${campaign.id}`,
     method: 'PATCH',
     data: campaign,
     contentType: false,

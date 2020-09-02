@@ -2,7 +2,9 @@ import React from 'react';
 import { Link, Route } from 'react-router-dom';
 
 class CampaignShow extends React.Component {
+  
   constructor(props) {
+    // window.location.reload(false);
     super(props)
     this.state = this.props.campaign
   
@@ -10,7 +12,11 @@ class CampaignShow extends React.Component {
 
   componentDidMount() {
     this.props.fetchCampaign(this.props.id)
+  
     // this.progressBar()
+  }
+
+  componentWillMount() {
   }
 
   
