@@ -12,7 +12,7 @@ class AboutMe extends React.Component {
             <img id="pinkrobot" src={window.pinkrobot} />
             <h1 id="aboutme-h1">About Windygogo</h1>
             <div id="aboutme-header-text">
-            <span id="about-windy-text">Windygogo is a clone of the popular crowdfunding site, Indiegogo. The goal of WindyGoGo is to enhance my backend (Ruby on Rails) and frontend (React/Redux/CSS) skills by replicating an established successful web app and to showcase my abilitites as a developer.</span>
+            <span id="about-windy-text">Windygogo is a clone of the popular crowdfunding site, Indiegogo. The goal of WindyGoGo is to enhance my backend (Ruby on Rails) and frontend (React/Redux/CSS) skills by replicating an established successful web app and to showcase my abilitites as a developer. Windygogo is not intended for any commercial use.</span>
               </div>
           </span>
 

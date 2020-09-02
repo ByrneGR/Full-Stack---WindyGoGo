@@ -60,7 +60,7 @@ class CampaignIndex extends React.Component {
   render() {
     return(
       <div id="splash-parent">
-        <h1 id="popular_projects">Popular Projects</h1>
+        <h1 id="popular_projects">Trending</h1>
       {this.campaignRender()}
       </div >
     );

@@ -596,7 +596,7 @@ var AboutMe = /*#__PURE__*/function (_React$Component) {
         id: "aboutme-header-text"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         id: "about-windy-text"
-      }, "Windygogo is a clone of the popular crowdfunding site, Indiegogo. The goal of WindyGoGo is to enhance my backend (Ruby on Rails) and frontend (React/Redux/CSS) skills by replicating an established successful web app and to showcase my abilitites as a developer."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+      }, "Windygogo is a clone of the popular crowdfunding site, Indiegogo. The goal of WindyGoGo is to enhance my backend (Ruby on Rails) and frontend (React/Redux/CSS) skills by replicating an established successful web app and to showcase my abilitites as a developer. Windygogo is not intended for any commercial use."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         id: "aboutme-h1"
       }, "About Me"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "aboutme-header-text"
@@ -1547,7 +1547,7 @@ var CampaignIndex = /*#__PURE__*/function (_React$Component) {
         id: "splash-parent"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         id: "popular_projects"
-      }, "Popular Projects"), this.campaignRender());
+      }, "Trending"), this.campaignRender());
     }
   }]);
 
