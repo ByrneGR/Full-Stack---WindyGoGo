@@ -624,7 +624,7 @@ var AboutMe = /*#__PURE__*/function (_React$Component) {
       }, "Hi there! My name is Gabe and I'm a software developer, growth marketer and music lover. I have built web applications with Javascript, React, and Ruby on Rails and I love testing my critical-thinking and creative problem-solving through writing code.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "I also have a background in digital marketing and managed advertising efforts at Industrious, a national coworking space provider and Ampush, an ad agency in San Francisco. Outside of work, I love going to concerts, making beats, and travelling to new places. Learn more at ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         target: "_blank",
         id: "gb-link",
-        href: "gabebyrne.com"
+        href: "https://www.gabebyrne.com"
       }, "gabebyrne.com")))));
     }
   }]);
@@ -2878,9 +2878,9 @@ var Explore = /*#__PURE__*/function (_React$Component) {
         id: "explore-header-text"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         id: "explore-h1"
-      }, "Indiegogo Campaigns"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+      }, "Windygogo Campaigns"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         id: "explore-h2"
-      }, "Fund new and groundbreaking projects, including hits from Indiegogo InDemand"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_campaign_campaign_index_campaign_index_container2_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+      }, "Fund new and groundbreaking projects, including hits from Windygogo WinDemand"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_campaign_campaign_index_campaign_index_container2_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], null));
     }
   }]);
 

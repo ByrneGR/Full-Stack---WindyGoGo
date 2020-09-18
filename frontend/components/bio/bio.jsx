@@ -23,7 +23,7 @@ class AboutMe extends React.Component {
             </div>
             <span id="about-me-bio">Hi there! My name is Gabe and I'm a software developer, growth marketer and music lover. I have built web applications with Javascript, React, and Ruby on Rails and I love testing my critical-thinking and creative problem-solving through writing code.<br></br><br></br>
 
-I also have a background in digital marketing and managed advertising efforts at Industrious, a national coworking space provider and Ampush, an ad agency in San Francisco. Outside of work, I love going to concerts, making beats, and travelling to new places. Learn more at <a target="_blank" id="gb-link" href="gabebyrne.com">gabebyrne.com</a></span>
+I also have a background in digital marketing and managed advertising efforts at Industrious, a national coworking space provider and Ampush, an ad agency in San Francisco. Outside of work, I love going to concerts, making beats, and travelling to new places. Learn more at <a target="_blank" id="gb-link" href="https://www.gabebyrne.com">gabebyrne.com</a></span>
 
           </div>
         </div>
