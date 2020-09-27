@@ -621,10 +621,10 @@ var AboutMe = /*#__PURE__*/function (_React$Component) {
         alt: "d1"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         id: "about-me-bio"
-      }, "Hi there! My name is Gabe and I'm a software developer, growth marketer and music lover. I have built web applications with Javascript, React, and Ruby on Rails and I love testing my critical-thinking and creative problem-solving through writing code.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "I also have a background in digital marketing and managed advertising efforts at Industrious, a national coworking space provider and Ampush, an ad agency in San Francisco. Outside of work, I love going to concerts, making beats, and travelling to new places. Learn more at ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      }, "Hi there! My name is Gabe and I'm a software developer, growth marketer and music lover. I have built web applications with Javascript, React, and Ruby on Rails and I love testing my critical-thinking and creative problem-solving through writing code.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "I also have a background in digital marketing and managed advertising efforts at Industrious, a national coworking space provider and Ampush, an ad agency in San Francisco. Outside of work, I love going to concerts, making beats, and travelling to new places. Learn more at", " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         target: "_blank",
         id: "gb-link",
-        href: "https://www.gabebyrne.com"
+        href: "https://gabebyrne.com"
       }, "gabebyrne.com")))));
     }
   }]);
